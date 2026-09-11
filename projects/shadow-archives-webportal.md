@@ -25,10 +25,10 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` and local `HEAD` are at the Phase 2A commit
-  `450dbcf` (2026-09-11).
-- Local path: a Git working tree on branch `main` — baseline `450dbcf` plus
-  uncommitted Phase 2B changes as of 2026-09-11.
+  (branch `main`); `origin/main` and local `HEAD` are at the Phase 2B commit
+  `ac7cef1` (2026-09-11).
+- Local path: a Git working tree on branch `main` — baseline `ac7cef1` plus
+  uncommitted Phase 2C-A publication-provenance changes as of 2026-09-11.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -122,8 +122,12 @@ must not be treated as timeless constants.
 - **QDN service:** `APP`.
 - **Identifier / prefix:** **`saw_`** (owner decision D1). The namespace is
   fixed; schema evolution is carried by payload `schemaVersion`, not by a
-  namespace digit.
-- Deployed resource URI: not yet established.
+  namespace digit. `saw_` is the **content** namespace (for example
+  `saw_post_*`); it is **not** the APP resource identifier.
+- Deployed APP resource URI (Phase 2C-A recommendation, owner confirmation
+  pending): **default identifier** at
+  `qortal://APP/Shadow Archives` → `(service=APP, name="Shadow Archives",
+  identifier=default)`.
 
 The canonical identity is the human-readable `Shadow Archives`. Account for
 platform encoding (for example percent-encoding of spaces) only where
@@ -563,6 +567,53 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
+**Verified 2026-09-11 — Phase 2C-A first APP publication readiness prepared
+(current factual state):**
+
+- The current multi-file `APP` publication contract was re-verified against the
+  pinned Core `108bf191` (v6.1.9) and Hub `12a573b2` sources (both still
+  upstream `HEAD`): `PUBLISH_QDN_RESOURCE` with `service: 'APP'`,
+  `isMultiFileZip: true` (Hub maps this to `uploadType: 'zip'` → Core
+  `isZip=true` → `ZipUtils.unzip`), `identifier` omitted (Hub substitutes
+  `'default'`; Core treats `null`/`''`/`'default'` as the default resource),
+  metadata via `title`/`description`/`category`/`tags`. Hub's own app-publish UI
+  uses the same ZIP/no-identifier convention.
+- `index.html` must be at the resource root; `Service.APP` auto-routes
+  unhandled paths to it. A single enclosing directory in the ZIP is flattened
+  by Core, but the artifact is built with `index.html` at the ZIP root.
+- Recommended canonical identity (**owner confirmation pending**): the
+  **default identifier**, so the canonical URL is `qortal://APP/Shadow
+  Archives`. `saw_` is the content namespace and is **not** used as the APP
+  identifier. Alternative explicit identifiers are technically viable but would
+  break the direct `qortal://APP/Shadow Archives` address and trigger
+  `HTMLParser` relative-asset query rewriting.
+- Production artifact produced and structurally verified:
+  `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL/release/shadow-archives-app-0.1.0-20260911.zip`
+  — 24 files, 774964 bytes uncompressed, 458078 bytes compressed, SHA-256
+  `697aa9664a03fac0e1a1ea90d7631a899a4b27ea6f273aa56bf1dccde2a46c96`,
+  `index.html` at the ZIP root, all lazy route chunks and the banner present, no
+  source maps / `node_modules` / `.env` / source files, all asset URLs relative.
+  Packaging is deterministic (sorted entries, normalized mtimes, `zip -X -D`);
+  `SOURCE_DATE_EPOCH` is supported. The artifact is **not** committed
+  (`/release/` is ignored).
+- Build/revision provenance added: `__BUILD_INFO__` (`version` + git `commit`)
+  is injected at build time; `dist/build.json` records
+  `version`/`commit`/`commitShort`/`builtAt`/`dirty`; the footer and `/studio`
+  show the served build id. Intended-revision verification compares the served
+  non-HTML asset SHA-256 and `build.json` against the manifest, because
+  `index.html` is rewritten at render time and `READY` alone does not prove the
+  intended revision.
+- Exact owner live-publish procedure and the exact post-publication real-host
+  validation checklist are recorded in the Phase 2C-A report. **No publication,
+  transaction or QDN write occurred**; the `APP` resource remains
+  `NOT_PUBLISHED`, so no genuine `_qdnName` render context exists yet and
+  real-host validation remains `NOT VERIFIED` / owner-authorized.
+- Tests: 32 files / 299 tests passing; `lint`, `typecheck`, `format:check`,
+  `build`, `git diff --check`, `bash -n tools/validate-workspace.sh` and
+  `bash tools/validate-workspace.sh` (PASS) all green.
+- Phase 2C-A report:
+  [`../docs/shadow-archives-webportal/release/2026-09-11-first-app-publication-readiness-report.md`](../docs/shadow-archives-webportal/release/2026-09-11-first-app-publication-readiness-report.md)
+
 **Verified 2026-09-11 — Phase 2B owner-capability boundary implemented
 (current factual state):**
 
@@ -734,13 +785,15 @@ Kept for traceability; re-verify before platform-dependent work.
    [`../docs/shadow-archives-webportal/implementation/`](../docs/shadow-archives-webportal/implementation/)
    for the implementation report. The in-repo `src/qortal/` layer and semantic
    CSS tokens are in place; no `qapp-core` root entry and no MUI (D6/D7).
-3. Validate the built shell and the Phase 2B owner-capability flow in a real
-   Qortal host (owner gate) before any platform behaviour is claimed: a synced
-   local node + Hub Developer Mode, and first publication of the `APP` resource
-   to obtain a real `_qdnName` render context. Owner detection is implemented and
-   tested against the verified contracts; only host confirmation is outstanding.
-   An owner decision is also open on whether `/studio` should be discoverable
-   from public navigation (Phase 1A keeps it unlinked).
+3. **Next owner-authorized step (prepared, not executed):** confirm the default
+   identifier for the `APP` resource, then publish the Phase 2C-A artifact
+   `release/shadow-archives-app-0.1.0-20260911.zip` under name `Shadow Archives`
+   / service `APP` using the exact procedure in the Phase 2C-A report. That
+   first publication establishes the real render context; then run the exact
+   post-publication host-validation checklist. Owner detection is implemented
+   and tested against the verified contracts; only host confirmation is
+   outstanding. An owner decision is also open on whether `/studio` should be
+   discoverable from public navigation (Phase 1A keeps it unlinked).
 4. Set a concrete performance budget from a real measured baseline in the dev
    proxy and a real host; the Phase 1A numbers are build-output comparisons, not
    runtime timings.
