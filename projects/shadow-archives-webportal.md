@@ -96,6 +96,10 @@ decision is authoritative. Status labels: `OWNER APPROVED`, `DEFERRED`,
   rewriting content entities.
 - **Video + future Q-Tube interoperability — OWNER APPROVED / FUTURE.** See
   "Video architecture" below.
+- **Publishing interoperability first — OWNER APPROVED (2026-09-11).** The final
+  Video and Blog publish modals MUST be preceded by dedicated research into the
+  then-current ecosystem contracts. See "Publishing interoperability first"
+  below.
 
 Individual like/comment identity records are scoped by the publishing **name**,
 not the account address.
@@ -374,6 +378,32 @@ Content types: Blog, Videos, Gallery.
   `service`/`name`/`identifier`/`path` where applicable instead of storing an
   opaque Shadow-Archives-only blob reference.
 
+## Publishing interoperability first (owner decision, 2026-09-11)
+
+Code is the contract here: the publication format has to match what the
+ecosystem actually reads, and that can only be established from current source.
+
+- **Before implementing the final Video Publish modal:** inspect the
+  then-current Q-Tube source and the relevant QDN/runtime behaviour, determine
+  the actual current Q-Tube publication/discovery contract, and build the Shadow
+  Archives video publication flow around that verified compatible QDN model
+  where appropriate.
+  Goal: a video published through Shadow Archives is later capable of native
+  Q-Tube ecosystem discovery/participation **without the Video domain being
+  rewritten**.
+- **Before implementing the final Blog Publish modal:** inspect the then-current
+  Subwire source and QDN publication contract, investigate its then-current
+  Quitter cross-post/publication integration, and build the Shadow Archives blog
+  publication flow around the verified ecosystem contract where appropriate.
+- This is a **future implementation rule**. It is **not** Phase 1B work and must
+  not be started early. A small read-only check is permitted only where needed
+  to avoid an architectural mistake.
+- **Do NOT** claim Q-Tube/Subwire/Quitter interoperability is verified by any
+  earlier task. The contracts remain FUTURE / NOT VERIFIED until that dedicated
+  research is executed and recorded.
+- **Do NOT** copy their UIs merely for visual similarity. The purpose is
+  protocol/resource interoperability, not cloning applications.
+
 ## Taxonomy (owner decisions)
 
 - shared categories and tags across blog/video/gallery
@@ -528,29 +558,61 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
-Verified 2026-09-11:
+**Verified 2026-09-11 — Phase 1B foundation implemented (factual state):**
 
-- Remote repository exists and is empty.
-- Local path exists and is empty; not yet a Git repository.
-- No application source, package manifest or schema exists.
-- The identifier namespace is approved (`saw_`, D1), but no QDN resource for
-  this application has been published under the decided publishing name/service
-  by this workspace.
+- The repository was cloned into the canonical local path (branch `main`,
+  `origin` = the GitHub remote, no commits yet). At Phase 1A closure the remote
+  was empty and the local path was not a Git repository.
+- Application foundation: Vite 7.3.6, React 19.3.0, TypeScript 5.9.3
+  (`strict`), `react-router-dom` 7.18.3, `createBrowserRouter` with
+  `window._qdnBase` basename handling.
+- Implemented: domain-oriented source tree, the `src/qortal/` integration
+  boundary, semantic CSS design tokens, the responsive AppShell (top panels,
+  real brand banner, primary action row, site navigation, footer),
+  loading/empty/error states, route-level lazy boundaries and Vitest tests
+  (9 files, 59 tests passing).
+- Dependency footprint is deliberately small: no MUI/emotion, no `qapp-core`
+  root entry, no video player, no TipTap. DOMPurify is deferred until the first
+  feature that actually renders stored rich text.
+- Commands: `npm run dev`, `npm run build` (`tsc -b && vite build`),
+  `npm run preview`, `npm run lint`, `npm run typecheck`, `npm test`,
+  `npm run format:check`.
+- Measured production build (Node 20.19.2, 2026-09-11): entry chunk
+  345.07 kB raw / 109.36 kB gzip; stylesheet 21.06 kB / 4.34 kB gzip; bundled
+  banner WebP 202.89 kB; each lazy route a separate 0.3–1.7 kB chunk. That is
+  the Phase 1A React+Router-only baseline (317.50 kB raw / 101.08 kB gzip) plus
+  the shell/home code, and far below the `qapp-core`/MUI floor (~596 kB gzip).
+- Headless-Chrome smoke test against the production build (320–2560 px, no
+  horizontal overflow, ≥44 px interactive targets, visible focus, keyboard
+  search disclosure, zero external network requests): **PASS**.
+- **NOT VERIFIED:** real Qortal host and node dev-proxy rendering. No local
+  Qortal node was available, so `_qdnName`-based owner detection, injected
+  bridge behaviour and QDN CSP behaviour remain unvalidated at runtime.
+- No QDN resource has been published, and nothing has been committed or pushed.
+- Still not implemented: owner authentication, publishing, comments, likes,
+  tips, moderation, deep search, catalogs and any QDN discovery. No Qortal/QDN
+  API is called at all in this build.
+
+### Phase 1A baseline snapshot (2026-09-11, historical)
+
+Kept for traceability; re-verify before platform-dependent work.
+
+- Remote repository existed and was empty; the local path existed, was empty,
+  and was not yet a Git repository (both superseded — see above).
+- No application source, package manifest or schema existed (superseded).
 - Every Qortal source revision pinned in the workspace standard was re-verified
   as the repository `HEAD` on 2026-09-11 (`qortal` v6.1.9, `Qortal-Hub`
   `12a573b2`, `qapp-core` v1.0.79, `qapp-templates` `143cc7bf`, `q-tube` 2.1.0,
   `Subwire`, `Quitter`, `q-mail` 3.2.1, `create-qortal-app`).
 - Measured production build baselines (Node 20.19.2, scratch clones): React 19
-  + Router 7 only 317.50 kB raw / 101.08 kB gzip; current
-  `react-default-template` 1,882.85 kB raw / 590.74 kB gzip; `q-tube`
-  3,389.48 kB raw / 1,015.14 kB gzip. Importing two small utilities from
-  `qapp-core` still yields 1,908.62 kB raw / 596.00 kB gzip because the
-  published entry statically imports `video.js` and the framework component set.
+  + Router 7 only 317.50 kB raw / 101.08 kB gzip; `react-default-template`
+  1,882.85 kB raw / 590.74 kB gzip; `q-tube` 3,389.48 kB raw / 1,015.14 kB
+  gzip. Importing two small utilities from `qapp-core` yields 1,908.62 kB raw /
+  596.00 kB gzip because the published entry statically imports `video.js` and
+  the framework component set.
 - Live read-only node evidence (`https://api.qortal.org`) confirms `APP`
   resources for `Q-Tube` (3,075,872 B), `SubWire` (2,488,912 B) and `Quitter`
   (3,925,296 B).
-
-This is a dated snapshot. Establish a fresh baseline before editing.
 
 ## Recommended next steps (not authorized by this document)
 
@@ -559,13 +621,15 @@ This is a dated snapshot. Establish a fresh baseline before editing.
    future Q-Tube interoperability is FUTURE / NOT VERIFIED. Publishing name and
    service are decided: `Shadow Archives` under `APP`. Like scope is decided:
    one active like per acting registered Qortal name per content item.
-2. Scaffold the bounded Phase 1B foundation (shell, providers, routing
-   boundaries, design tokens, capability plumbing, no writes) per
-   [`../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md).
-   The scaffold does not use `qapp-core`'s published root entry or MUI
-   (D6/D7 approved); use the in-repo `src/qortal/` layer and semantic CSS
-   tokens.
-3. Implement identity/owner detection first (it gates every write path).
+2. Phase 1B foundation scaffold — **DONE (2026-09-11)** per the bounded plan in
+   [`../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md);
+   see
+   [`../docs/shadow-archives-webportal/implementation/`](../docs/shadow-archives-webportal/implementation/)
+   for the implementation report. The in-repo `src/qortal/` layer and semantic
+   CSS tokens are in place; no `qapp-core` root entry and no MUI (D6/D7).
+3. Validate the built shell in a real Qortal host (owner gate) before any
+   platform behaviour is claimed. Then implement identity/owner detection
+   against that validated boundary (it gates every write path).
 4. Set a concrete performance budget from a real measured baseline in the dev
    proxy and a real host; the Phase 1A numbers are build-output comparisons, not
    runtime timings.
