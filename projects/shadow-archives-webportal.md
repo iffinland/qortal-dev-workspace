@@ -25,10 +25,10 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` is at the Phase 1B bootstrap `19ce35b`
-  (2026-09-11). Phase 2A work is local and unpushed.
-- Local path: a Git working tree on branch `main` — baseline `19ce35b` plus
-  uncommitted Phase 2A changes as of 2026-09-11.
+  (branch `main`); `origin/main` and local `HEAD` are at the Phase 2A commit
+  `450dbcf` (2026-09-11).
+- Local path: a Git working tree on branch `main` — baseline `450dbcf` plus
+  uncommitted Phase 2B changes as of 2026-09-11.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -563,8 +563,69 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
-**Verified 2026-09-11 — Phase 2A read-only QDN content pipeline implemented
+**Verified 2026-09-11 — Phase 2B owner-capability boundary implemented
 (current factual state):**
+
+- The owner authority model is the **current owner of the registered Qortal name
+  under which the app is published**: `publisherName` is derived from the
+  injected `_qdnName` (percent-decoded), never from a hardcoded string, a
+  configured address, payload `owner`/`author`/`publisher` fields, catalog data
+  or browser storage.
+- Capability states: `unknown`, `requesting-permission`, `resolving-ownership`,
+  `permission-denied`, `error`, `visitor`, `authenticated-no-name`,
+  `authenticated-non-owner`, `owner`. Owner is reported only after positively
+  verifying that the connected account address equals the node-reported current
+  owner of the publishing name; every other path fails closed. A name transfer
+  revokes/grants capability on the next explicit resolution.
+- Ordinary browsing remains permission-free: `GET_USER_ACCOUNT` is issued only
+  from an explicit action on the lazy `/studio` route ("Enter owner mode").
+  Automated tests assert zero `GET_USER_ACCOUNT` on startup and on all public
+  routes, and the local browser smoke confirms zero on load and Home.
+- Session behaviour: single-flight account request shared by consumers; a
+  decline/failure is cached for the session and never auto-retried; an explicit
+  "Try again" retries; "Cancel" returns to read-only. Only the in-memory session
+  `{address, publicKey}` is held; no secrets are logged or persisted; no custom
+  login system.
+- Registered names: `GET_ACCOUNT_NAMES` is parsed as the verified
+  `NameSummary[]` (`[{name, owner}]`) shape and all names are retained
+  individually; `authenticated-no-name` is distinguished from
+  `authenticated-non-owner`.
+- Studio/Owner Mode is a capability/status shell only — no publish form, no
+  editor, no upload, no moderation write, no button that implies a write.
+- Verified current auth/name contracts (Core `108bf191` v6.1.9, Hub `12a573b`):
+  `GET_USER_ACCOUNT` → `{address, publicKey}` (host-mediated, approval-gated);
+  `GET_ACCOUNT_NAMES` → `NameSummary[]`; `GET_NAME_DATA` → `NameData.owner`;
+  `GET_PRIMARY_NAME` → name string. The Phase 1B/2A assumption that
+  `GET_ACCOUNT_NAMES` returned bare strings was a real contract mismatch and is
+  fixed. Hub wraps a declined dialog in a generic error, so a real decline may
+  surface as the fail-closed `error` state rather than `permission-denied`; the
+  app never auto-retries and never treats it as non-owner.
+- Tests: 31 files / 295 tests passing; `lint`, `typecheck`, `format:check`,
+  `build`, `git diff --check` and `tools/validate-workspace.sh` (PASS) all green.
+  Production entry chunk 383.72 kB raw / 120.51 kB gzip (+0.26 kB gzip over
+  Phase 2A); the capability UI ships in a 5.68 kB / 1.86 kB-gzip lazy
+  `StudioPage` chunk.
+- **REAL HOST VALIDATION NOT VERIFIED (OWNER VALIDATION REQUIRED):** no local
+  Qortal node (no process, no data dir, no node API port) and no usable Hub
+  Developer Mode session exist in this environment; Developer Mode requires the
+  local Core node. The `Shadow Archives` name is registered and owned by
+  `QPw4vnk5CBDWkgdXB4vUXCc4DXGEjHVxCA`, but the `APP` resource is
+  `NOT_PUBLISHED` (live read-only status), so no real render context can inject
+  `_qdnName` yet. `_qdnBase` routing, live bridge behaviour, host CSP,
+  `qortal://` interception and in-iframe clipboard remain unvalidated at
+  runtime; see the Phase 2B report for the manual checklist.
+- **First-publication bootstrap.** A genuine chicken-and-egg exists: the app has
+  no authoritative deployed identity until its `APP` resource is first published,
+  which is a write action and is out of scope for Phase 2B. The development
+  proxy is explicitly modelled as "development / identity not authoritative" and
+  has no owner bypass.
+- No QDN write path, transaction, publication, like/comment/tip, moderation or
+  editor code was added. Nothing was committed or pushed for Phase 2B.
+- Phase 2B report:
+  [`../docs/shadow-archives-webportal/implementation/2026-09-11-phase-2b-owner-capability-host-validation-report.md`](../docs/shadow-archives-webportal/implementation/2026-09-11-phase-2b-owner-capability-host-validation-report.md)
+
+**Phase 2A snapshot (2026-09-11, historical, superseded above): read-only QDN
+content pipeline.**
 
 - Centralized read-only QDN layer: `src/qortal/qdn.ts` wraps the verified
   bridge actions (`SEARCH_QDN_RESOURCES`, `FETCH_QDN_RESOURCE`,
@@ -673,9 +734,13 @@ Kept for traceability; re-verify before platform-dependent work.
    [`../docs/shadow-archives-webportal/implementation/`](../docs/shadow-archives-webportal/implementation/)
    for the implementation report. The in-repo `src/qortal/` layer and semantic
    CSS tokens are in place; no `qapp-core` root entry and no MUI (D6/D7).
-3. Validate the built shell in a real Qortal host (owner gate) before any
-   platform behaviour is claimed. Then implement identity/owner detection
-   against that validated boundary (it gates every write path).
+3. Validate the built shell and the Phase 2B owner-capability flow in a real
+   Qortal host (owner gate) before any platform behaviour is claimed: a synced
+   local node + Hub Developer Mode, and first publication of the `APP` resource
+   to obtain a real `_qdnName` render context. Owner detection is implemented and
+   tested against the verified contracts; only host confirmation is outstanding.
+   An owner decision is also open on whether `/studio` should be discoverable
+   from public navigation (Phase 1A keeps it unlinked).
 4. Set a concrete performance budget from a real measured baseline in the dev
    proxy and a real host; the Phase 1A numbers are build-output comparisons, not
    runtime timings.
