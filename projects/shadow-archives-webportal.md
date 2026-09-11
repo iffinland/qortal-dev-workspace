@@ -25,10 +25,13 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` and local `HEAD` are at the Phase 2B commit
-  `ac7cef1` (2026-09-11).
-- Local path: a Git working tree on branch `main` — baseline `ac7cef1` plus
-  uncommitted Phase 2C-A publication-provenance changes as of 2026-09-11.
+  (branch `main`); `origin/main` and local `HEAD` are at commit `1b099c1`
+  ("Prepare Shadow Archives first QDN app release", 2026-09-11), which includes
+  the Phase 2C-A publication-provenance work.
+- Local path: a Git working tree on branch `main` — baseline `1b099c1` plus
+  uncommitted owner-runtime visual-correction changes as of 2026-09-11
+  (banner-derived parchment/paper-led palette, stronger section elevation,
+  light inner boxes, link-free footer).
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -243,6 +246,12 @@ timeless constant.
 
 - visually elevated from the site background consistently with other major
   panels
+- **OWNER DECISION (owner-runtime correction, 2026-09-11):** the footer contains
+  **no navigation links, no external/Web2 links and no repository URL**. The
+  `HOME / BLOG / VIDEOS / GALLERY / ABOUT / CONTACT` links live only in the main
+  site navigation. Footer content is limited to the brand, a short description,
+  `Decentralized on Qortal` and the text-only build provenance
+  (`Build vX · commit`).
 
 ## Visual identity (owner decisions)
 
@@ -255,6 +264,45 @@ timeless constant.
 - light beige/cream text where suitable
 - restrained shadows/borders/elevation
 - avoid generic heavy glassmorphism
+
+**OWNER DECISION (owner-runtime correction, 2026-09-11):** The Shadow Archives
+visual palette is **derived from the actual banner artwork**
+(`src/assets/banner-shadow-archives.webp`), not from generic dark-app defaults.
+The warm banner tones are the source of truth: warm near-black, warm dark
+charcoal, aged parchment/cream, faded paper grey, and muted/dried-blood
+oxidative red. No dominant blue/slate SaaS tone and no heavy glassmorphism; the
+earlier provisional palette is superseded.
+
+**OWNER DECISION (owner-runtime correction, 2026-09-11):** Major
+panels/sections must have **clearly visible elevation** from the page
+background — stronger tonal contrast, warm borders, a useful shadow and a
+subtle inset highlight. No oversized SaaS shadows and no glassmorphism.
+
+**OWNER DECISION (owner-runtime visual correction follow-up, 2026-09-11):** The
+application uses a **parchment / paper-led** palette derived directly from the
+banner, replacing the still-too-dark archive look:
+
+- general page background follows the lighter beige glow around the central
+  figure (warm aged light beige, never pure white or bright cream);
+- large section containers (site header outer, primary actions, site
+  navigation, Latest Posts, Latest Videos, Latest from the Gallery, route main
+  panels, footer) follow the paper-sheet tones on the left/right sides of the
+  banner;
+- inner content boxes and empty states also use light parchment tones derived
+  from the lighter beige around the central figure — the previous dark inner
+  boxes are removed;
+- heading strips such as TOP POSTS / TOP VIDEOS use a slightly darker beige so
+  they still separate from their panels;
+- borders use a darker archival brown-beige so surfaces separate clearly;
+- text moves to dark archival ink (primary), faded brown-grey (muted) and a
+  readable dark oxide (links); the accent/action controls keep the stamped
+  muted dark-red family;
+- elevation is preserved with tonal separation, darker borders, restrained
+  warm shadows and a subtle inset paper edge — no glassmorphism and no large
+  dark shadows;
+- the footer remains link-free (no navigation, external links or repository
+  URL), and the main `HOME / BLOG / VIDEOS / GALLERY / ABOUT / CONTACT`
+  navigation remains present and functional.
 
 ## Interaction and engagement (owner decisions)
 
@@ -566,6 +614,30 @@ Recorded as accepted roadmap candidates, **not** Phase 0 implementation work:
 Do not implement these in the bootstrap task.
 
 ## Current state
+
+**Owner-reported runtime status (2026-09-11, owner-confirmed).** The owner has
+published and runtime-tested the APP in Qortal: layout passes, the main
+navigation works, the primary action buttons work, and pages/routes open
+correctly. This supersedes the Phase 2C-A "not published" statement below for
+the runtime-publication question; the owner supplied this status directly.
+
+**Uncommitted owner-runtime visual correction (2026-09-11, not a phase).** A
+CSS/design-token and footer correction is applied on top of `1b099c1`: the
+semantic palette is re-derived from the banner artwork, panel elevation is
+strengthened, and the footer is reduced to link-free brand/provenance text. No
+architecture, routing, QDN-read, auth, capability or content-contract change.
+Report:
+[`../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-report.md`](../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-report.md)
+
+**Uncommitted owner-runtime visual correction follow-up (2026-09-11, not a
+phase).** The owner reviewed the first correction and directed a further shift
+from a dark archive to a parchment/archive-paper visual language: light warm
+beige page background, paper-sheet section panels, light inner content boxes,
+slightly darker beige heading strips, darker archival borders, dark-ink text
+and the retained muted dark-red action controls. This is a
+CSS/design-token-only change (plus one provider comment), with no architecture,
+routing, QDN-read, auth, capability or content-contract change. Report:
+[`../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-followup-report.md`](../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-followup-report.md)
 
 **Verified 2026-09-11 — Phase 2C-A first APP publication readiness prepared
 (current factual state):**
