@@ -27,13 +27,93 @@ authorize implementation. No Shadow Archives application code exists yet.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
+## Phase 1A architecture package (2026-09-11)
+
+The Phase 1A architecture, QDN data-contract, performance-baseline and Phase 1B
+planning artifacts are under
+[`../docs/shadow-archives-webportal/architecture/`](../docs/shadow-archives-webportal/architecture/).
+They now record the owner-approved Phase 1A decision baseline, which is
+implementation-authoritative for Phase 1B; they still do **not** by themselves
+authorize scaffolding, which requires explicit owner go-ahead.
+
+- Architecture report:
+  [`2026-09-11-phase-1a-architecture-report.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1a-architecture-report.md)
+- QDN data contracts:
+  [`2026-09-11-qdn-data-contracts.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-qdn-data-contracts.md)
+- Performance / reference comparison:
+  [`2026-09-11-performance-reference-comparison.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-performance-reference-comparison.md)
+- Responsive AppShell spec and design tokens:
+  [`2026-09-11-responsive-appshell-and-design-tokens.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-responsive-appshell-and-design-tokens.md)
+- Phase 1B implementation plan:
+  [`2026-09-11-phase-1b-implementation-plan.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md)
+
+**OWNER DECISIONS (final, 2026-09-11).** The owner recorded the final Phase 1A
+decisions below; where the earlier Phase 1A package made a recommendation, the
+decision is authoritative. Status labels: `OWNER APPROVED`, `DEFERRED`,
+`NOT VERIFIED`, `FUTURE CAPABILITY`.
+
+- **D1 Identifier namespace — OWNER APPROVED.** Prefix `saw_` (Shadow Archives
+  Web). Conceptually `saw_post_<stable-id>`, `saw_vid_<stable-id>`,
+  `saw_img_<stable-id>`, `saw_album_<stable-id>`,
+  `saw_cmt_<target-or-stable-scope>_<comment-id>`, `saw_lk_<target-stable-id>`.
+  The existing evidence-based stable-ID encoding is retained. Schema evolution
+  is carried by payload `schemaVersion`, not by a namespace digit; no `saw1_`
+  migration is defined.
+- **D2 Taxonomy — OWNER APPROVED.** Hybrid. App-managed categories/tags are the
+  canonical cross-content taxonomy; Core category metadata may be mirrored for
+  QDN-ecosystem discoverability, but the fixed Core enum must not limit the
+  application's own cross-type taxonomy.
+- **D3 Editor — OWNER APPROVED.** TipTap. The heavy owner editor is
+  lazy-loaded and outside the visitor startup path.
+- **D4 Stored rich-text / rendering model — OWNER APPROVED.** Canonical
+  structured representation `tiptap-json-v1` with normalized/searchable
+  `bodyText` alongside it; DOMPurify-based sanitized rendering boundary; the
+  global canonical rendering-safety rules remain authoritative.
+- **D5 Q-Mail failure UX — OWNER APPROVED.** Preserve the draft, explain that
+  Q-Mail delivery is unavailable/failed, provide an explicit user-triggered
+  Copy Message action, and do **not** silently substitute
+  `SEND_CHAT_MESSAGE` or another transport.
+- **D6 UI dependency strategy — OWNER APPROVED.** No MUI. Semantic CSS design
+  tokens, in-repository reusable components, inline/local SVG icons and
+  accessible native semantics. No generic UI framework may be added to Phase 1B
+  without a new evidence-backed reason and owner approval.
+- **D7 Qortal integration strategy — OWNER APPROVED.** Do not import
+  `qapp-core` through its published root entry in the application startup path.
+  Use a small in-repository `src/qortal/` integration layer on the verified
+  current Qortal bridge/API contracts; keep it minimal and contract-focused.
+- **D8 Catalog — OWNER APPROVED.** Partitioned `DOCUMENT` catalog + manifest.
+  Entity resources remain authoritative; catalogs are derived, rebuildable,
+  versioned, cacheable, permitted to be stale, and never evidence of publisher
+  authority.
+- **D9 Like-activeness wire representation — DEFERRED.** The identity rule is
+  decided (one active like per acting registered Qortal name per content item);
+  the exact active/inactive/tombstone wire representation must be selected
+  after a controlled QDN overwrite/runtime test. Phase 1B may define an
+  interface/type boundary but must not claim an unverified wire format.
+- **Moderation — OWNER APPROVED for alpha.** No delegated moderators;
+  moderation authority is the current owner of the Shadow Archives publishing
+  name. Keep the design extensible for later delegated moderation without
+  rewriting content entities.
+- **Video + future Q-Tube interoperability — OWNER APPROVED / FUTURE.** See
+  "Video architecture" below.
+
+Individual like/comment identity records are scoped by the publishing **name**,
+not the account address.
+
+**VERIFIED (2026-09-11).** The published external app names are `Q-Tube`,
+`SubWire` and `Quitter` (read-only node `https://api.qortal.org`); a
+`qortal://APP/<name>` anchor is intercepted by `q-apps.js` and opened as a new
+tab by the host. These values still belong in owner-editable configuration and
+must not be treated as timeless constants.
+
 ## QDN publishing identity (owner decisions, 2026-09-11)
 
 - **Publishing name:** `Shadow Archives` — the human-readable canonical
   publishing name.
 - **QDN service:** `APP`.
-- **Identifier / prefix:** **UNDECIDED.** No final identifier prefix is
-  approved yet; do not invent one.
+- **Identifier / prefix:** **`saw_`** (owner decision D1). The namespace is
+  fixed; schema evolution is carried by payload `schemaVersion`, not by a
+  namespace digit.
 - Deployed resource URI: not yet established.
 
 The canonical identity is the human-readable `Shadow Archives`. Account for
@@ -65,9 +145,10 @@ it MUST NOT trust a payload `author`/`owner` field. See
 [`../agents/qortal-qdn-and-bridge.md`](../agents/qortal-qdn-and-bridge.md) and
 [`../agents/qortal-architecture-and-data-integrity.md`](../agents/qortal-architecture-and-data-integrity.md).
 
-**OWNER DECISION REQUIRED.** Whether owner controls extend beyond the publishing
-name (for example delegated moderators) is undecided. Default: publishing-name
-owner only.
+**OWNER APPROVED (2026-09-11).** For alpha there are no delegated moderators:
+owner/moderation authority is the current owner of the Shadow Archives
+publishing name. Keep the architecture extensible so delegated moderation can
+be added later without rewriting content entities.
 
 ## Responsive targets (owner decisions)
 
@@ -230,19 +311,26 @@ framework convention, not a timeless Core rule. See
 - do not blindly reuse deprecated browser editing APIs
 - investigate a modern maintainable editor architecture
 
+**OWNER APPROVED (D3/D4, 2026-09-11).** The editor is **TipTap**. The canonical
+stored representation is `tiptap-json-v1` plus a normalized/searchable
+`bodyText` extract where defined by the architecture; rendering goes through a
+single allowlisting renderer with a **DOMPurify-based sanitized rendering
+boundary**. The heavy owner editor MUST remain lazy-loaded and outside the
+visitor startup path.
+
 **Reference observations (non-authoritative).** The `iffi-vaba-mees-QORTAL`
-reference uses a hand-rolled sanitizer rather than DOMPurify, and current Qortal
-apps use DOMPurify (`q-tube`, `Subwire`, `q-mail`). Qortal Hub itself uses
-TipTap. An editor/sanitization decision MUST be evidence-based, must render
-safely, and must store a schema that can be parsed and validated. `UNKNOWN`
-which editor is chosen.
+reference uses a hand-rolled sanitizer rather than DOMPurify; current Qortal
+apps use DOMPurify (`q-tube`, `Subwire`, `q-mail`) and Qortal Hub uses TipTap.
+The decision is evidence-based and must keep rendering safe and the stored
+schema parseable and validatable. Do not weaken the XSS/rendering-safety
+requirements.
 
 **Global security rule (reference only).** All Shadow Archives content —
 plain text, rich text, imported, stored, cached and preview — MUST comply with
 [`../agents/qortal-architecture-and-data-integrity.md`](../agents/qortal-architecture-and-data-integrity.md)
 §11. Schema validation, publisher/authority validation and rendering safety
 remain separate gates through that global rule; this project does not restate or
-extend it. The editor/sanitizer library remains **UNDECIDED**.
+extend it, and the approved editor/rendering decision does not weaken it.
 
 ## Content model (owner decisions)
 
@@ -258,6 +346,34 @@ Content types: Blog, Videos, Gallery.
 - similar useful content-card concept to `iffi-vaba-mees-QORTAL`
 - quick engagement actions at card bottom
 
+## Video architecture (owner decision, 2026-09-11)
+
+- Shadow Archives **will publish its own video content to QDN** (owner
+  approved).
+- The architecture MUST ALSO preserve a **future** capability whereby a video
+  published through Shadow Archives can participate in / appear through the
+  Q-Tube ecosystem using the appropriate QDN/Q-Tube publication/discovery
+  contract.
+- **Do not** implement Q-Tube interoperability now and **do not** guess the
+  exact Q-Tube metadata, identifier, indexing or publication contract. Mark the
+  exact interoperability contract **FUTURE / NOT VERIFIED** until a dedicated
+  Q-Tube source/runtime investigation is performed.
+- Do not import Q-Tube source code or make Shadow Archives depend directly on
+  the Q-Tube application.
+- Architect the video domain with separated layers so future interoperability
+  does not require a rewrite:
+
+  ```text
+  Video entity
+    -> Shadow Archives metadata
+    -> QDN media resource reference
+    -> publication/discovery adapter boundary
+  ```
+
+- The media reference must identify QDN media by verified fields such as
+  `service`/`name`/`identifier`/`path` where applicable instead of storing an
+  opaque Shadow-Archives-only blob reference.
+
 ## Taxonomy (owner decisions)
 
 - shared categories and tags across blog/video/gallery
@@ -265,8 +381,10 @@ Content types: Blog, Videos, Gallery.
 - creation forms suggest previously used categories/tags
 - matching text should be visually highlighted
 
-**UNKNOWN.** Whether to use Core's fixed `Category` enum, free-form shared tags,
-or both. Must be decided and recorded before implementing creation forms.
+**OWNER APPROVED (D2).** Hybrid taxonomy. Shadow Archives app-managed
+categories/tags are the canonical cross-content taxonomy; Core category
+metadata may be mirrored where useful for QDN-ecosystem discoverability, but
+the fixed Core enum must not limit the application's own cross-type taxonomy.
 
 ## Search (owner decisions)
 
@@ -308,9 +426,13 @@ source but MUST be re-verified against the current Q-Mail release before
 implementation, because it is a community-app convention and may change.
 `SEND_CHAT_MESSAGE` sends a Qortal chat message and is **not** Q-Mail.
 
-**OWNER DECISION REQUIRED.** Fallback behavior when the contact form cannot use
-the verified Q-Mail path (for example, no recipient public key, or a Q-Mail
-change). Also required: what success feedback the user sees.
+**OWNER APPROVED (D5).** If verified Q-Mail delivery cannot be completed:
+preserve the user's draft; clearly explain that Q-Mail delivery is
+unavailable/failed; provide an explicit **user-triggered Copy Message action**;
+and do **not** silently substitute `SEND_CHAT_MESSAGE` or another transport.
+Success feedback must state what actually happened (submitted for approval,
+published, or failed with a reason). The exact Q-Mail convention above remains
+**MUST RE-VERIFY** before implementation.
 
 ## Links (owner decisions)
 
@@ -376,7 +498,8 @@ x separate metadata query
 - `qapp-core` request queues (`RequestQueueWithPromise`) for bounded concurrency;
 - IndexedDB caches with TTLs (current apps cache primary names 24h, profiles
   5m);
-- `LIST`/`JSON` catalog resources rebuildable from entity resources.
+- derived catalog resources rebuildable from entity resources (D8: partitioned
+  `DOCUMENT` catalog + manifest; `LIST`/`JSON` are not used).
 
 ## Accepted future product ideas
 
@@ -410,20 +533,42 @@ Verified 2026-09-11:
 - Remote repository exists and is empty.
 - Local path exists and is empty; not yet a Git repository.
 - No application source, package manifest or schema exists.
-- No identifier prefix is approved and no QDN resource for this application has
-  been published under the decided publishing name/service by this workspace.
+- The identifier namespace is approved (`saw_`, D1), but no QDN resource for
+  this application has been published under the decided publishing name/service
+  by this workspace.
+- Every Qortal source revision pinned in the workspace standard was re-verified
+  as the repository `HEAD` on 2026-09-11 (`qortal` v6.1.9, `Qortal-Hub`
+  `12a573b2`, `qapp-core` v1.0.79, `qapp-templates` `143cc7bf`, `q-tube` 2.1.0,
+  `Subwire`, `Quitter`, `q-mail` 3.2.1, `create-qortal-app`).
+- Measured production build baselines (Node 20.19.2, scratch clones): React 19
+  + Router 7 only 317.50 kB raw / 101.08 kB gzip; current
+  `react-default-template` 1,882.85 kB raw / 590.74 kB gzip; `q-tube`
+  3,389.48 kB raw / 1,015.14 kB gzip. Importing two small utilities from
+  `qapp-core` still yields 1,908.62 kB raw / 596.00 kB gzip because the
+  published entry statically imports `video.js` and the framework component set.
+- Live read-only node evidence (`https://api.qortal.org`) confirms `APP`
+  resources for `Q-Tube` (3,075,872 B), `SubWire` (2,488,912 B) and `Quitter`
+  (3,925,296 B).
 
 This is a dated snapshot. Establish a fresh baseline before editing.
 
 ## Recommended next steps (not authorized by this document)
 
-1. Owner decisions still required before scaffolding: identifier/prefix
-   scheme, taxonomy model, Q-Mail fallback, and editor choice. Publishing name
-   and service are decided: `Shadow Archives` under `APP`. Like scope is
-   decided: one active like per acting registered Qortal name per content item.
-2. Scaffold with the current `qapp-core` + `react-default-template` pattern.
+1. The Phase 1A decision matrix D1–D9 is now recorded (see the owner decisions
+   above): D1–D8 are OWNER APPROVED, D9's wire representation is DEFERRED, and
+   future Q-Tube interoperability is FUTURE / NOT VERIFIED. Publishing name and
+   service are decided: `Shadow Archives` under `APP`. Like scope is decided:
+   one active like per acting registered Qortal name per content item.
+2. Scaffold the bounded Phase 1B foundation (shell, providers, routing
+   boundaries, design tokens, capability plumbing, no writes) per
+   [`../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md).
+   The scaffold does not use `qapp-core`'s published root entry or MUI
+   (D6/D7 approved); use the in-repo `src/qortal/` layer and semantic CSS
+   tokens.
 3. Implement identity/owner detection first (it gates every write path).
-4. Establish a baseline performance measurement plan before feature work.
+4. Set a concrete performance budget from a real measured baseline in the dev
+   proxy and a real host; the Phase 1A numbers are build-output comparisons, not
+   runtime timings.
 5. Implement one bounded issue at a time through Workflow v2.
 
 ## Mandatory project rules
