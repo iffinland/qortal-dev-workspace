@@ -8,7 +8,9 @@ application. Read it after
 remain in the canonical workspace guides.
 
 This file records product direction and owner decisions. It does **not**
-authorize implementation. No Shadow Archives application code exists yet.
+authorize implementation: a phase label in this file is not authorization for
+new work. Factual implementation status is recorded under "Current state"
+below.
 
 ## Project identity
 
@@ -18,12 +20,15 @@ authorize implementation. No Shadow Archives application code exists yet.
   `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL`
 - Application language: English
 - Target platform: Qortal/QDN Q-App/webportal
-- Planned frontend: Vite + React + TypeScript
+- Frontend: Vite + React + TypeScript (implemented)
 
 ## Repository and local path
 
-- Remote repository: exists, empty (no commits as of 2026-09-11).
-- Local path: exists, empty, and is **not** a Git repository as of 2026-09-11.
+- Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
+  (branch `main`); `origin/main` is at the Phase 1B bootstrap `19ce35b`
+  (2026-09-11). Phase 2A work is local and unpushed.
+- Local path: a Git working tree on branch `main` — baseline `19ce35b` plus
+  uncommitted Phase 2A changes as of 2026-09-11.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -558,7 +563,48 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
-**Verified 2026-09-11 — Phase 1B foundation implemented (factual state):**
+**Verified 2026-09-11 — Phase 2A read-only QDN content pipeline implemented
+(current factual state):**
+
+- Centralized read-only QDN layer: `src/qortal/qdn.ts` wraps the verified
+  bridge actions (`SEARCH_QDN_RESOURCES`, `FETCH_QDN_RESOURCE`,
+  `GET_QDN_RESOURCE_STATUS`, `GET_QDN_RESOURCE_URL`) with the exact camelCase
+  bridge field names; `src/services/` owns Shadow Archives content semantics.
+  No UI component issues a raw `qortalRequest`.
+- Runtime-validated domain models for Blog, Video, Gallery item and Gallery
+  album, plus the partitioned catalog manifest/partition/entry contract
+  (`schemaVersion: 1`). Every untrusted payload passes an explicit validator
+  before entering the trusted layer; a malformed entry is isolated.
+- Catalog consumer (manifest -> bounded partition fetches -> validated entries)
+  with a bounded `mode: 'ALL'` prefix-discovery fallback. Archive state
+  distinguishes loading / ready / empty / partial / stale / unavailable / error;
+  failure is never rendered as "empty".
+- Authoritative detail fetch on `/blog/:id`, `/videos/:id`,
+  `/gallery/item/:id` and `/gallery/album/:id` (bare stable id canonical; the
+  full `saw_*` identifier accepted as an alias). Legacy `/gallery/:id` resolves
+  to the item route.
+- Blog detail renders `tiptap-json-v1` through an allowlisting read-only
+  renderer plus a DOMPurify boundary; stored content is never injected as raw
+  HTML, and stored web links copy instead of navigating the Q-App away.
+- Listings use catalog/thumbnail metadata only. Headless-browser validation
+  against a simulated host bridge: home issued 8 bridge reads with 3 entries and
+  still 8 with 30, so discovery is not N+1 and no listing body/media is fetched.
+- Reads never authenticate: `GET_USER_ACCOUNT` is not requested at startup or
+  for browsing.
+- Added dependency: `dompurify`, kept out of the entry bundle (lazy blog-detail
+  chunk only). No MUI, no `qapp-core` root entry, no TipTap editor, no video
+  player. Production entry chunk 382.32 kB raw / 120.25 kB gzip (+10.89 kB gzip
+  over the Phase 1B baseline); DOMPurify sits in the 36.49 kB / 14.15 kB-gzip
+  lazy blog-detail chunk.
+- Tests: 29 files / 258 tests passing; `lint`, `typecheck`, `format:check` and
+  the production build pass.
+- **NOT VERIFIED (OWNER VALIDATION REQUIRED):** real Qortal host / Hub Developer
+  Mode — `_qdnBase` routing, injected `_qdnName`, live `SEARCH_QDN_RESOURCES`,
+  QDN media `<img>` serving, and clipboard inside the Q-App iframe.
+- No QDN write path, transaction, publication, like/comment/tip, moderation or
+  editor code was added. Nothing was committed or pushed for Phase 2A.
+
+**Phase 1B foundation snapshot (2026-09-11, historical, superseded above):**
 
 - The repository was cloned into the canonical local path (branch `main`,
   `origin` = the GitHub remote, no commits yet). At Phase 1A closure the remote
