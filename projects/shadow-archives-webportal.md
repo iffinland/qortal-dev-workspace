@@ -614,6 +614,66 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
+**Phase 3A Gallery publishing + owner-only Studio navigation (2026-09-12,
+implementation complete; ready for owner runtime validation; no live write).**
+The first owner content-write capability is implemented: Gallery image
+publication (media + thumbnail + `DOCUMENT` entity + derived catalog
+partition/manifest), Gallery album creation, and a conditional main-navigation
+`Studio` entry.
+
+- **OWNER DECISION (2026-09-12) — Studio navigation.** Main navigation remains
+  HOME / BLOG / VIDEOS / GALLERY / ABOUT / CONTACT. `STUDIO` is appended as the
+  **last** item only when the session capability is a positively verified
+  `owner`. It is absent for visitors, unauthenticated/unknown sessions,
+  authenticated-no-name accounts, authenticated non-owners, and
+  permission-denied/error states. Rendering navigation never requests an
+  account: **public browsing remains permission-free**, and there is no
+  automatic `GET_USER_ACCOUNT` on ordinary startup. The normal first owner entry
+  remains `/studio` → Enter owner mode → capability verified → Studio appears
+  for that active SPA session.
+- **Authority.** A Gallery write requires all of: real Qortal host, explicitly
+  granted account permission, `capability === 'owner'`, the connected account
+  still owning the current APP publishing name, and the publisher name derived
+  from `_qdnName`. Ownership is re-verified through `GET_NAME_DATA` immediately
+  before every write stage; failure fails closed with no write. No primary-name
+  fallback, no other owned name, no hardcoded address, no bypass.
+- **Write contract re-verified (2026-09-12)** against Core `108bf191` (v6.1.9)
+  and Hub `12a573b2` (both still upstream `HEAD`): flat request fields, the
+  one-hour `PUBLISH_*` default timeout in `q-apps.js`, Hub per-call permission,
+  Hub `PUBLISH_MULTIPLE_QDN_RESOURCES` sequential publication returning a
+  structured `unsuccessfulPublishes` partial-failure result (already-published
+  resources are not rolled back), and the Core service caps `IMAGE` 10 MiB,
+  `THUMBNAIL` 500 KiB (single file), `DOCUMENT` uncapped, `APP` 50 MB.
+- **Publication structure — staged, not one multi-resource call**: media +
+  thumbnail (grouped), then the authoritative entity, then the derived catalog
+  partition + manifest (grouped). Rationale and evidence are in the Phase 3A
+  report.
+- **Identifiers.** Item `saw_img_<id12>`, album `saw_album_<id12>`, related
+  media `saw_img_media_<id12>`, thumbnail `saw_img_thumb_<id12>`; `id12` is 12
+  lowercase base36 characters from `crypto.getRandomValues` with a bounded
+  collision retry. `saw_img_<id12>` itself stays a `DOCUMENT` entity; no binary
+  image data is embedded in it.
+- **Catalog.** Entity resources remain authoritative; catalog/manifest stay
+  derived. A missing catalog bootstraps the first Gallery partition and
+  manifest. An unreadable, invalid, partial, or unplannable catalog is left
+  untouched and reported as "Content published, index update incomplete" — it
+  never blocks the content write and is never shown as a full content failure.
+- **Failure semantics.** Grouped-publish partial failure, an ambiguous timeout,
+  and an index-only failure are distinguished and reported truthfully. A
+  timed-out publish is **never** retried automatically; the UI offers a Verify
+  action and reuses the same identity on an explicit retry.
+- **Performance.** The Gallery write path (image pipeline, publish service,
+  modals, overlay, owner CSS) is a lazy chunk (`GalleryOwnerPanel-*.js`,
+  44.14 kB raw / 13.10 kB gzip) fetched only for a verified owner. The visitor
+  startup entry stays 384.37 kB raw / 121.08 kB gzip and contains no publish
+  bridge, image pipeline or modal code.
+
+Not implemented in this phase: Gallery video upload, Blog publishing, Video
+publishing, and any Q-Tube/SubWire/Quitter publishing-interoperability research.
+No live QDN write, transaction, APP update, or Gallery publication was
+performed; nothing was committed, pushed or tagged. Report:
+[`../docs/shadow-archives-webportal/implementation/2026-09-12-phase-3a-gallery-publishing-report.md`](../docs/shadow-archives-webportal/implementation/2026-09-12-phase-3a-gallery-publishing-report.md)
+
 **Phase 2C-B real Qortal host validation (2026-09-12, read-only; no write).**
 The published `APP` resource `(service=APP, name="Shadow Archives",
 identifier=default)` was verified read-only from two public nodes
@@ -906,11 +966,12 @@ Kept for traceability; re-verify before platform-dependent work.
    `_qdn*` values need a build containing the `/studio` diagnostics block, i.e.
    a later publication; deep-route hard reload; owner-capability click flow;
    live read pipeline). Owner detection is implemented and tested against the
-   verified contracts; host confirmation is still outstanding. An owner decision
-   is also open on whether `/studio` should be discoverable from public
-   navigation (Phase 1A keeps it unlinked), and on whether to re-publish the
-   `6354c88` artifact now that its content equivalence to the served build has
-   been established.
+   verified contracts; host confirmation is still outstanding. The previously open
+   question of whether `/studio` should be discoverable from public navigation
+   is now **decided (2026-09-12)**: Studio is the last main-navigation item, and
+   only for a positively verified owner (see Phase 3A above). Still open: whether
+   to re-publish the `6354c88` artifact now that its content equivalence to the
+   served build has been established.
 4. Set a concrete performance budget from a real measured baseline in the dev
    proxy and a real host; the Phase 1A numbers are build-output comparisons, not
    runtime timings.
