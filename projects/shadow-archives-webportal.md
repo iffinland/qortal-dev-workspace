@@ -25,13 +25,12 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` and local `HEAD` are at commit `1b099c1`
-  ("Prepare Shadow Archives first QDN app release", 2026-09-11), which includes
-  the Phase 2C-A publication-provenance work.
-- Local path: a Git working tree on branch `main` — baseline `1b099c1` plus
-  uncommitted owner-runtime visual-correction changes as of 2026-09-11
-  (banner-derived parchment/paper-led palette, stronger section elevation,
-  light inner boxes, link-free footer).
+  (branch `main`); `origin/main` and local `HEAD` are at commit `6354c88`
+  ("Checkpoint Shadow Archives parchment visual baseline", 2026-09-11), which
+  records the owner-approved parchment visual correction on top of the
+  Phase 2C-A publication-provenance work (`1b099c1`).
+- Local path: a Git working tree on branch `main` — baseline `6354c88` plus the
+  uncommitted Phase 2C-B `/studio` host-context diagnostics block (2026-09-12).
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -615,6 +614,46 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
+**Phase 2C-B real Qortal host validation (2026-09-12, read-only; no write).**
+The published `APP` resource `(service=APP, name="Shadow Archives",
+identifier=default)` was verified read-only from two public nodes
+(`https://api.qortal.org`, `https://api.qortal.link`; mainnet, heights
+2721342/2721343). Chain evidence: the latest publish is ARBITRARY transaction
+`5fVoqGEc…`, block `2720709`, timestamp 2026-09-11T18:32:23Z, creator
+`QPw4vnk5CBDWkgdXB4vUXCc4DXGEjHVxCA` (the current `Shadow Archives` name owner),
+`size` 459360. The served revision is the **2026-09-11 artifact**
+(`release/shadow-archives-app-0.1.0-20260911.zip`, built from `1b099c1` with
+`dirty: true`), identified by its chain-anchored 24-file metadata list, which
+matches that artifact exactly and differs from the `6354c88` artifact in 19 of
+24 files; the two artifacts are byte-identical in every served file after
+normalizing Vite chunk names and the embedded build identity, so the app
+currently displays the build label `1b099c1`. Served revision vs. committed
+baseline: **MISMATCH by revision identity, EQUIVALENT by served content**. The
+2C-A publication-readiness report and the earlier text of this file quote
+SHA-256 `697aa966…` for that artifact; the artifact on disk (unchanged during
+this task) and its own manifest record `354065b9…` — the quoted value is stale,
+not evidence of tampering.
+
+Public-node data-plane finding: both nodes can serve the resource *metadata*
+but report the resource *data* as `DOWNLOADING` 1 of 2 chunks (50%) /
+`MISSING_DATA` with `peerCount: 0`; every file fetch 404s and
+`/render/APP/Shadow%20Archives/` returns 503. The published APP data is
+currently not retrievable from the public network tested. Served-byte hash
+verification is therefore `NOT VERIFIED`. This is a hosting/availability
+condition, not an application defect.
+
+A bounded, non-secret, read-only **Host context diagnostics** block was added to
+`/studio` only (uncommitted): it displays `_qdnService`, `_qdnName`,
+`_qdnIdentifier`, `_qdnContext`, `_qdnBase` and `_qdnBaseWithPath`, issues no
+host request and shows no account data. It is **not** in the currently published
+build, so exact live `_qdn*` values remain `NOT VERIFIED` until a future
+owner-authorized publication; a partial check is already available in the
+published build because `/studio` quotes the decoded `_qdnName`. Owner
+observations (layout, navigation, action buttons, route pages) are recorded at
+owner-runtime level only. No QDN write, transaction, content write, commit,
+push or tag occurred. Report:
+[`../docs/shadow-archives-webportal/validation/2026-09-12-real-qortal-host-validation-report.md`](../docs/shadow-archives-webportal/validation/2026-09-12-real-qortal-host-validation-report.md)
+
 **Owner-reported runtime status (2026-09-11, owner-confirmed).** The owner has
 published and runtime-tested the APP in Qortal: layout passes, the main
 navigation works, the primary action buttons work, and pages/routes open
@@ -857,15 +896,21 @@ Kept for traceability; re-verify before platform-dependent work.
    [`../docs/shadow-archives-webportal/implementation/`](../docs/shadow-archives-webportal/implementation/)
    for the implementation report. The in-repo `src/qortal/` layer and semantic
    CSS tokens are in place; no `qapp-core` root entry and no MUI (D6/D7).
-3. **Next owner-authorized step (prepared, not executed):** confirm the default
-   identifier for the `APP` resource, then publish the Phase 2C-A artifact
+3. **First publication — DONE (owner, 2026-09-11 18:32 UTC).** The owner
+   published the Phase 2C-A artifact
    `release/shadow-archives-app-0.1.0-20260911.zip` under name `Shadow Archives`
-   / service `APP` using the exact procedure in the Phase 2C-A report. That
-   first publication establishes the real render context; then run the exact
-   post-publication host-validation checklist. Owner detection is implemented
-   and tested against the verified contracts; only host confirmation is
-   outstanding. An owner decision is also open on whether `/studio` should be
-   discoverable from public navigation (Phase 1A keeps it unlinked).
+   / service `APP` with the default identifier, establishing the real render
+   context `qortal://APP/Shadow Archives`; Phase 2C-B then verified that served
+   revision read-only (`PUBLIC-NODE VERIFIED`). **Next owner-authorized step:**
+   run the remaining real-host checks listed in the Phase 2C-B report §22 (exact
+   `_qdn*` values need a build containing the `/studio` diagnostics block, i.e.
+   a later publication; deep-route hard reload; owner-capability click flow;
+   live read pipeline). Owner detection is implemented and tested against the
+   verified contracts; host confirmation is still outstanding. An owner decision
+   is also open on whether `/studio` should be discoverable from public
+   navigation (Phase 1A keeps it unlinked), and on whether to re-publish the
+   `6354c88` artifact now that its content equivalence to the served build has
+   been established.
 4. Set a concrete performance budget from a real measured baseline in the dev
    proxy and a real host; the Phase 1A numbers are build-output comparisons, not
    runtime timings.
