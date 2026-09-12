@@ -25,12 +25,16 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` and local `HEAD` are at commit `6354c88`
-  ("Checkpoint Shadow Archives parchment visual baseline", 2026-09-11), which
-  records the owner-approved parchment visual correction on top of the
-  Phase 2C-A publication-provenance work (`1b099c1`).
-- Local path: a Git working tree on branch `main` — baseline `6354c88` plus the
-  uncommitted Phase 2C-B `/studio` host-context diagnostics block (2026-09-12).
+  (branch `main`); `origin/main` and local `HEAD` were at commit `6354c88`
+  ("Checkpoint Shadow Archives parchment visual baseline", 2026-09-11) when this
+  section was last written. The local working tree has since advanced to
+  `91cd0b1` ("Implement Shadow Archives Gallery publishing") and is the
+  authoritative revision for active editing; `origin/main` was **not** updated
+  (no commit/push was authorized or performed). Re-verify revisions before any
+  platform-dependent work.
+- Local path: a Git working tree on branch `main` — `91cd0b1` plus the
+  uncommitted 2026-09-12 published-runtime remediation described under
+  "Current state" below.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -614,6 +618,71 @@ Do not implement these in the bootstrap task.
 
 ## Current state
 
+**Published-runtime remediation — render context without bridge (2026-09-12,
+implementation complete + production-browser smoke verified; ready for owner
+re-validation; no live write).**
+The owner's published APP failed at runtime: Gallery refused to scope QDN
+content ("No production Qortal publisher identity is available in this
+context"), `/studio` was reachable only by typing the route, Studio said "Not
+running in a Qortal host", and the diagnostics showed injected `_qdn*` values
+(`_qdnService=APP`, `_qdnName=Shadow%20Archives`, `_qdnContext=render`,
+`_qdnBase=/render/APP/Shadow%20Archives`) with `Bridge available: no`.
+
+Root cause is a **platform-boundary defect**, traced to the first confirmed
+mismatch — not a missing bridge in the published runtime:
+
+- Core `108bf191` (v6.1.9) injects `/apps/q-apps.js` as a **classic** script
+  (`HTMLParser.addAdditionalHeaderTags`) and declares the bridge there as a
+  top-level `const`: `const qortalRequest = (request) => { ... }`. A top-level
+  `const` in a classic script lives in the realm's global **declarative**
+  environment record: it is reachable as the bare identifier `qortalRequest`
+  but is **not** a `window` property. Core never assigns `window.qortalRequest`
+  anywhere under `qortal/src/main/**`. The sanctioned framework
+  (`qapp-core/src/global.ts`) and the reference apps (Subwire, q-tube) read the
+  bare global.
+- The app detected the bridge only via `window.qortalRequest`, so it reported
+  "no bridge" inside a real published render frame. That false negative then
+  collapsed, in the app's own model, into "not hosted" and "no publisher
+  identity".
+
+Corrections (all read-only; no write path changed):
+
+- **Explicit runtime model**: `plain-browser`, `qortal-render-readonly`,
+  `qortal-host`, `qortal-dev-proxy`, `qortal-bridge-unidentified`
+  (`src/qortal/types.ts`, `deriveRuntimeState`). Render-without-bridge is its
+  own state and is never collapsed into plain browser.
+- **Bridge detection** accepts both the bare global binding (authoritative for
+  the pinned Core revision) and a `window.qortalRequest` property
+  (`src/qortal/bridgeGlobal.ts`).
+- **Read-only publisher identity** comes from the decoded `_qdnName` and no
+  longer requires the bridge (`resolvePublisherScope`). Truthful per-reason
+  unscoped copy replaces the single misleading message.
+- **Read-only same-origin fallback** (`src/services/readPort.ts`): when the
+  runtime state is `qortal-render-readonly`, reads use the exact same-origin
+  REST routes the injected shim itself uses (`/arbitrary/resources/search`,
+  `/arbitrary/{service}/{name}[/{identifier}]`,
+  `/arbitrary/resource/status/...`). Writes never use this transport.
+- **Studio messaging** is truthful per state; owner mode is offered only in
+  `qortal-host`, and `GET_USER_ACCOUNT` is never requested elsewhere.
+- **Write gating tightened, not weakened**: `authorityCheck` now requires
+  `runtimeState === 'qortal-host'` explicitly.
+- Tests: 40 files / 422 tests passing (baseline before this fix: 36 / 375);
+  `lint`, `typecheck`, `format:check` and
+  the production build pass. Production-browser smoke (headless Chrome over CDP
+  against `dist/`, emulating Core's injection) passed 16/16 checks across the
+  plain-browser, render-without-bridge and render-with-emulated-bridge cases,
+  including proof that the render-without-bridge app issues real
+  `/arbitrary/resources/search` GETs and that a classic-script `const
+  qortalRequest` (not a window property) is detected as a live bridge.
+- **OWNER VALIDATION REQUIRED:** the fix was verified against the pinned Core
+  source and a faithful local emulation. It has **not** been validated in the
+  real published host, and the current live APP resource still serves the older
+  build. Re-publishing (owner decision, previously open) is required before the
+  owner can re-test the corrected runtime. No QDN write, transaction, APP
+  update, commit or push was performed.
+- Report:
+  [`../docs/shadow-archives-webportal/validation/2026-09-12-published-runtime-remediation-report.md`](../docs/shadow-archives-webportal/validation/2026-09-12-published-runtime-remediation-report.md)
+
 **Phase 3A Gallery publishing + owner-only Studio navigation (2026-09-12,
 implementation complete; ready for owner runtime validation; no live write).**
 The first owner content-write capability is implemented: Gallery image
@@ -981,6 +1050,12 @@ Kept for traceability; re-verify before platform-dependent work.
 
 - Never hardcode the owner name or address; resolve it at runtime.
 - Never treat payload `author`/`owner` fields as authority.
+- **Runtime model (owner-verified 2026-09-12).** A Qortal render context that
+  injected `_qdn*` values but has no reachable host bridge is a **valid published
+  read-only runtime**. It must never be treated as a plain browser, and the
+  publishing identity for read-only scoping comes from `_qdnName`, not from the
+  bridge. Owner/auth/write capability still requires the bridge (`qortal-host`).
+  Only a document with no injected `_qdn*` identity is a plain browser.
 - Never claim QDN data was deleted.
 - Respect `prefers-reduced-motion`.
 - Design for the QDN CSP; do not rely on third-party origins.
