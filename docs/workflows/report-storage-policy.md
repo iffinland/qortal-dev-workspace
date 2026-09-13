@@ -155,6 +155,25 @@ Not created — <reason>
 
 Agents MUST NOT claim that a report was saved unless the file exists on disk.
 
+## Author / executing-agent identity
+
+Every report MUST name the agent that actually executed the task — the
+implementer or validator that produced the evidence — not the orchestrator that
+dispatched or curated it and not a template default. This is the Qortal
+application of the universal rule in
+`/home/iffi/VsCodec-Projects/AI-Orchestration/GIT-AND-HANDOFF.md`.
+
+- The author field states the real executor (`DeepSeek`, `Codex`, `ChatGPT`, or
+  another registered role). When a different agent wrote or curated the artifact,
+  the writer is named separately from the executing agent.
+- Never fill the author from the template's default, the task controller's
+  addressee, the dispatching/orchestration role, or the file's committer.
+- If the executor cannot be established, write `unknown` and the reason; do not
+  guess an identity to complete the field.
+- A correction of a previous misattribution is recorded in the report itself
+  (date, field, prior value) so stale copies of the wrong attribution are
+  detectable.
+
 ## Related files
 
 - [`deepseek-primary-work-model.md`](deepseek-primary-work-model.md)

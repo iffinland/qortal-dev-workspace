@@ -24,17 +24,17 @@ below.
 
 ## Repository and local path
 
-- Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`
-  (branch `main`); `origin/main` and local `HEAD` were at commit `6354c88`
-  ("Checkpoint Shadow Archives parchment visual baseline", 2026-09-11) when this
-  section was last written. The local working tree has since advanced to
-  `91cd0b1` ("Implement Shadow Archives Gallery publishing") and is the
-  authoritative revision for active editing; `origin/main` was **not** updated
-  (no commit/push was authorized or performed). Re-verify revisions before any
+- Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`.
+  Re-verified 2026-09-13: `origin/main` is `6ec2915` ("Persist Shadow Archives
+  owner mode across reloads"); the completed Gallery work lives on
+  `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`
+  ("Fix Gallery bridge reads and media hydration", on top of `b247ccd`
+  "Fix Gallery catalog coherence and recovery"). The agent branch is pushed and
+  was **not** merged into `main` (not authorized). Re-verify revisions before any
   platform-dependent work.
-- Local path: a Git working tree on branch `main` — `91cd0b1` plus the
-  uncommitted 2026-09-12 published-runtime remediation described under
-  "Current state" below.
+- Local path: a Git working tree checked out on
+  `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`, tracked
+  and clean apart from the pre-existing untracked `AGENTS.md`.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -617,6 +617,36 @@ Recorded as accepted roadmap candidates, **not** Phase 0 implementation work:
 Do not implement these in the bootstrap task.
 
 ## Current state
+
+**Shadow Archives Gallery closure checkpoint (2026-09-13) — COMPLETE.**
+The completed Gallery implementation was closed after **owner real-host runtime
+validation PASSED**. The owner-visible workflow is accepted end to end: owner
+mode works; Gallery listings render; thumbnails render; item detail renders;
+album detail renders; publishing a new image succeeds; catalog/index convergence
+succeeds; and owner mode/catalog state persists across reloads.
+
+- Validated revision: `agent/shadow-archives-webportal/gallery-index-coherence`
+  at `472f244` ("Fix Gallery bridge reads and media hydration") on top of
+  `b247ccd` ("Fix Gallery catalog coherence and recovery"), in
+  `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL`.
+  Both commits are pushed to `origin`; `origin/main` stays at `6ec2915` and was
+  **not** merged (not authorized).
+- Workflow measurements:
+  - Gallery coherence task — **DeepSeek, 43 minutes**.
+  - Gallery bridge/media follow-up — **DeepSeek, 37 minutes**.
+  - Final owner runtime validation — **PASS**.
+- Agent identity: the two 2026-09-13 Gallery reports were previously attributed
+  to Codex; the executing agent was **DeepSeek**. The reports were corrected and
+  an agent-identity safeguard was added to the universal orchestration contract
+  (see below).
+- Closure reports:
+  [`../docs/shadow-archives-webportal/handoffs/2026-09-13-gallery-owner-workflow-index-coherence-owner-handoff.md`](../docs/shadow-archives-webportal/handoffs/2026-09-13-gallery-owner-workflow-index-coherence-owner-handoff.md),
+  [`../docs/shadow-archives-webportal/handoffs/2026-09-13-gallery-host-bridge-media-rendering-owner-handoff.md`](../docs/shadow-archives-webportal/handoffs/2026-09-13-gallery-host-bridge-media-rendering-owner-handoff.md)
+  and the detailed runtime report
+  [`../docs/shadow-archives-webportal/runtime/2026-09-13-gallery-host-read-contract-and-media-rendering-report.md`](../docs/shadow-archives-webportal/runtime/2026-09-13-gallery-host-read-contract-and-media-rendering-report.md).
+- Bound by this closure: no branch merge, tag, release, deployment or QDN
+  publication was performed by the closure task. Any APP re-publication needed
+  for the owner's runtime validation remains the owner's own external action.
 
 **Published-runtime remediation — render context without bridge (2026-09-12,
 implementation complete + production-browser smoke verified; ready for owner
