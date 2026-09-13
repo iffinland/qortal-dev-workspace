@@ -47,8 +47,8 @@ Qortium port. Full evidence is in
 [`agents/qortal-qdn-and-bridge.md`](agents/qortal-qdn-and-bridge.md) and the
 [development standard](docs/architecture/qortal-dapp-development-standard.md).
 
-- There is **no SSH tunnel** in the supported Qortal validation model, and none
-  is required. Do not encode one.
+- Verified SSH tunnels may provide read-only node access under the universal
+  environment contract. They do not replace real-host validation.
 - Q-Apps are JavaScript apps published to QDN under the `APP` (or `WEBSITE`)
   service and run **inside an iframe rendered by a host** (Qortal Hub or a
   gateway node). Qortal Core injects the `qortalRequest()` bridge and the

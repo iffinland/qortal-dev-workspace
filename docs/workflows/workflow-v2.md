@@ -114,9 +114,9 @@ injection, selected account, approval, routing, display settings or
 owner-visible behavior is material. Use the exact published QDN resource when
 deployment behavior is claimed.
 
-There is **no SSH tunnel** in this workflow. Do not require SSH evidence for a
-Qortal task. If a project genuinely uses SSH for its own infrastructure, that is
-a project-specific fact, not a generic Qortal rule.
+Verified tunnels may provide read-only node evidence under the universal
+environment registry. Use the relevant available access path and record it.
+A tunnel does not replace real-host/bridge validation or authorize SSH changes.
 
 If required live evidence is unavailable, report the missing level and select
 the truthful non-completion status. Do not silently downgrade to mocks or source

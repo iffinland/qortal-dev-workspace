@@ -46,8 +46,8 @@ DeepSeek MUST:
 - never commit, push, tag, release, publish to QDN, deploy, close issues, or
   perform other external mutations without explicit owner authorization.
 
-DeepSeek MUST NOT require or fabricate SSH evidence; there is no SSH tunnel in
-the Qortal validation model.
+DeepSeek MUST use available verified node access when relevant, including a
+configured tunnel, and MUST NOT fabricate SSH or real-host evidence.
 
 ## Escalation triggers
 

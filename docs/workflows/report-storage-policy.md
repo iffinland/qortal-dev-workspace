@@ -18,7 +18,7 @@ Agents MUST NOT place these reports in an individual application repository's
 **OWNER DECISION (bootstrap, 2026-09-11).** For Qortal, the canonical report
 root is inside this workspace repository, under `docs/<project-slug>/`. The
 sibling Qortium workspace used a separate root outside its repository; Qortal
-does not need that indirection and does not use SSH. Consequence: report files
+retains this report location independently of node transport. Consequence: report files
 may become git-tracked. Therefore report content MUST NOT contain secrets,
 credentials, private keys, wallet seeds or private user data.
 

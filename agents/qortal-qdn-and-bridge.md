@@ -250,7 +250,8 @@ one. During proxy context, `_qdnName` and `_qdnIdentifier` and `_qdnBase` are em
 `_qdnService` is `APP`), so owner/identity logic that depends on `_qdnName` MUST
 be exercised in a real published-app context before it is claimed to work.
 
-**There is no SSH tunnel.** Do not require SSH evidence.
+A verified tunnel may provide node API access; it does not establish Developer
+Mode, bridge or published-host compatibility. Follow the environment registry.
 
 ### 11. Mail and messaging interop
 

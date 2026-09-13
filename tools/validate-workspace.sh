@@ -220,7 +220,7 @@ scan() {
   fi
 }
 scan '\bqortium\b' 'Qortium references (expected only in migration/provenance/comparison notes)'
-scan 'ssh' 'SSH references (expected only in explicit "no SSH tunnel" statements)'
+scan 'ssh' 'SSH references (review against universal environment policy)'
 scan 'qavs' 'QAVS references (expected only in the explicit "no QAVS" note)'
 scan '12391|62391' 'node API port references (must be environment-scoped, not asserted as universal)'
 scan 'qortal-ui' 'legacy qortal-ui references (must be marked archived/non-authoritative)'

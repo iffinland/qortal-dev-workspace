@@ -1,5 +1,13 @@
 # Qortal Development Orchestration
 
+## Universal coordination (2026-09-13)
+
+Read `/home/iffi/VsCodec-Projects/AI-Orchestration/AGENTS.md` first.
+It owns shared roles (including Codex Local orchestration), agent branches,
+GitHub handoff and reference freshness. This workspace retains platform-specific
+execution and evidence rules. Older role summaries below are platform overlays;
+they do not override that shared coordination contract.
+
 This repository is the canonical shared control and knowledge repository for
 Qortal development. It contains documentation and workflows, not project source
 code or secrets.
@@ -12,8 +20,8 @@ The canonical standard is the detailed source of truth; this is the minimum.
   the reference truth. Do not design platform behavior from memory.
 - Do not assume a Qortium, legacy `qortal-ui`, or generic-web behavior applies
   to current Qortal. `Qortal/qortal-ui` is archived.
-- There is no SSH tunnel in the supported Qortal validation model and none is
-  required. Do not add one.
+- Verified SSH tunnels may provide read-only node access under the universal
+  environment contract; real-host validation remains a separate requirement.
 - Autonomous implementation must end with an adversarial self-audit and
   remediation of confirmed BLOCKER/HIGH findings.
 - A green automated suite is not enough. Owner product/runtime validation in a

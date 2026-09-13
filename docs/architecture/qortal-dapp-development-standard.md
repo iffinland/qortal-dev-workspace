@@ -375,7 +375,7 @@ Do not set arbitrary performance budgets. Measure first (see
 [`../../agents/runtime-diagnostics-and-performance.md`](../../agents/runtime-diagnostics-and-performance.md))
 and record the environment.
 
-## 12. Local development and validation without SSH
+## 12. Local development and host validation
 
 **VERIFIED.** Qortal supports real-time local development through a **local
 Qortal node**:
@@ -401,8 +401,9 @@ Verified consequences:
   select or override a node. Record the node and environment actually used; do
   not freeze one port as a platform constant.
 
-There is **no SSH tunnel** in this model. Do not make SSH evidence a required
-generic Qortal workflow step.
+A verified tunnel may provide read-only node access. It does not replace the
+local-node Developer Mode contract or real-host validation. Follow the universal
+environment registry; SSH configuration requires its own authorization.
 
 ## 13. Reference-first integration
 

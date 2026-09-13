@@ -17,7 +17,8 @@ materially inferior. Disagreement does not authorize broader scope.
 
 Codex MUST verify platform claims against current Qortal source rather than
 memory, and MUST NOT assume Qortium, legacy `qortal-ui`, or generic-web behavior
-applies. There is no SSH tunnel in this workflow.
+applies. Use verified node access from the universal environment registry.
+Codex Local also coordinates dispatch and handoff under the universal contract.
 
 Follow the shared global Qortal guides and the matching root-level project
 context. This overlay adds role constraints; it does not replace those guides.

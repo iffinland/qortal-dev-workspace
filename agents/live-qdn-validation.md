@@ -103,7 +103,8 @@ orphan resources. Treat ambiguous writes as recoverable, not safely repeatable.
 
 ## Mandatory rules
 
-- No SSH evidence requirement. There is no SSH tunnel in this model.
+- Use verified node access, including an available configured tunnel when
+  relevant; tunnel health does not replace real-host evidence.
 - No fixed endpoint claim without recording the environment; ports are
   configurable.
 - No unproven live claim, and no "verified" label for a mock or local-only run.
