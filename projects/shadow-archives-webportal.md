@@ -25,13 +25,16 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`.
-  Re-verified 2026-09-13: `origin/main` is `6ec2915` ("Persist Shadow Archives
-  owner mode across reloads"); the completed Gallery work lives on
+  Re-verified 2026-09-13: the completed Gallery work is on
   `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`
   ("Fix Gallery bridge reads and media hydration", on top of `b247ccd`
-  "Fix Gallery catalog coherence and recovery"). The agent branch is pushed and
-  was **not** merged into `main` (not authorized). Re-verify revisions before any
-  platform-dependent work.
+  "Fix Gallery catalog coherence and recovery"), pushed to `origin`. The owner
+  merged that branch into `main` via PR #1 externally and concurrently
+  (`origin/main` = `fab9fdb`, "Merge pull request #1 from
+  iffinland/agent/shadow-archives-webportal/gallery-index-coherence",
+  2026-09-13 17:09 +03); the merge introduced no extra tree change
+  (`git diff 472f244 origin/main` is empty). The closure task itself performed
+  no merge. Re-verify revisions before any platform-dependent work.
 - Local path: a Git working tree checked out on
   `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`, tracked
   and clean apart from the pre-existing untracked `AGENTS.md`.
@@ -629,8 +632,10 @@ succeeds; and owner mode/catalog state persists across reloads.
   at `472f244` ("Fix Gallery bridge reads and media hydration") on top of
   `b247ccd` ("Fix Gallery catalog coherence and recovery"), in
   `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL`.
-  Both commits are pushed to `origin`; `origin/main` stays at `6ec2915` and was
-  **not** merged (not authorized).
+  Both commits are pushed to `origin`. The owner merged the branch into `main`
+  via PR #1 (`origin/main` = `fab9fdb`, 2026-09-13 17:09 +03), externally and
+  concurrently with this closure task; the closure task performed no merge,
+  and the merge added no tree change (`git diff 472f244 origin/main` empty).
 - Workflow measurements:
   - Gallery coherence task — **DeepSeek, 43 minutes**.
   - Gallery bridge/media follow-up — **DeepSeek, 37 minutes**.

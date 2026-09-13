@@ -78,7 +78,12 @@ Application repo (`shadow-archives-webportal-QORTAL`), branch
 - `472f244` — "Fix Gallery bridge reads and media hydration" (bridge/media
   follow-up, DeepSeek).
 
-`origin/main` remains `6ec2915`; the agent branch was **not** merged.
+`origin/main` is now `fab9fdb` ("Merge pull request #1 from
+iffinland/agent/shadow-archives-webportal/gallery-index-coherence",
+2026-09-13 17:09 +03). That merge was performed externally by the owner via
+GitHub while this closure task was running; this closure task performed no merge.
+`git diff 472f244 origin/main` is empty, so the merge introduced no extra tree
+change.
 
 ## 6. Exact state and non-actions
 
