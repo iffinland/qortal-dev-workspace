@@ -1,0 +1,94 @@
+{
+  "publisher": "Shadow Archives",
+  "subwireIdentifierPrefix": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-",
+  "quitterIdentifierPrefix": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-",
+  "nodes": {
+    "http://127.0.0.1:24991": {
+      "height": 2723000,
+      "subwireResultCount": 20,
+      "quitterResultCount": 20,
+      "subwire": [
+        {
+          "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-J1KcSHZWmB52mwv-v1",
+          "size": 175264
+        },
+        {
+          "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-8fHVixazg6kxLOX-v1",
+          "size": 455296
+        }
+      ],
+      "quitter": [
+        {
+          "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-OL35sQV20oxI6z0-v1",
+          "size": 103648
+        },
+        {
+          "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-vGCdDrjPoqVCvbP-v1",
+          "size": 360592
+        }
+      ]
+    },
+    "http://127.0.0.1:24992": {
+      "height": 2723000,
+      "subwireResultCount": 20,
+      "quitterResultCount": 20,
+      "subwire": [
+        {
+          "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-J1KcSHZWmB52mwv-v1",
+          "size": 175264
+        },
+        {
+          "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-8fHVixazg6kxLOX-v1",
+          "size": 455296
+        }
+      ],
+      "quitter": [
+        {
+          "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-OL35sQV20oxI6z0-v1",
+          "size": 103648
+        },
+        {
+          "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-vGCdDrjPoqVCvbP-v1",
+          "size": 360592
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "subwire": [
+      {
+        "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-J1KcSHZWmB52mwv-v1",
+        "servedBy": "http://127.0.0.1:24992",
+        "gatePasses": true,
+        "title": "Uncovering the past - exposing the truth",
+        "contentChars": 2321,
+        "coverBase64Chars": 229236,
+        "coverIsDataUrl": false,
+        "type": "essay",
+        "published": true
+      },
+      {
+        "identifier": "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-8fHVixazg6kxLOX-v1",
+        "served": false
+      }
+    ],
+    "quitter": [
+      {
+        "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-OL35sQV20oxI6z0-v1",
+        "servedBy": "http://127.0.0.1:24992",
+        "gatePasses": true,
+        "textFirstLine": "New publication: Uncovering the past - exposing the truth",
+        "referencesSubwireArticle": true,
+        "referencedIdentifiers": [
+          "7l1NGsWiY0SgPb-FJVWQM-T60ZadsfPsbLTh-J1KcSHZWmB52mwv-v1"
+        ],
+        "imageCount": 1,
+        "timestamp": 1789049960852
+      },
+      {
+        "identifier": "MhNiRYdzkaP9dz-kX47dT-XrFXaYetyErMdF-vGCdDrjPoqVCvbP-v1",
+        "served": false
+      }
+    ]
+  }
+}

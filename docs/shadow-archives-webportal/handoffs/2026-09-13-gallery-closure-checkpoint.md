@@ -1,5 +1,14 @@
 # Shadow Archives Gallery — closure checkpoint
 
+> **Subsequent owner acceptance — 2026-09-13: OWNER-RUNTIME PASS.** Gallery,
+> Video/Q-Tube, Blog/SubWire and optional Quitter announcement are accepted.
+> This supersedes earlier FUTURE / NOT VERIFIED or owner-validation-pending
+> statements for those surfaces only. Original observations below remain a dated
+> historical record; no new runtime test is claimed by this update.
+> See [checkpoint and pinned evidence](2026-09-13-owner-runtime-checkpoint.md).
+> Implementation executor: DeepSeek; acceptance: owner; update writer: Codex Local.
+
+
 - Project: `shadow-archives-webportal-QORTAL`
 - Date: 2026-09-13
 - Executing agent (actual executor of this closure task): **Codex Local**

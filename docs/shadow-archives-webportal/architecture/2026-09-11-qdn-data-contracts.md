@@ -1,5 +1,14 @@
 # Shadow Archives — QDN Data-Contract Specification (Phase 1A, owner-approved baseline)
 
+> **Subsequent owner acceptance — 2026-09-13: OWNER-RUNTIME PASS.** Gallery,
+> Video/Q-Tube, Blog/SubWire and optional Quitter announcement are accepted.
+> This supersedes earlier FUTURE / NOT VERIFIED or owner-validation-pending
+> statements for those surfaces only. Original observations below remain a dated
+> historical record; no new runtime test is claimed by this update.
+> See [checkpoint and pinned evidence](../handoffs/2026-09-13-owner-runtime-checkpoint.md).
+> Implementation executor: DeepSeek; acceptance: owner; update writer: Codex Local.
+
+
 - Project: `shadow-archives-webportal-QORTAL`
 - Phase: 1A (architecture / contract design)
 - Date: 2026-09-11

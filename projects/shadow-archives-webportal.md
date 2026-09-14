@@ -25,19 +25,12 @@ below.
 ## Repository and local path
 
 - Remote repository: `https://github.com/iffinland/shadow-archives-webportal-QORTAL`.
-  Re-verified 2026-09-13: the completed Gallery work is on
-  `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`
-  ("Fix Gallery bridge reads and media hydration", on top of `b247ccd`
-  "Fix Gallery catalog coherence and recovery"), pushed to `origin`. The owner
-  merged that branch into `main` via PR #1 externally and concurrently
-  (`origin/main` = `fab9fdb`, "Merge pull request #1 from
-  iffinland/agent/shadow-archives-webportal/gallery-index-coherence",
-  2026-09-13 17:09 +03); the merge introduced no extra tree change
-  (`git diff 472f244 origin/main` is empty). The closure task itself performed
-  no merge. Re-verify revisions before any platform-dependent work.
-- Local path: a Git working tree checked out on
-  `agent/shadow-archives-webportal/gallery-index-coherence` at `472f244`, tracked
-  and clean apart from the pre-existing untracked `AGENTS.md`.
+  Checkpoint 2026-09-13: `agent/shadow-archives-webportal/owner-runtime-checkpoint-20260913`
+  at `c9ce0716f87c4d083c01601678d0354102f455ac`, pushed and remote-verified. Includes Gallery history
+  (`b247ccd`, `472f244`) and accepted Video/Q-Tube + Blog/SubWire/Quitter work.
+  No merge to main was performed. Historical Gallery closure records remain below.
+- Local path: the checkpoint branch above; only the pre-existing user-owned
+  untracked `AGENTS.md` remains outside the checkpoint.
 - Canonical report root:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/`
 
@@ -108,7 +101,7 @@ decision is authoritative. Status labels: `OWNER APPROVED`, `DEFERRED`,
   moderation authority is the current owner of the Shadow Archives publishing
   name. Keep the design extensible for later delegated moderation without
   rewriting content entities.
-- **Video + future Q-Tube interoperability — OWNER APPROVED / FUTURE.** See
+- **Video + native Q-Tube interoperability — OWNER-RUNTIME PASS (2026-09-13).** See
   "Video architecture" below.
 - **Publishing interoperability first — OWNER APPROVED (2026-09-11).** The final
   Video and Blog publish modals MUST be preceded by dedicated research into the
@@ -415,16 +408,11 @@ Content types: Blog, Videos, Gallery.
 
 ## Video architecture (owner decision, 2026-09-11)
 
-- Shadow Archives **will publish its own video content to QDN** (owner
-  approved).
-- The architecture MUST ALSO preserve a **future** capability whereby a video
-  published through Shadow Archives can participate in / appear through the
-  Q-Tube ecosystem using the appropriate QDN/Q-Tube publication/discovery
-  contract.
-- **Do not** implement Q-Tube interoperability now and **do not** guess the
-  exact Q-Tube metadata, identifier, indexing or publication contract. Mark the
-  exact interoperability contract **FUTURE / NOT VERIFIED** until a dedicated
-  Q-Tube source/runtime investigation is performed.
+- **OWNER-RUNTIME PASS (2026-09-13):** Shadow Archives publishes video to QDN,
+  lists and plays it, and Q-Tube natively discovers and plays the same publication.
+- The former **FUTURE / NOT VERIFIED** status is superseded by the dedicated
+  DeepSeek source/read-only investigation and the owner's final runtime PASS.
+  This verifies the dated contract snapshot below, not a permanent guarantee.
 - Do not import Q-Tube source code or make Shadow Archives depend directly on
   the Q-Tube application.
 - Architect the video domain with separated layers so future interoperability
@@ -458,12 +446,11 @@ ecosystem actually reads, and that can only be established from current source.
   Subwire source and QDN publication contract, investigate its then-current
   Quitter cross-post/publication integration, and build the Shadow Archives blog
   publication flow around the verified ecosystem contract where appropriate.
-- This is a **future implementation rule**. It is **not** Phase 1B work and must
-  not be started early. A small read-only check is permitted only where needed
-  to avoid an architectural mistake.
-- **Do NOT** claim Q-Tube/Subwire/Quitter interoperability is verified by any
-  earlier task. The contracts remain FUTURE / NOT VERIFIED until that dedicated
-  research is executed and recorded.
+- **Research prerequisite fulfilled; OWNER-RUNTIME PASS (2026-09-13).**
+  Video/Q-Tube and Blog/SubWire, including the optional Quitter announcement,
+  passed the owner's real-host workflows after DeepSeek's dedicated investigation.
+  Earlier Phase 1A/1B research alone did not prove interoperability. Subsequent
+  changes must recheck the recorded source pins and relevant runtime behavior.
 - **Do NOT** copy their UIs merely for visual similarity. The purpose is
   protocol/resource interoperability, not cloning applications.
 
@@ -620,6 +607,41 @@ Recorded as accepted roadmap candidates, **not** Phase 0 implementation work:
 Do not implement these in the bootstrap task.
 
 ## Current state
+
+**Gallery + Video/Q-Tube + Blog/SubWire/Quitter checkpoint (2026-09-13):
+OWNER-RUNTIME PASS.** The owner explicitly accepted all four workflows:
+
+| Accepted surface | Owner runtime result |
+| --- | --- |
+| Gallery publish → read → index convergence → item/album render → reload | PASS |
+| Video publish → Shadow Archives discovery/playback → Q-Tube discovery/playback | PASS |
+| Blog publish → Shadow Archives discovery/render → SubWire discovery/render | PASS |
+| Optional Blog announcement → separate approval → Quitter discovery/render | PASS |
+
+Implementation executor: **DeepSeek through the local Codex CLI harness**.
+Checkpoint/documentation writer: Codex Local. These are owner-reported real-host
+results accepted on 2026-09-13, not a new runtime test performed by this writer.
+App checkpoint: `c9ce0716f87c4d083c01601678d0354102f455ac` on
+`agent/shadow-archives-webportal/owner-runtime-checkpoint-20260913`.
+
+Source/read-only contract pins used by the accepted implementations (2026-09-13):
+Q-Tube `68c3ea706c4ab110ffa44a7f55f8e09bdf7e85ff`; SubWire
+`a933a6c44d60db19cd219408e36c747aebcce994`; Quitter
+`4e4246c3283bcbc8e05e683260692ed36144f862`; Core
+`108bf191d42d710ec617f535af30cfd82fc03c87`; Hub develop
+`12a573b27246e8a626b24794830c6bc432d1b05d`; qapp-core
+`0f9d6ac5134ef2f82c1444a74e78471ddc7eb7df`.
+The owner-tested APP ZIP hash and actual consumer runtime revisions were not
+provided; these source pins must not be misrepresented as deployed-build proof.
+Community-app contracts can change and require a bounded freshness check on reuse.
+
+Checkpoint, evidence layers, workflow measurements and next-task skill candidates:
+[owner-runtime checkpoint](../docs/shadow-archives-webportal/handoffs/2026-09-13-owner-runtime-checkpoint.md).
+Skills promotion is explicitly deferred; no skill was created or changed.
+
+The dated phase records below are historical snapshots. Their earlier missing
+publication/owner-validation statements are superseded only for the accepted
+surfaces above; unrelated checks and features are not implicitly accepted.
 
 **Shadow Archives Gallery closure checkpoint (2026-09-13) — COMPLETE.**
 The completed Gallery implementation was closed after **owner real-host runtime
@@ -843,7 +865,7 @@ routing, QDN-read, auth, capability or content-contract change. Report:
 [`../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-followup-report.md`](../docs/shadow-archives-webportal/implementation/2026-09-11-owner-runtime-visual-correction-followup-report.md)
 
 **Verified 2026-09-11 — Phase 2C-A first APP publication readiness prepared
-(current factual state):**
+(historical phase snapshot):**
 
 - The current multi-file `APP` publication contract was re-verified against the
   pinned Core `108bf191` (v6.1.9) and Hub `12a573b2` sources (both still
@@ -890,7 +912,7 @@ routing, QDN-read, auth, capability or content-contract change. Report:
   [`../docs/shadow-archives-webportal/release/2026-09-11-first-app-publication-readiness-report.md`](../docs/shadow-archives-webportal/release/2026-09-11-first-app-publication-readiness-report.md)
 
 **Verified 2026-09-11 — Phase 2B owner-capability boundary implemented
-(current factual state):**
+(historical phase snapshot):**
 
 - The owner authority model is the **current owner of the registered Qortal name
   under which the app is published**: `publisherName` is derived from the
@@ -1049,37 +1071,16 @@ Kept for traceability; re-verify before platform-dependent work.
 
 ## Recommended next steps (not authorized by this document)
 
-1. The Phase 1A decision matrix D1–D9 is now recorded (see the owner decisions
-   above): D1–D8 are OWNER APPROVED, D9's wire representation is DEFERRED, and
-   future Q-Tube interoperability is FUTURE / NOT VERIFIED. Publishing name and
-   service are decided: `Shadow Archives` under `APP`. Like scope is decided:
-   one active like per acting registered Qortal name per content item.
-2. Phase 1B foundation scaffold — **DONE (2026-09-11)** per the bounded plan in
-   [`../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md`](../docs/shadow-archives-webportal/architecture/2026-09-11-phase-1b-implementation-plan.md);
-   see
-   [`../docs/shadow-archives-webportal/implementation/`](../docs/shadow-archives-webportal/implementation/)
-   for the implementation report. The in-repo `src/qortal/` layer and semantic
-   CSS tokens are in place; no `qapp-core` root entry and no MUI (D6/D7).
-3. **First publication — DONE (owner, 2026-09-11 18:32 UTC).** The owner
-   published the Phase 2C-A artifact
-   `release/shadow-archives-app-0.1.0-20260911.zip` under name `Shadow Archives`
-   / service `APP` with the default identifier, establishing the real render
-   context `qortal://APP/Shadow Archives`; Phase 2C-B then verified that served
-   revision read-only (`PUBLIC-NODE VERIFIED`). **Next owner-authorized step:**
-   run the remaining real-host checks listed in the Phase 2C-B report §22 (exact
-   `_qdn*` values need a build containing the `/studio` diagnostics block, i.e.
-   a later publication; deep-route hard reload; owner-capability click flow;
-   live read pipeline). Owner detection is implemented and tested against the
-   verified contracts; host confirmation is still outstanding. The previously open
-   question of whether `/studio` should be discoverable from public navigation
-   is now **decided (2026-09-12)**: Studio is the last main-navigation item, and
-   only for a positively verified owner (see Phase 3A above). Still open: whether
-   to re-publish the `6354c88` artifact now that its content equivalence to the
-   served build has been established.
-4. Set a concrete performance budget from a real measured baseline in the dev
-   proxy and a real host; the Phase 1A numbers are build-output comparisons, not
-   runtime timings.
-5. Implement one bounded issue at a time through Workflow v2.
+1. Gallery, Video/Q-Tube and Blog/SubWire/optional Quitter owner workflows are
+   **OWNER-RUNTIME PASS (2026-09-13)**. Use the checkpoint above as the accepted
+   source baseline; do not repeat the former first-publication or owner-mode
+   bootstrap checklist as an outstanding gate for those accepted surfaces.
+2. Review the five evidence-backed skill candidates in the checkpoint in a
+   separate owner-authorized task. No skill promotion was performed here.
+3. Comments, likes, tips, Q-Mail, moderation and video-card quick actions are
+   outside this acceptance. D9's like-activeness wire format remains deferred.
+4. Set any future performance budget from actual measured runtime; historical
+   bundle sizes are not runtime timings. Follow Workflow v2 for each new outcome.
 
 ## Mandatory project rules
 
