@@ -481,38 +481,24 @@ app-maintained index/catalog. See
 
 ## Contact (owner decisions)
 
-- simple contact form
-- goal: send a message to the owner through Q-Mail
-- verify the CURRENT Qortal/Q-Mail integration contract
-- do not assume `SEND_CHAT_MESSAGE` is automatically equivalent to Q-Mail
+- **OWNER-RUNTIME PASS (2026-09-15).** Contact is a simple Qortal private-chat
+  form. It resolves the current owner of the app's registered publishing name
+  and sends one `SEND_CHAT_MESSAGE`; it does not send Q-Mail.
+- The accepted UX uses private chat for simple contact and advises Q-Mail for
+  durable follow-up. That notice is advice only: there is no silent Q-Mail,
+  public-chat, group-chat, or QDN fallback.
+- Current normal private-chat retention is approximately 24 hours in Core
+  `108bf191`'s chain configuration (`transactionExpiryPeriod = 86400000`). This
+  is revision- and chain-configuration-scoped, not a timeless platform promise.
+  Reticulum DM's approximately one-month store is a separate Hub transport and
+  is not exposed to a Q-App through the verified bridge.
+- The owner real-host test confirmed the full flow: current recipient resolution,
+  host approval, successful owner-side private-chat arrival, no duplicate send,
+  and a clean reload/navigation state.
 
-**VERIFIED (against `Qortal/q-mail` 3.2.1, revision recorded in the standard).**
-Q-Mail interop is a **convention**, not a Core API:
-
-- mail messages are published under the sender's own name with service
-  `MAIL_PRIVATE`;
-- the identifier follows the sender's chosen convention
-  (`_mail_qortal_qmail_<recipientName>_<recipientAddressLast6>_mail_<id>` in the
-  current source, or an alias value);
-- the message is encrypted to the recipient's public key using
-  `PUBLISH_MULTIPLE_QDN_RESOURCES` with `encrypt: true` and `publicKeys`;
-- recipients discover mail by searching `MAIL_PRIVATE` resources with a query of
-  the form `qortal_qmail_<name>_<addressLast6>_mail_`;
-- the payload is a base64-encoded JSON object with `subject`, `createdAt`,
-  `version`, `attachments`, `textContentV2` and thread references.
-
-**UNKNOWN / MUST RE-VERIFY.** This convention was read from the current Q-Mail
-source but MUST be re-verified against the current Q-Mail release before
-implementation, because it is a community-app convention and may change.
-`SEND_CHAT_MESSAGE` sends a Qortal chat message and is **not** Q-Mail.
-
-**OWNER APPROVED (D5).** If verified Q-Mail delivery cannot be completed:
-preserve the user's draft; clearly explain that Q-Mail delivery is
-unavailable/failed; provide an explicit **user-triggered Copy Message action**;
-and do **not** silently substitute `SEND_CHAT_MESSAGE` or another transport.
-Success feedback must state what actually happened (submitted for approval,
-published, or failed with a reason). The exact Q-Mail convention above remains
-**MUST RE-VERIFY** before implementation.
+Direct Q-Mail sending remains intentionally out of scope. If it is proposed in
+future, re-verify the then-current Q-Mail convention as a separate feature;
+`SEND_CHAT_MESSAGE` must not be described as Q-Mail.
 
 ## Links (owner decisions)
 
@@ -607,6 +593,15 @@ Recorded as accepted roadmap candidates, **not** Phase 0 implementation work:
 Do not implement these in the bootstrap task.
 
 ## Current state
+
+**Contact/private-chat closure (2026-09-15): OWNER-RUNTIME PASS.** The owner
+accepted the real-host end-to-end Contact workflow after the 2026-09-14 source,
+read-only-node, and implementation evidence. The accepted app checkpoint is
+recorded separately from deployment: no release, QDN publication, or claim of
+deployed-artifact equivalence is made. See the
+[phase closure checkpoint](../docs/shadow-archives-webportal/handoffs/2026-09-15-shadow-archives-phase-closure-checkpoint.md),
+[implementation report](../docs/shadow-archives-webportal/implementation/2026-09-14-contact-private-chat-implementation-report.md),
+and [owner validation handoff](../docs/shadow-archives-webportal/handoffs/2026-09-14-contact-private-chat-owner-live-validation-handoff.md).
 
 **Gallery + Video/Q-Tube + Blog/SubWire/Quitter checkpoint (2026-09-13):
 OWNER-RUNTIME PASS.** The owner explicitly accepted all four workflows:
