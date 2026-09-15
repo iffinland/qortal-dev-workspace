@@ -5,7 +5,7 @@ Report/handoff writer (if different from the executing agent): Codex
 Executing-agent evidence (how the real executor was established): This report records the source investigation, patch, and local validation executed in this Codex task.
 Report type: maintenance handoff
 Exact application repository / branch / SHA: `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL`, `agent/shadow-archives-webportal/homepage-test-maintenance-20260915`, `980c5ad2517675b3da23209579bd9130e0fac6e9`
-Canonical report path / SHA-256 / authorized remote evidence: this file; SHA-256 recorded after final write; application branch push remote-verified at the SHA above.
+Canonical report path / SHA-256 / authorized remote evidence: this file; SHA-256 not required for this Git-tracked report; application branch push remote-verified at the SHA above.
 
 ## Objective and exit criterion
 
@@ -51,4 +51,4 @@ The automated gate is fully clean at this application revision. This task neithe
 ## Report saved
 
 - Absolute path: `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/shadow-archives-webportal/handoffs/2026-09-15-homepage-loading-test-maintenance-handoff.md`
-- SHA-256 (optional): recorded after final report commit.
+- SHA-256 (optional): not recorded; the Git commit below is the durable integrity reference.
