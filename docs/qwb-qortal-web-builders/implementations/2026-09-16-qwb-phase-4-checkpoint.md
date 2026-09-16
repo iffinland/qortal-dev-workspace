@@ -203,3 +203,26 @@ No QDN write of any kind was made by this checkpoint. The production resource is
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/implementations/2026-09-16-qwb-phase-4-checkpoint.md`
 - Companion evidence directory:
   `/home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/implementations/2026-09-16-qwb-phase-4-checkpoint-evidence/`
+
+---
+
+## Addendum — 2026-09-16: §6 item 2 closed by the bounded staging confirmation
+
+§6 item 2 — "the runtime-validated artifact predates the checkpoint's read-path change" — is now
+**closed**. The release candidate `7fd03fc` was published to the staging resource
+`WEBSITE / Q-Website / default` (signature
+`2egexP3JFzX5pkyVKkPrt9Pidcv9QWvcrvYoxCb8KDtmZa1iY76TUjd4CxLG128xUszoJV2rxKCmyza1gDFJ9sLd`,
+880 368 B, `READY`), and the five bounded checks passed in Qortal Hub 3.0.3: the published synthetic
+entities still render, 14 untouched shipped items render beside them **with** their
+`✎ / 🗑 / ↑ / ↓` owner controls, a hard reload preserves both, and no tombstoned item is
+resurrected. The pre-fix defect was additionally reproduced live on the previous staging revision
+(build `741754b`: 0 highlights, 0 featured works, 0 prices, 2 services, 1 step).
+
+`7fd03fc` is **production-ready**. Production was **not** published, and
+`WEBSITE / Qortal Web Builders / default` was not touched.
+
+- Report: `…/validation/2026-09-16-qwb-rc-7fd03fc-staging-confirmation.md`
+- Evidence: `…/validation/2026-09-16-qwb-rc-7fd03fc-staging-confirmation-evidence/`
+
+No source changed for this confirmation, so the gate recorded in §4 still describes the tree, and the
+full §14 owner-runtime suite was deliberately not repeated.

@@ -1,0 +1,135 @@
+[
+  {
+    "file": "apple-touch-icon.png",
+    "status": "MATCH",
+    "served_bytes": 52446,
+    "local_bytes": 52446,
+    "sha256": "e6b4f6d27a4b4a6844d0eb57ac95341baeae0662f21607542e841fe0d8252ffb"
+  },
+  {
+    "file": "assets/index-Cc7rTXmF.js",
+    "status": "MATCH",
+    "served_bytes": 127730,
+    "local_bytes": 127730,
+    "sha256": "19c6ff7143b6baffa1fa04550819d8ed76efc7b6403be93f1e15d90c0fcd6084"
+  },
+  {
+    "file": "assets/montserrat-latin-500-normal-DRFEGfly.woff2",
+    "status": "MATCH",
+    "served_bytes": 18748,
+    "local_bytes": 18748,
+    "sha256": "2b53300fb9471520df2f4905847fb7a209879b2029ae893c05c6ee346b1320cd"
+  },
+  {
+    "file": "assets/montserrat-latin-600-normal-UVxSCcoG.woff2",
+    "status": "MATCH",
+    "served_bytes": 18688,
+    "local_bytes": 18688,
+    "sha256": "d857325c360f7128b347ca924c1974967aaa886ba47dad22e4042d6c38b26a83"
+  },
+  {
+    "file": "assets/montserrat-latin-700-normal-BdjcYUrC.woff2",
+    "status": "MATCH",
+    "served_bytes": 18824,
+    "local_bytes": 18824,
+    "sha256": "f9d9e65b15372cebcafc3acd1e664a564c5c4b23278de4d5760de9a13c530371"
+  },
+  {
+    "file": "assets/open-sans-latin-400-normal-Bk63H6sG.woff2",
+    "status": "MATCH",
+    "served_bytes": 18640,
+    "local_bytes": 18640,
+    "sha256": "0e44026ad31376af1b56593cd4acb4f353f8e8789c51759e18f64578e4ef296a"
+  },
+  {
+    "file": "assets/open-sans-latin-600-normal-Cp4N6AwT.woff2",
+    "status": "MATCH",
+    "served_bytes": 18620,
+    "local_bytes": 18620,
+    "sha256": "a97a6ed7ef9f75c495e9224f5c59b2271d826e4a4345b738b390b0c76cc9f412"
+  },
+  {
+    "file": "assets/style-BgNavAWw.css",
+    "status": "MATCH",
+    "served_bytes": 215351,
+    "local_bytes": 215351,
+    "sha256": "165f6a9904a099068feaf7bb88d92a65a4749eae087b42ad8a65ac3293834029"
+  },
+  {
+    "file": "assets/undraw_Graduation_re_gthn-BH47utR5.png",
+    "status": "MATCH",
+    "served_bytes": 21280,
+    "local_bytes": 21280,
+    "sha256": "78834ab8a8c0f686bd3cd9bf7b858e04dc2971603d59e2b2c134bb1dfaa94a20"
+  },
+  {
+    "file": "assets/undraw_Redesign_feedback_re_jvm0-D2wmpnSd.png",
+    "status": "MATCH",
+    "served_bytes": 27439,
+    "local_bytes": 27439,
+    "sha256": "34e513508665afb45ec1c3dda44f2f6099b23d608a99b6868c48d8e2da088986"
+  },
+  {
+    "file": "assets/undraw_Remote_design_team_re_urdx-CkPBN2pC.png",
+    "status": "MATCH",
+    "served_bytes": 21917,
+    "local_bytes": 21917,
+    "sha256": "b8071614161a05a09b4185406d9ed56fc2e3969d436084cb46601a989f656fb9"
+  },
+  {
+    "file": "favicon-96x96.png",
+    "status": "MATCH",
+    "served_bytes": 16853,
+    "local_bytes": 16853,
+    "sha256": "9fd29b13c4e2ef724f49ddd46d16f48f0b566e7c810e38a6a49518556929fb67"
+  },
+  {
+    "file": "favicon.ico",
+    "status": "MATCH",
+    "served_bytes": 15086,
+    "local_bytes": 15086,
+    "sha256": "af398f3eafe912d8dfc9ccfe8c8ff2b628580d3976e078958acde3307243e19c"
+  },
+  {
+    "file": "favicon.svg",
+    "status": "MATCH",
+    "served_bytes": 177052,
+    "local_bytes": 177052,
+    "sha256": "de429e12c271758d914628d223f22ccf11988d7d56f8d158d083f351f7a5d267"
+  },
+  {
+    "file": "index.html",
+    "status": "MISMATCH",
+    "served_bytes": 1892,
+    "local_bytes": 1578,
+    "note": "served document = authored index.html + node /render/ shell (injected <base>, _qdn* vars, q-apps.js, an extra <meta charset=\"UTF-8\">) with whitespace/self-closing serialisation differences only"
+  },
+  {
+    "file": "qwb-icon-trans-192x192.png",
+    "status": "MATCH",
+    "served_bytes": 55546,
+    "local_bytes": 55546,
+    "sha256": "ed0da1af116dfa865da153bdc6fd7a4e2e41abe1f1b9f38bfdb934a0dd0991ff"
+  },
+  {
+    "file": "site.webmanifest",
+    "status": "MATCH",
+    "served_bytes": 579,
+    "local_bytes": 579,
+    "sha256": "b5a1fd758aba0d4fb2dbd3f093c64aa5bd48e43f3217ce761e57ef0cd985338d"
+  },
+  {
+    "file": "web-app-manifest-192x192.png",
+    "status": "MATCH",
+    "served_bytes": 58880,
+    "local_bytes": 58880,
+    "sha256": "7e0ecc12cb6134162f9001173c0c307ec2729dc3b8eca6069081f63504fc5577"
+  },
+  {
+    "file": "web-app-manifest-512x512.png",
+    "status": "MATCH",
+    "served_bytes": 325301,
+    "local_bytes": 325301,
+    "sha256": "112dd84dc088f9158fe26b2385fefe88c9b267a0d46c9d7ed28cbfa114f8fc01"
+  }
+]

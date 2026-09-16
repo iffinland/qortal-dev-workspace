@@ -1,0 +1,20 @@
+Shipped seed identifiers as rendered by the published release candidate.
+
+These 23 identifiers are minted by src/content/seed.ts as
+`qwb_<kind prefix>_<slug>-<SEED_TS36>-<rand>` with SEED_AT = 1789430400000, so
+SEED_TS36 = "mu1wnpc0" (src/content/schema.ts KIND_PREFIX gives qwb_hl_ / qwb_svc_ /
+qwb_step_ / qwb_work_ / qwb_price_ / qwb_post_ and the site singleton id qwb_site_v1).
+
+Probe against the staging node (mainnet 127.0.0.1:24991) after the release-candidate
+publish, `GET /arbitrary/JSON/Q-Website/<id>`:
+
+  404  qwb_site_v1
+  404  qwb_hl_custom-design-mu1wnpc0-a1
+  404  qwb_svc_custom-websites-mu1wnpc0-b1
+  404  qwb_step_planning-mu1wnpc0-c1
+  404  qwb_work_asot-mu1wnpc0-d1
+  404  qwb_price_custom-website-mu1wnpc0-e1
+
+Every shipped identifier is unpublished on the node. Therefore any shipped item the
+page renders after the release-candidate publish can only have come from the shipped
+seed baseline of src/content/qdn-source.ts, not from a QDN read.

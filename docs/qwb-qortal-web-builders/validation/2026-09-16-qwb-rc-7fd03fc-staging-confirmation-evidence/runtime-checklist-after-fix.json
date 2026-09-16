@@ -1,0 +1,185 @@
+{
+  "staging": {
+    "service": "WEBSITE",
+    "name": "Q-Website",
+    "identifier": "default"
+  },
+  "releaseCandidate": {
+    "branch": "agent/qwb/phase-4-runtime-fix",
+    "sha": "7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a",
+    "buildChunk": "assets/index-Cc7rTXmF.js",
+    "buildChunkSha256": "19c6ff7143b6baffa1fa04550819d8ed76efc7b6403be93f1e15d90c0fcd6084"
+  },
+  "observedDeltas": {
+    "beforeFixBuild_741754b": {
+      "highlights": 0,
+      "steps": 1,
+      "featuredWorks": 0,
+      "services": 2,
+      "prices": 0
+    },
+    "afterFixBuild_7fd03fc": {
+      "highlights": 2,
+      "steps": 4,
+      "featuredWorks": 3,
+      "services": 6,
+      "prices": 2
+    },
+    "expected_afterFix": {
+      "highlights": "2 seed + 0 QDN = 2",
+      "steps": "3 seed + 1 QDN = 4",
+      "featuredWorks": "min(3, 8 seed) = 3",
+      "services": "4 seed + 2 QDN = 6",
+      "prices": "2 seed + 0 QDN = 2"
+    }
+  },
+  "controlRows": {
+    "total": 20,
+    "itemRows": 17,
+    "seedBackedItemRows": 14,
+    "qdnBackedItemRows": 3,
+    "siteSingletonRows": [
+      "Hero band",
+      "Contact block",
+      "Footer"
+    ],
+    "addButtons": [
+      "Add featured card",
+      "Add step",
+      "Add project",
+      "Add build service",
+      "Add pricing tier"
+    ]
+  },
+  "seedBackedItemRows": [
+    "highlights: \u2728 A website that looks like nobody else \u2728",
+    "highlights: \u2728 Why your own website matters \u2728",
+    "steps: Order reception and planning",
+    "steps: Design and build",
+    "steps: Launch and handover",
+    "featured works: ASOT | A State Of Trance",
+    "featured works: HTML web @ Qortal Web Builders",
+    "featured works: iffi vaba mees",
+    "services: Custom websites",
+    "services: Custom Qortal apps",
+    "services: Visual identity and design",
+    "services: Updates and care",
+    "prices: Custom website",
+    "prices: Custom build or open challenge"
+  ],
+  "qdnBackedItemRows": [
+    "steps: Synthetic staging step (Phase 4)",
+    "services: Synthetic staging service (Phase 4, verified)",
+    "services: In-session service A (Phase 4)"
+  ],
+  "consoleDiagnostics": [],
+  "checklist": [
+    {
+      "id": 1,
+      "requirement": "existing synthetic QDN entities still render",
+      "result": "PASS",
+      "evidence": {
+        "qdnBackedControlRows": [
+          "steps: Synthetic staging step (Phase 4)",
+          "services: Synthetic staging service (Phase 4, verified)",
+          "services: In-session service A (Phase 4)"
+        ],
+        "note": "all three active synthetic entities render: the verified service, in-session service A and the synthetic step (with its 3016 B THUMBNAIL beside the seed steps)"
+      }
+    },
+    {
+      "id": 2,
+      "requirement": "untouched shipped seed items also render beside them",
+      "result": "PASS",
+      "evidence": {
+        "seedBackedControlRows": 14,
+        "note": "14 shipped items render although zero shipped identifiers are published; services 6 = 4 seed + 2 QDN and steps 4 = 3 seed + 1 QDN are literally side by side"
+      }
+    },
+    {
+      "id": 3,
+      "requirement": "those untouched items still expose the owner inline controls",
+      "result": "PASS",
+      "evidence": {
+        "seedBackedItemRowsWithFullControlSet": [
+          "highlights: \u2728 A website that looks like nobody else \u2728",
+          "highlights: \u2728 Why your own website matters \u2728",
+          "steps: Order reception and planning",
+          "steps: Design and build",
+          "steps: Launch and handover",
+          "featured works: ASOT | A State Of Trance",
+          "featured works: HTML web @ Qortal Web Builders",
+          "featured works: iffi vaba mees",
+          "services: Custom websites",
+          "services: Custom Qortal apps",
+          "services: Visual identity and design",
+          "services: Updates and care",
+          "prices: Custom website",
+          "prices: Custom build or open challenge"
+        ],
+        "controlsPerItem": [
+          "edit",
+          "delete",
+          "move earlier",
+          "move later"
+        ],
+        "screenshots": [
+          "screen-after-fix-steps-seed-beside-qdn.png",
+          "screen-after-fix-seed-highlight-with-controls.png"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "requirement": "hard reload preserves both the QDN entities and untouched shipped items",
+      "result": "PASS",
+      "evidence": {
+        "reloadsPerformed": 3,
+        "method": "Hub refreshApp (document-level reload of the app iframe with a new time= cache-buster)",
+        "afterReloadCounts": {
+          "highlights": 2,
+          "steps": 4,
+          "featuredWorks": 3,
+          "services": 6,
+          "prices": 2
+        },
+        "afterReloadControlRows": 17,
+        "tombstoneAndEntityChecksAfterReload": {
+          "absent_tombstone_step2": true,
+          "absent_tombstone_serviceB": true,
+          "present_qdn_step": true,
+          "present_qdn_serviceVerified": true,
+          "present_qdn_inSessionA": true,
+          "present_seed_highlight1": true,
+          "present_seed_highlight2": true,
+          "present_seed_service1": true,
+          "present_seed_service4": true,
+          "present_seed_step_planning": true,
+          "present_seed_work_asot": true,
+          "present_seed_price1": true,
+          "present_seed_price2": true,
+          "ownerBar": true
+        }
+      }
+    },
+    {
+      "id": 5,
+      "requirement": "no tombstoned shipped item is resurrected",
+      "result": "PASS",
+      "evidence": {
+        "tombstonedIdentifiers": [
+          "qwb_step_process-step-mu3jjvhv-o74n",
+          "qwb_svc_build-service-mu3jyvwn-99dq"
+        ],
+        "tombstonedTitlesAbsentFromDom": {
+          "Synthetic staging step two (Phase 4)": true,
+          "In-session service B (Phase 4)": true
+        },
+        "tombstonesFiltered": 2,
+        "shippedIdentifiersTombstonedInThisData": 0,
+        "note": "no shipped identifier is tombstoned on this node, so this run confirms the general rule (a reported tombstone is never rendered and is never replaced by its shipped default) rather than a shipped-tombstone instance; the shipped-tombstone case itself is covered by tests/qdn-source.test.ts"
+      }
+    }
+  ],
+  "verdict": "PASS"
+}

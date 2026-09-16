@@ -1,0 +1,203 @@
+{
+  "measure": {
+    "href": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=default&time=571",
+    "counts": {
+      "highlights": 2,
+      "steps": 4,
+      "featuredWorks": 3,
+      "services": 6,
+      "prices": 2
+    },
+    "ownerBar": true,
+    "ownerAttrCounts": {
+      "controls": 20,
+      "add": 5
+    },
+    "ctl": 76,
+    "ctlEdit": 20,
+    "ctlDelete": 17,
+    "ctlAdd": 5,
+    "qwbEntities": [
+      "?"
+    ]
+  },
+  "inventory": {
+    "totalControlRows": 20,
+    "itemControlRows": 17,
+    "siteControlRows": [
+      "Hero band",
+      "Contact block",
+      "Footer"
+    ],
+    "items": [
+      {
+        "label": "highlights: ✨ A website that looks like nobody else ✨",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "highlights: ✨ Why your own website matters ✨",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "steps: Order reception and planning",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "steps: Synthetic staging step (Phase 4)",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "steps: Design and build",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "steps: Launch and handover",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "featured works: ASOT | A State Of Trance",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "featured works: HTML web @ Qortal Web Builders",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "featured works: iffi vaba mees",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: Custom websites",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: Custom Qortal apps",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: Visual identity and design",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: Updates and care",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: Synthetic staging service (Phase 4, verified)",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "services: In-session service A (Phase 4)",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "prices: Custom website",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      },
+      {
+        "label": "prices: Custom build or open challenge",
+        "controls": [
+          "qwb-ctl-edit",
+          "qwb-ctl-delete",
+          "qwb-ctl-move",
+          "qwb-ctl-move"
+        ]
+      }
+    ],
+    "addButtons": [
+      "Add featured card",
+      "Add step",
+      "Add project",
+      "Add build service",
+      "Add pricing tier"
+    ]
+  },
+  "tombstoneCheck": {
+    "stepTwo": false,
+    "serviceB": false,
+    "qdnStep": true,
+    "qdnServiceVerified": false,
+    "inSessionA": false,
+    "textLen": 3107
+  }
+}

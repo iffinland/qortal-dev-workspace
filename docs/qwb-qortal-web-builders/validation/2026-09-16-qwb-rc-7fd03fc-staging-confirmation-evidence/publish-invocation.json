@@ -1,0 +1,69 @@
+{
+  "host": "Qortal Hub 3.0.3 (Linux/Electron), CDP-attached renderer",
+  "account": "QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi",
+  "nodeApiKeyPresent": false,
+  "path": "Hub renderer -> window.sendMessage('publishOnQDN', ...) -> src/encryption/encryption.ts publishOnQDN -> src/qdn/publish/publish.ts publishData (uploadType 'zip')",
+  "note": "This is the same Hub-side implementation that backs the Hub's own Apps -> My apps -> Publish site flow. The transaction is signed by the Hub wallet; no node API key is used.",
+  "payload": {
+    "service": "WEBSITE",
+    "name": "Q-Website",
+    "identifier": "default",
+    "title": "Qortal Web Builders - Phase 4 staging (synthetic)",
+    "description": "Owner-runtime staging build of the QWB Phase 3 revision plus the Phase 4 bridge fix and the production-bootstrap seed baseline. Synthetic content only.",
+    "tag1": "qwb",
+    "tag2": "staging",
+    "tag3": "phase4",
+    "uploadType": "zip",
+    "data": {
+      "kind": "File",
+      "name": "qwb-staging-7fd03fc.zip",
+      "type": "application/zip",
+      "bytes": 879170,
+      "sha256": "43244c2111eee1a4c78534e1f95d85a7dd7775d864e040444c9968fc67984cf7"
+    }
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "outcome": "rejected by the node",
+      "error": "Finalize failed: Bad parameter \"category\"",
+      "cause": "the payload carried category 'other'",
+      "resolution": "retried without a category, matching the metadata of the previous staging publish"
+    },
+    {
+      "attempt": 2,
+      "outcome": "accepted",
+      "result": {
+        "type": "ARBITRARY",
+        "timestamp": 1789536355704,
+        "reference": "3D6TqkhSPrgQMSPfqWrWtmo6v5uMksLnL4D5p1sPLwhQM6bMfTQRTA74WiqnNxroLErmQHUK53TjPdvqJynCLKPw",
+        "fee": "0.01000000",
+        "signature": "2egexP3JFzX5pkyVKkPrt9Pidcv9QWvcrvYoxCb8KDtmZa1iY76TUjd4CxLG128xUszoJV2rxKCmyza1gDFJ9sLd",
+        "txGroupId": 0,
+        "approvalStatus": "NOT_REQUIRED",
+        "creatorAddress": "QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi",
+        "version": 5,
+        "senderPublicKey": "ARx4Pgkf6ZuGz4FafAgkzZ3fR5eQiQSb3YymJ2zAsp2W",
+        "service": 200,
+        "nonce": 0,
+        "size": 880368,
+        "name": "Q-Website",
+        "method": "PUT",
+        "compression": "ZIP",
+        "dataType": "DATA_HASH",
+        "payments": []
+      }
+    }
+  ],
+  "onChain": {
+    "endpoint": "/transactions/signature/2egexP3JFzX5pkyVKkPrt9Pidcv9QWvcrvYoxCb8KDtmZa1iY76TUjd4CxLG128xUszoJV2rxKCmyza1gDFJ9sLd",
+    "type": "ARBITRARY",
+    "blockHeight": 2725989,
+    "creatorAddress": "QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi",
+    "fee": "0.01000000",
+    "method": "PUT",
+    "size": 880368,
+    "name": "Q-Website"
+  },
+  "balanceAfter": "9.84000000 (was 9.85 QORT before the write; one 0.01 QORT ARBITRARY fee)"
+}

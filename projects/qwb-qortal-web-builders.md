@@ -1,6 +1,7 @@
 # Qortal Web Builders — qwb-qortal-web-builders
 
-> Status: **PHASE 3 ACCEPTED (CODE-COMPLETE); PHASE 4 OWNER-RUNTIME VALIDATION `PASS`** (2026-09-16).
+> Status: **PHASE 3 ACCEPTED (CODE-COMPLETE); PHASE 4 OWNER-RUNTIME VALIDATION `PASS`;
+> RELEASE CANDIDATE `7fd03fc` CONFIRMED ON STAGING AND PRODUCTION-READY** (2026-09-16).
 > Development repository `git@github.com:iffinland/QWB-Qortal-Web-Builders.git`: `main` @
 > `18d760d011e956829714e7489432949829fa1840`; the accepted Phase 3 build is on `agent/qwb/phase-3` @
 > `911b44f3e57c39c46048c950274c89bdd04596f5` (base `b53edc1aa57b89037cd4b86a6fa5173e5bd5934c`, the
@@ -42,6 +43,16 @@
 > gate is `tsc --noEmit` / `eslint .` / `prettier --check .` clean, **294 tests in 25 files pass**,
 > and a successful `npm run build`. No write, owner-mode or inline-editing contract changed, and
 > the checkpoint made no QDN write.
+> **Final bounded staging confirmation (2026-09-16, `PASS`):** the release candidate build was
+> published to the staging resource `WEBSITE / Q-Website / default` (signature
+> `2egexP3JFzX5pkyVKkPrt9Pidcv9QWvcrvYoxCb8KDtmZa1iY76TUjd4CxLG128xUszoJV2rxKCmyza1gDFJ9sLd`,
+> 880 368 B, `READY`, confirmed in block 2 725 989 by `QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi`), and
+> the production-bootstrap fix was confirmed in the real Hub: the already published synthetic
+> entities still render, the untouched shipped items render beside them **with** their owner
+> inline controls, a hard reload preserves both, and no tombstoned item is resurrected. The
+> release candidate `7fd03fc` is **production-ready**. Production was still not published. The
+> staging run also reproduced the pre-fix defect live (build `741754b` rendered 0 highlights,
+> 0 featured works, 0 prices, 2 services, 1 step).
 > **The production resource `WEBSITE / Qortal Web Builders / default` was NOT published and NOT
 > written** — it remains the 2026-07-07 placeholder (21 360 B, 2 files; name owner
 > `QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi`). No write used a node API key; every write was signed by the
@@ -60,13 +71,18 @@
 > `…/implementations/2026-09-15-qwb-phase-2-implementation.md`
 > (evidence in `…/implementations/2026-09-15-qwb-phase-2-visual-evidence/`) and
 > `…/implementations/2026-09-15-qwb-phase-0-1-implementation.md`
-> (visual evidence in `…/implementations/2026-09-15-qwb-phase-1-visual-evidence/`).
+> (visual evidence in `…/implementations/2026-09-15-qwb-phase-1-visual-evidence/`),
+> `…/implementations/2026-09-16-qwb-phase-4-checkpoint.md` (evidence in
+> `…/implementations/2026-09-16-qwb-phase-4-checkpoint-evidence/`) and
+> `…/validation/2026-09-16-qwb-rc-7fd03fc-staging-confirmation.md` (evidence in
+> `…/validation/2026-09-16-qwb-rc-7fd03fc-staging-confirmation-evidence/`).
 > **Owner decisions D1–D9 are approved (2026-09-16)** — the entry conditions recorded as open above
 > are closed, and the remaining external step is the owner-authorized production publication itself.
 > The approved production identity is **`WEBSITE / Qortal Web Builders / default`** (service
 > `WEBSITE`, publishing name `Qortal Web Builders`, identifier `default`), the resource the site
 > already addresses; staging was **`WEBSITE / Q-Website / default`**, where the Phase 4 owner-runtime
-> validation passed. QDN CRUD, owner mode and inline editing are implemented and runtime-verified —
+> validation passed and where the release candidate `7fd03fc` was subsequently confirmed on
+> 2026-09-16. QDN CRUD, owner mode and inline editing are implemented and runtime-verified —
 > the `qwb_*` resource model is the shipped model, no longer a proposal.
 
 ## Project identity
@@ -173,7 +189,7 @@ in the Phase 4 runtime evidence, none of it a proposal any more).
 | D6 | Local owner-editing development | no dev-only owner override; owner mode comes only from a real host `_qdnName` + name ownership |
 | D7 | Article pages | the article kind is kept (`qwb_post_*`, service `DOCUMENT`) |
 | D8 | Commerce / contact | the existing Q-Shop, Q-Mail and group touchpoints are kept and carried in the editable content |
-| D9 | First publication target | staging first (`WEBSITE / Q-Website / default`, where Phase 4 passed), production only at the final owner-authorized step |
+| D9 | First publication target | staging first (`WEBSITE / Q-Website / default`, where Phase 4 passed and the release candidate `7fd03fc` was confirmed on 2026-09-16), production only at the final owner-authorized step |
 
 ## QDN identities and services
 
@@ -181,8 +197,10 @@ in the Phase 4 runtime evidence, none of it a proposal any more).
   the registered name `Qortal Web Builders` (also referenced in the site footer as
   `qortal://WEBSITE/Qortal%20Web%20Builders`). It still serves the 2026-07-07 placeholder; no write
   has been made to it.
-- **Staging identity (used for Phase 4):** `WEBSITE / Q-Website / default`, owned by
-  `QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi`, where all §14 steps passed.
+- **Staging identity (used for Phase 4 and the release-candidate confirmation):**
+  `WEBSITE / Q-Website / default`, owned by `QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi`, where all §14
+  steps passed and where the release candidate `7fd03fc` now serves (three publishes in total:
+  the `8fd110b` build, the `741754b` build, and the `7fd03fc` confirmation revision).
 - Related existing QDN touchpoints referenced by the site: `APP/Q-Shop/Qortal Web Builders/q-store-general-qortal-web-builders`,
   `APP/Q-Mail/to/Qortal20Web%20Builders`, group `745`, several portfolio `WEBSITE` resources.
 - Identifier prefix family, implemented and runtime-verified under the staging name: `qwb_*`
