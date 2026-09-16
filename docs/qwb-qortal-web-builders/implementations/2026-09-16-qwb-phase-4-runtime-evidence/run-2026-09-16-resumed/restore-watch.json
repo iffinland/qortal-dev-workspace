@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "log": [
+    {
+      "t": "2026-09-16T04:01:55.846Z",
+      "lastAuth": "QRTUysZHKgxrdqsATotaffNVfFrD4KPE2Q",
+      "login": false
+    },
+    {
+      "t": "2026-09-16T04:02:08.606Z",
+      "lastAuth": null,
+      "login": true
+    },
+    {
+      "t": "2026-09-16T04:02:25.271Z",
+      "lastAuth": "QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi",
+      "login": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "step": 12,
+  "attempt": 5,
+  "method": "agent-dispatched trusted click on Hub Decline control",
+  "target": "JSON / Q-Website / qwb_svc_build-service-mu3jfqw1-i5hb",
+  "events": [],
+  "preNode": {
+    "schema": 1,
+    "id": "qwb_svc_build-service-mu3jfqw1-i5hb",
+    "kind": "service",
+    "rev": 6,
+    "state": "active",
+    "createdAt": 1789529141503,
+    "updatedAt": 1789530490455,
+    "deletedAt": null,
+    "order": 50,
+    "title": "Synthetic staging service (Phase 4, probe test)",
+    "payload": {
+      "summary": "Written by the Phase 4 owner-runtime run against staging.",
+      "icon": "🧪",
+      "bullets": [
+        "First synthetic detail line",
+        "Second synthetic detail line",
+        "Third line added by the Phase 4 edit step"
+      ],
+      "link": {
+        "label": "Qortal",
+        "href": "https://qortal.org"
+      }
+    }
+  },
+  "clickedAtUtc": "2026-09-16T03:49:38.456Z",
+  "dialogText": "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_svc_build-service-mu3jfqw1-i5hb | name: Q-Website | 60 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept",
+  "dialogRect": {
+    "x": 235,
+    "y": 260,
+    "w": 560,
+    "h": 455
+  },
+  "dialogControls": [],
+  "dialogOpenedUtc": "2026-09-16T03:49:39.018Z"
+}

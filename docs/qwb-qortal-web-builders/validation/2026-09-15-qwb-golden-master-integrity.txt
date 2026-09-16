@@ -1,0 +1,74 @@
+QWB golden-master integrity proof
+=================================
+
+Executing agent: DeepSeek (model executed through the local Codex CLI profile; report writer: DeepSeek)
+Audit task: qwb-qortal-web-builders/architecture-audit-20260915
+Golden master (READ-ONLY): /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/-PUBLISHED-versioon
+Hashing tool: sha256sum (GNU coreutils), LC_ALL=C sort for determinism
+
+RESULT: PASS — the golden master is byte-identical before and after the audit.
+
+Baseline recorded at the start of the audit (2026-09-15T12:56Z):
+  files:        50
+  bytes:        8,897,400
+  directories:  7 (plus the root) — css, fonts, images, images/icons, images/topics, images/web-preview
+  git metadata: none (no .git in -PUBLISHED-versioon and none in its parent directory)
+  manifest:     docs/qwb-qortal-web-builders/validation/2026-09-15-qwb-golden-master-sha256.txt
+
+Re-verified at the end of the audit (after all report writing was finished):
+  files: 50
+  bytes: 8,897,400
+  diff against the baseline manifest: empty (0 differences across all 50 SHA-256 digests)
+
+Commands used
+-------------
+Baseline:
+  cd /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders
+  find ./-PUBLISHED-versioon -type f | LC_ALL=C sort | xargs sha256sum
+
+Re-verification:
+  cd /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders
+  find ./-PUBLISHED-versioon -type f | LC_ALL=C sort | xargs sha256sum | sed 's#\./-PUBLISHED-versioon/#./#' \
+    > /tmp/qwb-post-audit-sha256.txt
+  diff <(grep -E '^[0-9a-f]{64}  ' <manifest>) /tmp/qwb-post-audit-sha256.txt
+  -> no output
+
+File-count and size checks:
+  find ./-PUBLISHED-versioon -type f | wc -l            -> 50
+  find ./-PUBLISHED-versioon -type f -printf '%s\n' | paste -sd+ | bc -> 8897400
+
+Timestamp evidence (no write occurred during the audit)
+-------------------------------------------------------
+Newest mtimes inside the golden master: 2026-09-15 15:00 (local, Europe/Helsinki) for the
+`images/topics`, `images/web-preview` and `js` directories. The audit session began at
+2026-09-15T12:41Z (15:41 local) and the first hash manifest was produced at 2026-09-15T12:56Z.
+Every directory mtime in the golden master therefore predates the audit session; no directory or
+file timestamp inside the golden master belongs to this audit.
+
+What was NOT done (explicitly prohibited by the task, and verified as not done)
+------------------------------------------------------------------------------
+- no file created, edited, formatted, renamed or deleted inside -PUBLISHED-versioon
+- no package installed into it; no build artifact generated inside it
+- it was not used as a development repository and has no Git metadata
+- it was never added as a Git remote, submodule or worktree of any repository
+
+Where the audit DID write (all outside the golden master)
+---------------------------------------------------------
+- /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/audits/
+- /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/validation/
+- /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/projects/qwb-qortal-web-builders.md
+- /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/PROJECT-REGISTRY.md (one added registry row)
+- /home/iffi/VsCodec-Projects/AI-Orchestration/tasks/qwb-qortal-web-builders/qwb-architecture-audit-20260915/
+- /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/qortal-web-builders/ (empty directory, name reserved only)
+- /home/iffi/VsCodec-Projects/github-clones/Qortal/iffi-vaba-mees-QORTAL/ (new clean reference clone)
+- /tmp/qwb-audit-shots/ (screenshots and browser harnesses)
+- git fetch (read-only) on the four pinned reference clones
+
+No commit, push, tag, release, deployment or QDN write was performed anywhere.
+
+Reference manifest digest (for cross-checking this proof)
+--------------------------------------------------------
+18e2a960cc126cb34ab68c432c5a8a1331c980fbb187db38f63d7ad063b95a43  /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/validation/2026-09-15-qwb-golden-master-sha256.txt
+
+Re-verification digest of the same manifest after the audit (must match the line above):
+18e2a960cc126cb34ab68c432c5a8a1331c980fbb187db38f63d7ad063b95a43  /home/iffi/VsCodec-Projects/Qortal/qortal-dev-workspace/docs/qwb-qortal-web-builders/validation/2026-09-15-qwb-golden-master-sha256.txt

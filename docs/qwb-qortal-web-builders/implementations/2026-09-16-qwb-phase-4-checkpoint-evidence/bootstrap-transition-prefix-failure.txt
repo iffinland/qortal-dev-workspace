@@ -1,0 +1,59 @@
+# Pre-fix reproduction on the release candidate 741754becb79a131c699f2468fe096fdacd00c19
+# Executed 2026-09-16 by DeepSeek in a detached worktree of the app repository:
+#   /home/iffi/.codex-deepseek/tmp/qwb-prefix-bGWvSjRn/wt
+# Only tests/qdn-source.test.ts from the fix commit was copied in; no source was modified.
+# Command: npx vitest run tests/qdn-source.test.ts -t 'pre-publication bootstrap baseline'
+
+
+ RUN  v4.1.11 /home/iffi/.codex-deepseek/tmp/qwb-prefix-bGWvSjRn/wt
+
+ ❯ tests/qdn-source.test.ts (17 tests | 2 failed | 14 skipped) 79ms
+     × keeps untouched shipped items rendered across the zero → first write → reload → second write transition 53ms
+     × never resurrects a shipped item the owner tombstoned 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/qdn-source.test.ts > QDN content source — pre-publication bootstrap baseline > keeps untouched shipped items rendered across the zero → first write → reload → second write transition
+AssertionError: expected [ { schema: 1, …(10) } ] to have a length of 2 but got 1
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/qdn-source.test.ts:386:42
+    384|     const afterFirst = await source.load();
+    385|     expect(afterFirst.status).toBe('ready');
+    386|     expect(afterFirst.bundle.highlights).toHaveLength(seed.highlights.…
+       |                                          ^
+    387|     expect(afterFirst.bundle.highlights.find((item) => item.id === fir…
+    388|       'First bootstrap edit',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/qdn-source.test.ts > QDN content source — pre-publication bootstrap baseline > never resurrects a shipped item the owner tombstoned
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/qdn-source.test.ts:429:38
+    427|     const result = await source.load();
+    428|     expect(result.bundle.highlights.map((item) => item.id)).not.toCont…
+    429|     expect(result.bundle.highlights).toHaveLength(seed.highlights.leng…
+       |                                      ^
+    430|     expect(result.diagnostics.join(' ')).toContain('tombstones: 1');
+    431|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed | 14 skipped (17)
+   Start at  08:01:25
+   Duration  4.31s (transform 785ms, setup 0ms, import 935ms, tests 79ms, environment 2.71s)
+

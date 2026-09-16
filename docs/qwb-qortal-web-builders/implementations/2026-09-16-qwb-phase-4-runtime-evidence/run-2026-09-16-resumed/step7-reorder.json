@@ -1,0 +1,25 @@
+{
+  "tag": "step7-reorder",
+  "events": [
+    {
+      "t": "2026-09-16T03:29:20.421Z",
+      "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing: 1 write in flight — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+      "formStatus": null,
+      "toasts": [
+        "Order is persisted by republishing the moved item with a new order value, verified by reading it back.\n×"
+      ],
+      "hubDialog": "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_step_process-step-mu3jjvhv-o74n | name: Q-Website | 59 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept",
+      "modalText": null
+    },
+    {
+      "t": "2026-09-16T03:29:22.247Z",
+      "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing: 1 write in flight — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+      "formStatus": null,
+      "toasts": [
+        "Order is persisted by republishing the moved item with a new order value, verified by reading it back.\n×"
+      ],
+      "hubDialog": null,
+      "modalText": null
+    }
+  ]
+}

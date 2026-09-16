@@ -1,0 +1,66 @@
+{
+  "action": "Delete",
+  "events": [
+    {
+      "t": "2026-09-16T03:40:38.476Z",
+      "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing: 1 write in flight — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+      "formStatus": null,
+      "formResult": null,
+      "toasts": [],
+      "modalOpen": true,
+      "modalText": "Delete “In-session service B (Phase 4)”?\n\nbuild service · identifier qwb_svc_build-service-mu3jyvwn-99dq · current rev 2\n\n×\nDeleting publishes a tombstone for the same identifier. The item disappears from the site, while the previously published bytes stay retrievable from the network — Qortal has no app-accessible QDN delete.\n\nQortal has no app-accessible QDN delete. Deleting republishes the same identifier with state \"deleted\", and the previous bytes stay retrievable from the network.\n\nCancel Delete",
+      "hubDialog": "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_svc_build-service-mu3jyvwn-99dq | name: Q-Website | 59 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept"
+    },
+    {
+      "t": "2026-09-16T03:40:40.494Z",
+      "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+      "formStatus": null,
+      "formResult": null,
+      "toasts": [],
+      "modalOpen": false,
+      "modalText": null,
+      "hubDialog": null
+    },
+    {
+      "t": "2026-09-16T03:40:42.517Z",
+      "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+      "formStatus": null,
+      "formResult": null,
+      "toasts": [
+        "\"In-session service B (Phase 4)\" was deleted: a tombstone was published as revision 3 and verified. The previous bytes stay retrievable from the network.\n×"
+      ],
+      "modalOpen": false,
+      "modalText": null,
+      "hubDialog": null
+    }
+  ],
+  "finalSnap": {
+    "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+    "qdnName": "Q-Website",
+    "qdnService": "WEBSITE",
+    "qdnContext": "render",
+    "bridged": true,
+    "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+    "ownerBarVisible": true,
+    "controlRows": 6,
+    "addRows": 4,
+    "addButtons": [
+      "+ Add step",
+      "+ Add project",
+      "+ Add build service",
+      "+ Add pricing tier"
+    ],
+    "editButtons": 6,
+    "deleteButtons": 3,
+    "moveButtons": 6,
+    "modalOpen": false,
+    "modalText": null,
+    "toastText": "\"In-session service B (Phase 4)\" was deleted: a tombstone was published as revision 3 and verified. The previous bytes stay retrievable from the network.\n×",
+    "toasts": [
+      "\"In-session service B (Phase 4)\" was deleted: a tombstone was published as revision 3 and verified. The previous bytes stay retrievable from the network.\n×"
+    ],
+    "formStatus": null,
+    "formResult": null,
+    "bodyText": "Skip to content\nOWNER MODE\nQ-Website\nWEBSITE · verified by name ownership\nHide owner tools\nPublishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified)\nNo unsaved drafts\nPublishing status\nReload content\nCheck last write\nRe-check owner mode\nQWB - Qortal Web Builders\nHOME\nBROWSE TOPICS\nPRICES\nCONTACT\nCustom websites & Qortal apps, built around you 🤗\n\nWe design and build individually tailored websites and Qortal applications — visual identity, layout, functions and behaviour shaped around what your project actually needs.\n\n✎\nBrowse Topics\nHow we build\nCompleted works\nWhat we build\nSynthetic staging step (Phase 4)\n\nCreated by the Phase 4 owner-runtime run with a synthetic illustration.\n\n1\n✎\n🗑\n↑\n↓\n+ Add step\nCustom design, priced by the work it needs\n+ Add pricing tier\nGet in touch\n\nLet's chat!\n\nQ-Mail\nclick to open apps\n\nPM to\nqortal web builders\n\nJoin the LIVE Chat & Forum\n\nGroup name\nQortal Web Builders\n\nGroup ID\n745\n\n✎\nsince 2025 | Qortal Web Builders\n\nhosted by 100% censorship free QDN and does not use cookies |¤| Design: Qortal Web Builders |¤| Built on the QWBT-1 HTML template\n\nCustom websites, custom Qortal apps and design work by Qortal Web Builders.\n\n✎\n\"In-session service B (Phase 4)\" was deleted: a tombstone was published as revision 3 and verified. The previous bytes stay retrievable from the network.\n×"
+  }
+}

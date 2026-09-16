@@ -1,0 +1,10 @@
+== npx vitest run ==
+
+ RUN  v4.1.11 /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/qortal-web-builders
+
+
+ Test Files  24 passed (24)
+      Tests  283 passed (283)
+   Start at  05:30:23
+   Duration  98.93s (transform 2.94s, setup 0ms, import 5.89s, tests 12.81s, environment 65.99s)
+

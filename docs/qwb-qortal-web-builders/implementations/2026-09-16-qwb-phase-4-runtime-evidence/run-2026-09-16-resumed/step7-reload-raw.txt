@@ -1,0 +1,154 @@
+marker before reload: mark-1789529375540
+{
+  "at": "2026-09-16T03:29:53.578Z",
+  "markerBefore": "mark-1789529375540",
+  "markerAfter": null,
+  "snapshot": {
+    "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+    "qdnName": "Q-Website",
+    "qdnService": "WEBSITE",
+    "qdnContext": "render",
+    "bridged": true,
+    "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — no writes in this session | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+    "ownerBarVisible": true,
+    "controlRows": 6,
+    "addRows": 4,
+    "addButtons": [
+      "+ Add step",
+      "+ Add project",
+      "+ Add build service",
+      "+ Add pricing tier"
+    ],
+    "editButtons": 6,
+    "deleteButtons": 3,
+    "moveButtons": 6,
+    "modalOpen": false,
+    "modalText": null,
+    "toastText": null,
+    "toasts": [],
+    "formStatus": null,
+    "formResult": null,
+    "bodyText": "Skip to content\nOWNER MODE\nQ-Website\nWEBSITE · verified by name ownership\nHide owner tools\nPublishing to QDN under “Q-Website” — no writes in this session\nNo unsaved drafts\nPublishing status\nReload content\nCheck last write\nRe-check owner mode\nQWB - Qortal Web Builders\nHOME\nBROWSE TOPICS\nPRICES\nCONTACT\nCustom websites & Qortal apps, built around you 🤗\n\nWe design and build individually tailored websites and Qortal applications — visual identity, layout, functions and behaviour shaped around what your project actually needs.\n\n✎\nBrowse Topics\nHow we build\nCompleted works\nWhat we build\nSynthetic staging step two (Phase 4)\n\nSecond synthetic step, added so the reorder step has two items in its group.\n\n1\n✎\n🗑\n↑\n↓\nSynthetic staging step (Phase 4)\n\nCreated by the Phase 4 owner-runtime run with a synthetic illustration.\n\n2\n✎\n🗑\n↑\n↓\n+ Add step\nCustom design, priced by the work it needs\n+ Add pricing tier\nGet in touch\n\nLet's chat!\n\nQ-Mail\nclick to open apps\n\nPM to\nqortal web builders\n\nJoin the LIVE Chat & Forum\n\nGroup name\nQortal Web Builders\n\nGroup ID\n745\n\n✎\nsince 2025 | Qortal Web Builders\n\nhosted by 100% censorship free QDN and does not use cookies |¤| Design: Qortal Web Builders |¤| Built on the QWBT-1 HTML template\n\nCustom websites, custom Qortal apps and design work by Qortal Web Builders.\n\n✎"
+  },
+  "logs": [
+    {
+      "t": "2026-09-16T03:29:35.464Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.465Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.472Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.473Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.478Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.479Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.479Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.482Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.484Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.486Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.487Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.495Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.496Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.496Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.501Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.502Z",
+      "kind": "console.info",
+      "text": "[qwb owner] owner add control skipped for \"add-highlight\": container not found"
+    },
+    {
+      "t": "2026-09-16T03:29:35.510Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/arbitrary/JSON/Q-Website/qwb_site_v1?"
+    },
+    {
+      "t": "2026-09-16T03:29:35.510Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier="
+    },
+    {
+      "t": "2026-09-16T03:29:35.511Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/arbitrary/JSON/Q-Website/qwb_site_v1?"
+    },
+    {
+      "t": "2026-09-16T03:29:35.514Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/arbitrary/JSON/Q-Website/qwb_site_v1?"
+    },
+    {
+      "t": "2026-09-16T03:29:35.515Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/arbitrary/JSON/Q-Website/qwb_site_v1?"
+    },
+    {
+      "t": "2026-09-16T03:29:35.515Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/arbitrary/JSON/Q-Website/qwb_site_v1?"
+    },
+    {
+      "t": "2026-09-16T03:29:35.515Z",
+      "kind": "log.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:24991/ar

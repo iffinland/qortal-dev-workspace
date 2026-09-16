@@ -1,0 +1,33 @@
+{
+  "name": "Q-Website",
+  "reloadedAt": "2026-09-16T03:24:03.616Z",
+  "logs": [],
+  "snapshot": {
+    "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+    "qdnName": "Q-Website",
+    "qdnService": "WEBSITE",
+    "qdnContext": "render",
+    "bridged": true,
+    "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — no writes in this session | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+    "ownerBarVisible": true,
+    "controlRows": 17,
+    "addRows": 5,
+    "addButtons": [
+      "+ Add featured card",
+      "+ Add step",
+      "+ Add project",
+      "+ Add build service",
+      "+ Add pricing tier"
+    ],
+    "editButtons": 17,
+    "deleteButtons": 14,
+    "moveButtons": 28,
+    "modalOpen": false,
+    "modalText": null,
+    "toastText": null,
+    "toasts": [],
+    "formStatus": null,
+    "formResult": null,
+    "bodyText": "Skip to content\nOWNER MODE\nQ-Website\nWEBSITE · verified by name ownership\nHide owner tools\nPublishing to QDN under “Q-Website” — no writes in this session\nNo unsaved drafts\nPublishing status\nReload content\nCheck last write\nRe-check owner mode\nQWB - Qortal Web Builders\nHOME\nBROWSE TOPICS\nPRICES\nCONTACT\nCustom websites & Qortal apps, built around you 🤗\n\nWe design and build individually tailored websites and Qortal applications — visual identity, layout, functions and behaviour shaped around what your project actually needs.\n\n✎\n✨ A website that looks like nobody else ✨\nWe start from your project, your audience and your brand — not from a template somebody else already uses\nLayout, colour, typography and functions are designed for you instead of being configured around you\nWhy is a custom design worth it?\nLearn more\n✎\n🗑\n↑\n↓\n✨ Why your own website matters ✨\n\nA website is the one place where your project is presented completely and on your own terms.\n\nVisitors get the whole picture in minutes instead of hunting through scattered posts and profile pages\nOne address you control — hosted on the Qortal Data Network, without a hosting account or a monthly bill\nCustom functions and Qortal integrations that a ready-made site builder cannot give you\nLearn more\n✎\n🗑\n↑\n↓\n+ Add featured card\nBrowse Topics\nHow we build\nCompleted works\nWhat we build\nOrder reception and planning\n\nWe go through your goal, your audience, the visual direction and the functions your project needs before any code exists.\n\n1\n✎\n🗑\n↑\n↓\nDesign and build\n\nWe build the first real version so you can see it in a Qortal host, then iterate with you until the result is right.\n\n2\n✎\n🗑\n↑\n↓\nLaunch and handover\n\nFinal checks, the finished files published under your own account, and one free update round within 30 days.\n\n3\n✎\n🗑\n↑\n↓\n+ Add step\nCustom design, priced by the work it needs\nCustom website\n\n✅Individual design and code — unique and eye-catching\n\n💰From 123 QORT — and your website is ready\n\n🎨Layout, colours and functions built around your project\n\n🔄One free update within 30 days of delivery\n\n🛠️Further updates from 30 QORT, priced by scope\n\nA website on its own, or a website plus a custom Qortal app.\n\nOrder now 🚀\n✎\n🗑\n↑\n↓\nCustom build or open challenge\n\n🧐Got a challenge? Let’s tackle it together\n\n💰Kick things off with 5 QORT — opens a support ticket\n\n✍️Give us a rundown of what the app or the fix has to do\n\n🚀We plan the build and the functions it needs\n\n⚖️Final pricing depends on the scope of the "
+  }
+}

@@ -1,0 +1,276 @@
+{
+ "phases": {
+  "read": {
+   "headlines": [
+    "QDN-served featured headline (harness)",
+    "\u2728 Why your own website matters \u2728"
+   ],
+   "bridgeCalls": [
+    "FETCH_QDN_RESOURCE",
+    "SEARCH_QDN_RESOURCES",
+    "GET_USER_ACCOUNT",
+    "GET_ACCOUNT_NAMES"
+   ],
+   "searchModes": [
+    {
+     "service": "JSON",
+     "identifier": "qwb_hl_",
+     "prefix": true,
+     "mode": "ALL",
+     "exactMatchNames": true,
+     "names": [
+      "Qortal Web Builders"
+     ]
+    },
+    {
+     "service": "JSON",
+     "identifier": "qwb_svc_",
+     "prefix": true,
+     "mode": "ALL",
+     "exactMatchNames": true,
+     "names": [
+      "Qortal Web Builders"
+     ]
+    }
+   ],
+   "ownerBar": true,
+   "barButtons": [
+    "Hide owner tools",
+    "Publishing status",
+    "Reload content",
+    "Check last write",
+    "Re-check owner mode"
+   ],
+   "controls": 17,
+   "ownerBarMeta": "WEBSITE \u00b7 verified by name ownership",
+   "bodyClaims": false
+  },
+  "edit": {
+   "editFound": true,
+   "formOpen": true,
+   "titleValue": "QDN-served featured headline (harness)",
+   "saveDisabled": false,
+   "saveLabel": "Save &amp; publish",
+   "notice": "Saving publishes to the Qortal Data Network under this site\u2019s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the us",
+   "verifyNote": "The change is only reported as published after the app has read the resource back and confirmed the new revision.",
+   "statusHidden": true,
+   "blockEditor": 0,
+   "afterSubmit": {
+    "modalOpen": 0,
+    "formStatus": null,
+    "saveDisabled": true,
+    "saveLabel": "Save &amp; publish",
+    "toast": "\"Harness published headline\" was published and verified as revision 2.\u00d7",
+    "publishes": [
+     {
+      "service": "JSON",
+      "name": "Qortal Web Builders",
+      "identifier": "qwb_hl_custom-design-mu1wnpc0-a1",
+      "byteLength": 764
+     }
+    ]
+   },
+   "renderedAfterWrite": [
+    "Harness published headline",
+    "\u2728 Why your own website matters \u2728"
+   ],
+   "publishStatusEntry": "featured card: QDN-served featured headline (harness) \u2014 Submitted to the host (availability: verified): Published and verified (signature harness-sign\u2026): the node serves revision 2."
+  },
+  "post": {
+   "editFound": true,
+   "editLabel": "Edit articles: How we build your website, step by step",
+   "formOpen": true,
+   "titleValue": "How we build your website, step by step",
+   "blocksEditor": 1,
+   "afterSubmit": {
+    "modalOpen": 0,
+    "formStatus": null,
+    "toast": "\"Harness published headline\" was published and verified as revision 2.\u00d7",
+    "publishes": [
+     {
+      "service": "DOCUMENT",
+      "name": "Qortal Web Builders",
+      "identifier": "qwb_post_order-reception-and-planning-mu1wnpc0-f1",
+      "byteLength": 3344
+     }
+    ]
+   },
+   "bridgeCalls": [
+    {
+     "action": "GET_USER_ACCOUNT"
+    },
+    {
+     "action": "GET_ACCOUNT_NAMES"
+    },
+    {
+     "action": "GET_USER_ACCOUNT"
+    },
+    {
+     "action": "GET_ACCOUNT_NAMES"
+    },
+    {
+     "action": "PUBLISH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_order-reception-and-planning-mu1wnpc0-f1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_order-reception-and-planning-mu1wnpc0-f1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_site_v1"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "JSON",
+     "identifier": "qwb_hl_"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "JSON",
+     "identifier": "qwb_svc_"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "JSON",
+     "identifier": "qwb_step_"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "JSON",
+     "identifier": "qwb_work_"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "JSON",
+     "identifier": "qwb_price_"
+    },
+    {
+     "action": "SEARCH_QDN_RESOURCES",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_hl_custom-design-mu1wnpc0-a1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_hl_own-website-mu1wnpc0-a2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_svc_custom-websites-mu1wnpc0-b1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_svc_custom-qortal-apps-mu1wnpc0-b2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_svc_visual-identity-mu1wnpc0-b3"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_svc_updates-and-care-mu1wnpc0-b4"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_step_planning-mu1wnpc0-c1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_step_design-and-build-mu1wnpc0-c2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_step_launch-and-handover-mu1wnpc0-c3"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_asot-mu1wnpc0-d1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_html-web-mu1wnpc0-d2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_iffi-vaba-mees-mu1wnpc0-d3"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_suomi-finland-mu1wnpc0-d4"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_price_custom-website-mu1wnpc0-e1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_price_custom-build-mu1wnpc0-e2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_order-reception-and-planning-mu1wnpc0-f1"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_why-do-you-need-a-own-website-mu1wnpc0-f2"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_valuing-your-time-mu1wnpc0-f3"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "DOCUMENT",
+     "identifier": "qwb_post_what-information-do-we-want-first-mu1wnpc0-f4"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_svik-mu1wnpc0-d5"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_iffi-forest-life-mu1wnpc0-d6"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_eestlased-qortalis-mu1wnpc0-d7"
+    },
+    {
+     "action": "FETCH_QDN_RESOURCE",
+     "service": "JSON",
+     "identifier": "qwb_work_our-own-site-mu1wnpc0-d8"
+    }
+   ],
+   "renderedAfterWrite": "Owner modeQortal Web BuildersWEBSITE \u00b7 verified by name ownershipHide owner toolsPublishing to QDN under \u201cQortal Web Builders\u201d \u2014 last write: Submitted to the host (availability: verified)No unsaved draftsPublishing statusReload contentCheck"
+  }
+ },
+ "errors": []
+}
