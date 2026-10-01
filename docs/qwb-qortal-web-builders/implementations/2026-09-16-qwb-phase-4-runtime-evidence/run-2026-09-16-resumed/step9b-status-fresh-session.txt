@@ -1,0 +1,2 @@
+clicked {"ok":true}
+2026-09-16T04:03:49.170Z DIALOG: Publishing status |  | What this session submitted, and what the node was proven to serve. |  | × | A submission is not a result. “Verified” means the resource was read back and the revision matched. |  | No write has been submitted in this session. |  | Pending writes: 0. Ambiguous or unverified writes are never retried automatically — use “Check status” in the item's form, or “Check last write” in the owner bar. |  | Close

@@ -1,0 +1,73 @@
+click: {"ok":true,"label":"+ Add step"}
+{
+  "title": "New process step",
+  "text": "New process step\n\nIdentifier qwb_step_process-step-mu3jjvhv-o74n (assigned when this form opened) · order 20\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee. A chosen image is downscaled in this browser and published as a QDN image resource under the item’s identifier, before the item itself.\nNew process step\n\nIdentifier qwb_step_process-step-mu3jjvhv-o74n (assigned when this form opened) · order 20\n\nStep title\nDescription\nIllustration\n\nplaceholder cover: New step\n\nNo new image chosen — the current image stays.\n\nThe current image stays unless you choose a new file; a new image is published to QDN before this item.\n\nImage alt text\nLink label\nLink target\nValidate draft\nSave & publish\n\nThe change is only reported as published after the app has read the resource back and confirmed the new revision.",
+  "fields": [
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "name": "title",
+      "id": "qwb-field-title",
+      "dataQwbMedia": null,
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    },
+    {
+      "tag": "TEXTAREA",
+      "type": "textarea",
+      "name": "description",
+      "id": "qwb-field-description",
+      "dataQwbMedia": null,
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    },
+    {
+      "tag": "INPUT",
+      "type": "file",
+      "name": "illustration.media",
+      "id": "qwb-field-illustration-file",
+      "dataQwbMedia": "illustration",
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "name": "illustration.alt",
+      "id": "qwb-field-illustration-alt",
+      "dataQwbMedia": null,
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "name": "link.label",
+      "id": "qwb-field-link-label",
+      "dataQwbMedia": null,
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "name": "link.href",
+      "id": "qwb-field-link-href",
+      "dataQwbMedia": null,
+      "required": false,
+      "placeholder": "",
+      "label": "",
+      "legend": ""
+    }
+  ]
+}

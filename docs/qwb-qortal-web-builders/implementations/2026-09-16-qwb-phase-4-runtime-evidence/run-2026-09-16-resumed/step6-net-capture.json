@@ -1,0 +1,107 @@
+{
+  "at": "2026-09-16T03:37:49.106Z",
+  "markerAfterReload": null,
+  "totalRequests": 23,
+  "arbitraryRequests": [
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+      "mime": "text/html"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/index-BKwnLHC3.js",
+      "mime": "text/javascript"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/style-BgNavAWw.css",
+      "mime": "text/css"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/open-sans-latin-600-normal-Cp4N6AwT.woff2",
+      "mime": "font/woff2"
+    },
+    {
+      "status": 404,
+      "url": "/arbitrary/JSON/Q-Website/qwb_site_v1?",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=JSON&identifier=qwb_hl_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=JSON&identifier=qwb_svc_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=JSON&identifier=qwb_step_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=JSON&identifier=qwb_work_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=JSON&identifier=qwb_price_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/resources/search?&service=DOCUMENT&identifier=qwb_post_&name=Q-Website&prefix=true&exactmatchnames=true&mode=ALL&includestatus=true&excludeblocked=true&limit=50&offset=0&reverse=true",
+      "mime": "application/json"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/JSON/Q-Website/qwb_svc_build-service-mu3jfqw1-i5hb?",
+      "mime": "application/octet-stream"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/JSON/Q-Website/qwb_step_process-step-mu3jjvhv-o74n?",
+      "mime": "application/octet-stream"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/JSON/Q-Website/qwb_step_process-step-mu3jj436-ynaz?",
+      "mime": "application/octet-stream"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/qwb-icon-trans-192x192.png",
+      "mime": "image/png"
+    },
+    {
+      "status": 200,
+      "url": "/arbitrary/THUMBNAIL/Q-Website/qwb_step_process-step-mu3jj436-ynaz",
+      "mime": "application/octet-stream"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/montserrat-latin-700-normal-BdjcYUrC.woff2",
+      "mime": "font/woff2"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/open-sans-latin-400-normal-Bk63H6sG.woff2",
+      "mime": "font/woff2"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/montserrat-latin-600-normal-UVxSCcoG.woff2",
+      "mime": "font/woff2"
+    },
+    {
+      "status": 200,
+      "url": "/render/WEBSITE/Q-Website/assets/montserrat-latin-500-normal-DRFEGfly.woff2",
+      "mime": "font/woff2"
+    }
+  ]
+}

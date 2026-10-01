@@ -1,0 +1,21 @@
+== npm run build ==
+> tsc --noEmit && vite build
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 64 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                               1.57 kB │ gzip:  0.74 kB
+dist/assets/open-sans-latin-600-normal-Cp4N6AwT.woff2        18.62 kB
+dist/assets/open-sans-latin-400-normal-Bk63H6sG.woff2        18.64 kB
+dist/assets/montserrat-latin-600-normal-UVxSCcoG.woff2       18.68 kB
+dist/assets/montserrat-latin-500-normal-DRFEGfly.woff2       18.74 kB
+dist/assets/montserrat-latin-700-normal-BdjcYUrC.woff2       18.82 kB
+dist/assets/undraw_Graduation_re_gthn-BH47utR5.png           21.28 kB
+dist/assets/undraw_Remote_design_team_re_urdx-CkPBN2pC.png   21.91 kB
+dist/assets/undraw_Redesign_feedback_re_jvm0-D2wmpnSd.png    27.43 kB
+dist/assets/style-BgNavAWw.css                              215.35 kB │ gzip: 32.11 kB
+dist/assets/index-CLC6fuj3.js                               126.57 kB │ gzip: 37.56 kB
+
+✓ built in 1.48s

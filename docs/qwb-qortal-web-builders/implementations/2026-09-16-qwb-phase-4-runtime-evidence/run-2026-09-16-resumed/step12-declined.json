@@ -1,0 +1,213 @@
+{
+  "step": 12,
+  "resolution": "declined via trusted click on Hub Decline control",
+  "target": "JSON / Q-Website / qwb_svc_build-service-mu3jfqw1-i5hb",
+  "events": [
+    {
+      "t": "2026-09-16T03:49:56.147Z",
+      "ev": "hub-dialog-closed"
+    },
+    {
+      "t": "2026-09-16T03:49:56.153Z",
+      "ev": "app-state",
+      "formStatus": "Rejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))",
+      "formResult": "",
+      "toasts": [],
+      "modalOpen": true,
+      "modalText": "Edit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee.\nEdit build service\n\nSynthetic staging service (Phase 4, probe test) · ide",
+      "hubDialogCount": 0
+    }
+  ],
+  "dialogSeen": "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_svc_build-service-mu3jfqw1-i5hb | name: Q-Website | 45 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept",
+  "dialogRect": {
+    "x": 235,
+    "y": 260,
+    "w": 560,
+    "h": 455
+  },
+  "dialogControls": [
+    {
+      "txt": "Decline",
+      "x": 262,
+      "y": 633,
+      "w": 122,
+      "h": 56
+    },
+    {
+      "txt": "Accept",
+      "x": 646,
+      "y": 632,
+      "w": 122,
+      "h": 56
+    }
+  ],
+  "declineAtUtc": "2026-09-16T03:49:55.017Z",
+  "declineClick": {
+    "x": 323,
+    "y": 661,
+    "at": "2026-09-16T03:49:55.323Z"
+  },
+  "dialogReappearances": 0,
+  "quietSecondsAfterClose": 30,
+  "finalSnapshot": {
+    "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+    "qdnName": "Q-Website",
+    "qdnService": "WEBSITE",
+    "qdnContext": "render",
+    "bridged": true,
+    "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Rejected by the host — nothing was published (availability: unverified) | 1 unsaved draft — not published | Publishing status | Reload content | Check last write | Re-check owner mode",
+    "ownerBarVisible": true,
+    "controlRows": 6,
+    "addRows": 4,
+    "addButtons": [
+      "+ Add step",
+      "+ Add project",
+      "+ Add build service",
+      "+ Add pricing tier"
+    ],
+    "editButtons": 6,
+    "deleteButtons": 3,
+    "moveButtons": 6,
+    "modalOpen": true,
+    "modalText": "Edit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee.\nEdit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\nService name\nOne-line summary\nIcon\n\nA single emoji.\n\nDetail lines\n\nOne line per detail.\n\nLink label\nLink target\nRejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined req",
+    "toastText": null,
+    "toasts": [],
+    "formStatus": "Rejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))",
+    "formResult": "",
+    "bodyText": "Skip to content\nOWNER MODE\nQ-Website\nWEBSITE · verified by name ownership\nHide owner tools\nPublishing to QDN under “Q-Website” — last write: Rejected by the host — nothing was published (availability: unverified)\n1 unsaved draft — not published\nPublishing status\nReload content\nCheck last write\nRe-check owner mode\nQWB - Qortal Web Builders\nHOME\nBROWSE TOPICS\nPRICES\nCONTACT\nCustom websites & Qortal apps, built around you 🤗\n\nWe design and build individually tailored websites and Qortal applications — visual identity, layout, functions and behaviour shaped around what your project actually needs.\n\n✎\nBrowse Topics\nHow we build\nCompleted works\nWhat we build\nSynthetic staging step (Phase 4)\n\nCreated by the Phase 4 owner-runtime run with a synthetic illustration.\n\n1\n✎\n🗑\n↑\n↓\n+ Add step\nCustom design, priced by the work it needs\n+ Add pricing tier\nGet in touch\n\nLet's chat!\n\nQ-Mail\nclick to open apps\n\nPM to\nqortal web builders\n\nJoin the LIVE Chat & Forum\n\nGroup name\nQortal Web Builders\n\nGroup ID\n745\n\n✎\nsince 2025 | Qortal Web Builders\n\nhosted by 100% censorship free QDN and does not use cookies |¤| Design: Qortal Web Builders |¤| Built on the QWBT-1 HTML template\n\nCustom websites, custom Qortal apps and design work by Qortal Web Builders.\n\n✎\nEdit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee.\nEdit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\nService name\nOne-line summary\nIcon\n\nA single emoji.\n\nDetail lines\n\nOne line per detail.\n\nLink label\nLink target\nRejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))\nValidate draft\nCheck status\nSave & publish\n\nThe change is only reported as published after the app has read the resource back and confirmed the new revision."
+  },
+  "hubEventLog": [
+    {
+      "t": 1789530595058,
+      "type": "pointerdown",
+      "tag": "DIV",
+      "role": "",
+      "txt": "Decline",
+      "cls": "MuiBox-root css-1nxoy32",
+      "x": 323,
+      "y": 661,
+      "rect": {
+        "x": 262,
+        "y": 632,
+        "w": 122,
+        "h": 56
+      },
+      "isTrusted": true,
+      "detail": 0
+    },
+    {
+      "t": 1789530595059,
+      "type": "pointerdown",
+      "txt": "Decline",
+      "isTrusted": true,
+      "source": "external"
+    },
+    {
+      "t": 1789530595059,
+      "type": "pointerdown",
+      "txt": "Decline",
+      "trusted": true
+    },
+    {
+      "t": 1789530595059,
+      "type": "mousedown",
+      "tag": "DIV",
+      "role": "",
+      "txt": "Decline",
+      "cls": "MuiBox-root css-1nxoy32",
+      "x": 323,
+      "y": 661,
+      "rect": {
+        "x": 262,
+        "y": 632,
+        "w": 122,
+        "h": 56
+      },
+      "isTrusted": true,
+      "detail": 1
+    },
+    {
+      "t": 1789530595137,
+      "type": "pointerup",
+      "tag": "DIV",
+      "role": "",
+      "txt": "Decline",
+      "cls": "MuiBox-root css-1nxoy32",
+      "x": 323,
+      "y": 661,
+      "rect": {
+        "x": 262,
+        "y": 632,
+        "w": 122,
+        "h": 56
+      },
+      "isTrusted": true,
+      "detail": 0
+    },
+    {
+      "t": 1789530595138,
+      "type": "click",
+      "tag": "DIV",
+      "role": "",
+      "txt": "Decline",
+      "cls": "MuiBox-root css-1nxoy32",
+      "x": 323,
+      "y": 661,
+      "rect": {
+        "x": 262,
+        "y": 632,
+        "w": 122,
+        "h": 56
+      },
+      "isTrusted": true,
+      "detail": 1
+    },
+    {
+      "t": 1789530595138,
+      "type": "click",
+      "txt": "Decline",
+      "isTrusted": true,
+      "source": "external"
+    },
+    {
+      "t": 1789530595138,
+      "type": "click",
+      "txt": "Decline",
+      "trusted": true
+    }
+  ],
+  "nodeAfter": {
+    "schema": 1,
+    "id": "qwb_svc_build-service-mu3jfqw1-i5hb",
+    "kind": "service",
+    "rev": 6,
+    "state": "active",
+    "createdAt": 1789529141503,
+    "updatedAt": 1789530490455,
+    "deletedAt": null,
+    "order": 50,
+    "title": "Synthetic staging service (Phase 4, probe test)",
+    "payload": {
+      "summary": "Written by the Phase 4 owner-runtime run against staging.",
+      "icon": "🧪",
+      "bullets": [
+        "First synthetic detail line",
+        "Second synthetic detail line",
+        "Third line added by the Phase 4 edit step"
+      ],
+      "link": {
+        "label": "Qortal",
+        "href": "https://qortal.org"
+      }
+    }
+  },
+  "nodeStatusAfter": {
+    "status": "READY",
+    "id": "READY",
+    "title": "Ready",
+    "description": "Ready",
+    "localChunkCount": 2,
+    "totalChunkCount": 2,
+    "percentLoaded": 100
+  }
+}

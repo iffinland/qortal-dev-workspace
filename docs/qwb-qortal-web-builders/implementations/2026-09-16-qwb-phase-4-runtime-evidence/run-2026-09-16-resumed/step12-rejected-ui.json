@@ -1,0 +1,17 @@
+{
+  "modalOpen": true,
+  "modalFullText": "Edit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee.\nEdit build service\n\nSynthetic staging service (Phase 4, probe test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 6 → draft rev 7\n\nService name\nOne-line summary\nIcon\n\nA single emoji.\n\nDetail lines\n\nOne line per detail.\n\nLink label\nLink target\nRejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))\nValidate draft\nCheck status\nSave & publish\n\nThe change is only reported as published after the app has read the resource back and confirmed the new revision.",
+  "formStatusText": "Rejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))",
+  "formStatusHTML": "Rejected by the host — nothing was published — The request was declined, or the host refused it before signing. No change was published. Nothing was retried automatically. (User declined request (User declined request))",
+  "formResultText": "",
+  "draftTitle": "Synthetic staging service (Phase 4, declined)",
+  "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Rejected by the host — nothing was published (availability: unverified) | 1 unsaved draft — not published | Publishing status | Reload content | Check last write | Re-check owner mode",
+  "buttons": [
+    "×",
+    "Validate draft",
+    "Check status",
+    "Save & publish",
+    "Keep editing",
+    "Discard changes"
+  ]
+}

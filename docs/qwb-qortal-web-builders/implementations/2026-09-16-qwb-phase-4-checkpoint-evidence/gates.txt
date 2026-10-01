@@ -1,0 +1,42 @@
+# Gate run 2026-09-16T04:36:24Z by DeepSeek on HEAD 7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a
+# node v20.19.2, npm 10.8.2
+
+$ npm run typecheck
+
+> qortal-web-builders@0.1.0 typecheck
+> tsc --noEmit
+
+$ npm run lint
+
+> qortal-web-builders@0.1.0 lint
+> eslint .
+
+$ npm run format:check
+
+> qortal-web-builders@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+$ npm test
+
+> qortal-web-builders@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.11 /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/qortal-web-builders
+
+
+ Test Files  25 passed (25)
+      Tests  294 passed (294)
+   Start at  07:38:16
+   Duration  167.10s (transform 4.73s, setup 0ms, import 9.68s, tests 22.77s, environment 110.30s)
+
+$ npm run build
+dist/assets/undraw_Remote_design_team_re_urdx-CkPBN2pC.png   21.91 kB
+dist/assets/undraw_Redesign_feedback_re_jvm0-D2wmpnSd.png    27.43 kB
+dist/assets/style-BgNavAWw.css                              215.35 kB │ gzip: 32.11 kB
+dist/assets/index-Cc7rTXmF.js                               127.73 kB │ gzip: 37.91 kB
+
+✓ built in 2.12s

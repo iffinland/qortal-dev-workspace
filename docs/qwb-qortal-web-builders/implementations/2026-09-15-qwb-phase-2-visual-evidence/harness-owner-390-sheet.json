@@ -1,0 +1,68 @@
+{
+  "addButtons": [
+    "+ Add featured card",
+    "+ Add step",
+    "+ Add project",
+    "+ Add build service",
+    "+ Add pricing tier"
+  ],
+  "addRowHeights": [
+    68,
+    68,
+    0,
+    0,
+    68
+  ],
+  "addRows": 5,
+  "bridgeCalls": [
+    "GET_USER_ACCOUNT",
+    "GET_ACCOUNT_NAMES"
+  ],
+  "controls": 17,
+  "deleteButtons": 14,
+  "documentTextHasClaim": false,
+  "editButtons": 17,
+  "modalHost": false,
+  "modalOpen": 0,
+  "modalTitle": null,
+  "moveButtons": 28,
+  "noticeText": null,
+  "ownerBar": true,
+  "ownerBarButtons": [
+    "Show owner tools",
+    "Publishing status",
+    "Re-check owner mode"
+  ],
+  "ownerBarExpanded": false,
+  "ownerBarMeta": "WEBSITE \u00b7 verified by name ownership",
+  "ownerBarName": "Qortal Web Builders",
+  "ownerBarToggle": "Show owner tools",
+  "pricingAddRow": {
+    "alignSelf": "flex-start",
+    "flexBasis": "100%",
+    "height": 68,
+    "parentHeight": 1340,
+    "width": 500
+  },
+  "pricingBoxHeight": 628,
+  "saveDisabled": null,
+  "saveLabel": null,
+  "sheetOpenAfterClick": true,
+  "sheetToggleClicked": true,
+  "tabPanes": [
+    {
+      "id": "panel-1",
+      "renderedHeight": 1624
+    },
+    {
+      "id": "panel-2",
+      "renderedHeight": 0
+    },
+    {
+      "id": "panel-3",
+      "renderedHeight": 0
+    }
+  ],
+  "toastHost": false,
+  "writeActions": []
+}

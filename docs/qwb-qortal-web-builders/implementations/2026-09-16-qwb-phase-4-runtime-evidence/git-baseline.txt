@@ -1,0 +1,7 @@
+# baseline
+HEAD: 911b44f3e57c39c46048c950274c89bdd04596f5
+branch: agent/qwb/phase-3
+remote phase-3: 911b44f3e57c39c46048c950274c89bdd04596f5	refs/heads/agent/qwb/phase-3
+status:
+diff --check:
+(clean)

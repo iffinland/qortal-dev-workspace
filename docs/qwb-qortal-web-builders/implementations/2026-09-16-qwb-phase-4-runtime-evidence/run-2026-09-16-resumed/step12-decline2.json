@@ -1,0 +1,121 @@
+{
+  "step": 12,
+  "attempt": 2,
+  "target": "JSON / Q-Website / qwb_svc_build-service-mu3jfqw1-i5hb",
+  "events": [
+    {
+      "t": "2026-09-16T03:45:02.261Z",
+      "ev": "hub-dialog-open",
+      "appearance": 1,
+      "text": "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_svc_build-service-mu3jfqw1-i5hb | name: Q-Website | 60 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept",
+      "buttons": []
+    },
+    {
+      "t": "2026-09-16T03:45:02.267Z",
+      "ev": "app-state",
+      "formStatus": "",
+      "formResult": "",
+      "toasts": [],
+      "modalOpen": true,
+      "modalText": "Edit build service\n\nSynthetic staging service (Phase 4, decline test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 3 → draft rev 4\n\n×\nSaving publishes to the Qortal Data Network under this site’s own name. Each save is a signed transaction: the host asks for approval, and Qortal charges the usual publish fee.\nEdit build service\n\nSynthetic staging service (Phase 4, decline test) · identifier qwb_svc_build-service-mu3jfqw1-i5hb · current rev 3 → draft rev 4\n\nService name\nOne-line summary\nIcon\n\nA single emoji.\n\nDetail lines\n\nOne line per detail.\n\nLink label\nLink target\nValidate draft\nSave & publish\n\nThe change is only reported as published after the app has read the resource back and confirmed the new revision.",
+      "hubDialogCount": 1
+    },
+    {
+      "t": "2026-09-16T03:45:04.706Z",
+      "ev": "hub-dialog-closed",
+      "appearance": 1
+    },
+    {
+      "t": "2026-09-16T03:45:04.721Z",
+      "ev": "app-state",
+      "formStatus": null,
+      "formResult": null,
+      "toasts": [
+        "\"Synthetic staging service (Phase 4, declined)\" was published and verified as revision 4.\n×"
+      ],
+      "modalOpen": false,
+      "modalText": null,
+      "hubDialogCount": 0
+    },
+    {
+      "t": "2026-09-16T03:45:10.795Z",
+      "ev": "app-state",
+      "formStatus": null,
+      "formResult": null,
+      "toasts": [],
+      "modalOpen": false,
+      "modalText": null,
+      "hubDialogCount": 0
+    }
+  ],
+  "hubDialogTexts": [
+    "Q-APP REQUEST | Do you give this application permission to publish to QDN? | service: JSON | identifier: qwb_svc_build-service-mu3jfqw1-i5hb | name: Q-Website | 60 | WHAT YOU ARE APPROVING | Do you give this application permission to publish to QDN? | Fee | 0.01000000 QORT | Decline | Accept"
+  ],
+  "hubDialogButtons": [],
+  "clicked": {
+    "ok": true,
+    "label": "Save & publish"
+  },
+  "clickedAtUtc": "2026-09-16T03:45:00.967Z",
+  "hubDialogAppearances": 1,
+  "quietSecondsAfterClose": 29,
+  "finalSnapshot": {
+    "url": "http://127.0.0.1:24991/render/WEBSITE/Q-Website/?theme=dark&lang=en&identifier=",
+    "qdnName": "Q-Website",
+    "qdnService": "WEBSITE",
+    "qdnContext": "render",
+    "bridged": true,
+    "ownerBar": "OWNER MODE | Q-Website | WEBSITE · verified by name ownership | Hide owner tools | Publishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified) | No unsaved drafts | Publishing status | Reload content | Check last write | Re-check owner mode",
+    "ownerBarVisible": true,
+    "controlRows": 6,
+    "addRows": 4,
+    "addButtons": [
+      "+ Add step",
+      "+ Add project",
+      "+ Add build service",
+      "+ Add pricing tier"
+    ],
+    "editButtons": 6,
+    "deleteButtons": 3,
+    "moveButtons": 6,
+    "modalOpen": false,
+    "modalText": null,
+    "toastText": null,
+    "toasts": [],
+    "formStatus": null,
+    "formResult": null,
+    "bodyText": "Skip to content\nOWNER MODE\nQ-Website\nWEBSITE · verified by name ownership\nHide owner tools\nPublishing to QDN under “Q-Website” — last write: Submitted to the host (availability: verified)\nNo unsaved drafts\nPublishing status\nReload content\nCheck last write\nRe-check owner mode\nQWB - Qortal Web Builders\nHOME\nBROWSE TOPICS\nPRICES\nCONTACT\nCustom websites & Qortal apps, built around you 🤗\n\nWe design and build individually tailored websites and Qortal applications — visual identity, layout, functions and behaviour shaped around what your project actually needs.\n\n✎\nBrowse Topics\nHow we build\nCompleted works\nWhat we build\nSynthetic staging step (Phase 4)\n\nCreated by the Phase 4 owner-runtime run with a synthetic illustration.\n\n1\n✎\n🗑\n↑\n↓\n+ Add step\nCustom design, priced by the work it needs\n+ Add pricing tier\nGet in touch\n\nLet's chat!\n\nQ-Mail\nclick to open apps\n\nPM to\nqortal web builders\n\nJoin the LIVE Chat & Forum\n\nGroup name\nQortal Web Builders\n\nGroup ID\n745\n\n✎\nsince 2025 | Qortal Web Builders\n\nhosted by 100% censorship free QDN and does not use cookies |¤| Design: Qortal Web Builders |¤| Built on the QWBT-1 HTML template\n\nCustom websites, custom Qortal apps and design work by Qortal Web Builders.\n\n✎"
+  },
+  "nodePayloadAfter": {
+    "schema": 1,
+    "id": "qwb_svc_build-service-mu3jfqw1-i5hb",
+    "kind": "service",
+    "rev": 3,
+    "state": "active",
+    "createdAt": 1789529141503,
+    "updatedAt": 1789530231193,
+    "deletedAt": null,
+    "order": 50,
+    "title": "Synthetic staging service (Phase 4, decline test)",
+    "payload": {
+      "summary": "Written by the Phase 4 owner-runtime run against staging.",
+      "icon": "🧪",
+      "bullets": [
+        "First synthetic detail line",
+        "Second synthetic detail line",
+        "Third line added by the Phase 4 edit step"
+      ],
+      "link": {
+        "label": "Qortal",
+        "href": "https://qortal.org"
+      }
+    }
+  },
+  "nodeMetadataAfter": {
+    "title": "Synthetic staging service (Phase 4, decline test)",
+    "description": "QWB service qwb_svc_build-service-mu3jfqw1-i5hb · schema 1 · rev 3",
+    "files": [
+      "qortal-1789530235692"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+# Post-fix transition validation 2026-09-16T05:06:23Z by DeepSeek on HEAD 7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a
+# The three bootstrap cases through the real bridge/read/publish modules and the scripted node.
+# Command: npx vitest run tests/qdn-source.test.ts -t 'pre-publication bootstrap baseline'
+
+
+ RUN  v4.1.11 /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/qortal-web-builders
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 14 skipped (17)
+   Start at  08:06:26
+   Duration  4.02s (transform 663ms, setup 0ms, import 779ms, tests 53ms, environment 2.51s)
+

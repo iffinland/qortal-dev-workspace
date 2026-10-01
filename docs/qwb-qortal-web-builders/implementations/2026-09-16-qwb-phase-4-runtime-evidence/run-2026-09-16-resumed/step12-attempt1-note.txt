@@ -1,0 +1,7 @@
+Step 12 attempt 1 (2026-09-16T03:43Z..03:47Z UTC):
+Clicked "Save & publish" on edit of JSON/Q-Website/qwb_svc_build-service-mu3jfqw1-i5hb
+(draft rev 3, title "Synthetic staging service (Phase 4, decline test)").
+The owner click landed on Accept rather than Decline, so the publish was APPROVED and the
+resource advanced rev 2 -> rev 3 (updatedAt 1789530231193, status READY).
+This is NOT a decline result; step 12 was not exercised. The observed behaviour is a second
+confirmation of the success path (rev 3 verified). Retained as evidence, not as step-12 PASS.

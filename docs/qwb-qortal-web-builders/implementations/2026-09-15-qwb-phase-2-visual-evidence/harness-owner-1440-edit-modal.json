@@ -1,0 +1,67 @@
+{
+  "addButtons": [
+    "+ Add featured card",
+    "+ Add step",
+    "+ Add project",
+    "+ Add build service",
+    "+ Add pricing tier"
+  ],
+  "addRowHeights": [
+    68,
+    68,
+    0,
+    0,
+    68
+  ],
+  "addRows": 5,
+  "bridgeCalls": [
+    "GET_USER_ACCOUNT",
+    "GET_ACCOUNT_NAMES"
+  ],
+  "controls": 17,
+  "deleteButtons": 14,
+  "documentTextHasClaim": false,
+  "editButtonFound": true,
+  "editButtons": 17,
+  "modalHost": false,
+  "modalOpen": 1,
+  "modalTitle": "Edit featured card",
+  "moveButtons": 28,
+  "noticeText": "Publishing is not enabled in this phase. Nothing you change here is saved or published \u2014 QDN persistence arrives in Phase 3.",
+  "ownerBar": true,
+  "ownerBarButtons": [
+    "Hide owner tools",
+    "Publishing status",
+    "Re-check owner mode"
+  ],
+  "ownerBarExpanded": true,
+  "ownerBarMeta": "WEBSITE \u00b7 verified by name ownership",
+  "ownerBarName": "Qortal Web Builders",
+  "ownerBarToggle": "Hide owner tools",
+  "pricingAddRow": {
+    "alignSelf": "flex-start",
+    "flexBasis": "100%",
+    "height": 68,
+    "parentHeight": 722,
+    "width": 1200
+  },
+  "pricingBoxHeight": 634,
+  "saveDisabled": true,
+  "saveLabel": "Save &amp; publish",
+  "tabPanes": [
+    {
+      "id": "panel-1",
+      "renderedHeight": 608
+    },
+    {
+      "id": "panel-2",
+      "renderedHeight": 0
+    },
+    {
+      "id": "panel-3",
+      "renderedHeight": 0
+    }
+  ],
+  "toastHost": false,
+  "writeActions": []
+}

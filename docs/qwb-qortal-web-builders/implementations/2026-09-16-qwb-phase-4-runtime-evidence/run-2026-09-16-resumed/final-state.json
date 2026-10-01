@@ -1,0 +1,120 @@
+{
+  "capturedAtUtc": "2026-09-16T04:09:01.657111+00:00",
+  "nodes": [
+    {
+      "port": 24991,
+      "height": 2725924,
+      "lastBlockSignature": "GcoP3DKr3B1ohgwFr4VPAnWx1i9ypeYYQdL9YwCpUFzEJbp9e9BV5TJTg5WntmThspooRt9FYqzLbGZHmMr53JaYa96q9Ng5Ns7JiGBNwkdpBqtdxEnGPaEC46m5SKMAPJWUPrV9bxTbULZwNe5221ixtM6y56RcQzj4YvEYefYaWs1"
+    },
+    {
+      "port": 24992,
+      "height": 2725924,
+      "lastBlockSignature": "GcoP3DKr3B1ohgwFr4VPAnWx1i9ypeYYQdL9YwCpUFzEJbp9e9BV5TJTg5WntmThspooRt9FYqzLbGZHmMr53JaYa96q9Ng5Ns7JiGBNwkdpBqtdxEnGPaEC46m5SKMAPJWUPrV9bxTbULZwNe5221ixtM6y56RcQzj4YvEYefYaWs1"
+    }
+  ],
+  "nameRecord": {
+    "name": "Q-Website",
+    "reducedName": "q-website",
+    "owner": "QNwV9VV82UUZmMkDZZbEMAKPpCx7otnnsi",
+    "data": "Registered Name on the Qortal Chain",
+    "registered": 1755586250883,
+    "isForSale": false
+  },
+  "stagingResources": [
+    {
+      "service": "JSON",
+      "identifier": "qwb_svc_build-service-mu3jfqw1-i5hb",
+      "latestSignature": "3D6TqkhSPrgQMSPfqWrWtmo6v5uMksLnL4D5p1sPLwhQM6bMfTQRTA74WiqnNxroLErmQHUK53TjPdvqJynCLKPw",
+      "size": 624,
+      "created": 1789529146644,
+      "updated": 1789531504264,
+      "rev": 7,
+      "state": "active",
+      "order": 50,
+      "title": "Synthetic staging service (Phase 4, verified)"
+    },
+    {
+      "service": "JSON",
+      "identifier": "qwb_step_process-step-mu3jj436-ynaz",
+      "latestSignature": "jsMhMn1RoHR4rhMKdxRb3xCSCCxMQfmttvZivgZ7LFUD54qvsZfmU4VBYYA6LJLiuQiofGdRjAnGc37FbT9dj6c",
+      "size": 624,
+      "created": 1789529306710,
+      "updated": null,
+      "rev": 1,
+      "state": "active",
+      "order": 10,
+      "title": "Synthetic staging step (Phase 4)"
+    },
+    {
+      "service": "JSON",
+      "identifier": "qwb_step_process-step-mu3jjvhv-o74n",
+      "latestSignature": "4XujAJodE5PErXdvsWRHnHZKEKthGwN7G8pSoBXYx7cerqyFhKRzAbfpSZJN3ugKnzTHLwf4wU8JwDgprAHAqNrg",
+      "size": 464,
+      "created": 1789529326679,
+      "updated": 1789529884088,
+      "rev": 3,
+      "state": "deleted",
+      "order": 0,
+      "title": "Synthetic staging step two (Phase 4)"
+    },
+    {
+      "service": "JSON",
+      "identifier": "qwb_svc_build-service-mu3jylnd-xmv8",
+      "latestSignature": "2geCFs6QJvVSTLj6Z3t5D9PSxYCFUgDFfg6d3dQqLaxeHpgfJdmHs8uBUne46z6AewqwdLCzcrzkT8EgV3MSEMf4",
+      "size": 592,
+      "created": 1789530011746,
+      "updated": null,
+      "rev": 1,
+      "state": "active",
+      "order": 60,
+      "title": "In-session service A (Phase 4)"
+    },
+    {
+      "service": "JSON",
+      "identifier": "qwb_svc_build-service-mu3jyvwn-99dq",
+      "latestSignature": "28pujKsF1ujhMPnF6Mhi8FhAgb5jay9DD1kSdmqutotYmN3d5xYiCttuoTg6DFmwN1XJzyN7jgcNZQXXmkkjDTnN",
+      "size": 464,
+      "created": 1789530026118,
+      "updated": 1789530039703,
+      "rev": 3,
+      "state": "deleted",
+      "order": 55,
+      "title": "In-session service B (Phase 4)"
+    },
+    {
+      "service": "THUMBNAIL",
+      "identifier": "qwb_step_process-step-mu3jj436-ynaz",
+      "latestSignature": "2MKcwKPsiVcq3rMowvFAp7nyMkdeeiUtDGD17qnf4diwGXCEz3SDEe5Q3cuHnsjvZEDzPFEra8sL5esjktLmFH4C",
+      "size": 2336,
+      "created": 1789529304346,
+      "updated": null,
+      "byteLength": 3016
+    }
+  ],
+  "productionResource": {
+    "title": "Qortal Web Builders",
+    "description": "We craft unique websites that fuse modern design with a nostalgic twist, making a lasting impression.",
+    "tags": [
+      "website",
+      "design",
+      "homepage",
+      "service",
+      "shop"
+    ],
+    "category": "PRODUCE",
+    "categoryName": "Products and Services",
+    "files": [
+      "index.html",
+      "img/sorry-event-is-canceled.avif"
+    ]
+  },
+  "productionResourceStatus": {
+    "status": "READY",
+    "id": "READY",
+    "title": "Ready",
+    "description": "Ready",
+    "localChunkCount": 2,
+    "totalChunkCount": 2,
+    "percentLoaded": 100.0
+  }
+}

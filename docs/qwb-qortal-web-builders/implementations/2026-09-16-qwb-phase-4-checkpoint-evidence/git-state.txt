@@ -1,0 +1,21 @@
+# Captured 2026-09-16T05:06:33Z by DeepSeek
+# Repository: /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/qortal-web-builders
+# Branch: agent/qwb/phase-4-runtime-fix
+# HEAD: 7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a
+
+$ git status --porcelain
+(empty above = clean worktree)
+
+$ git log --format="%H %s" -4
+7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a Phase 4 checkpoint: record the accepted state in the project docs
+e7bf3578d8772330f313b468bc808d5c57c8bf22 Phase 4 checkpoint: keep the shipped seed baseline while the owner replaces it
+741754becb79a131c699f2468fe096fdacd00c19 Phase 4 runtime fix 2: address single-file QDN media without the stored filename
+8fd110b087f8c7a46703d3453e54c8b133b9cd0b Phase 4 runtime fix: resolve the Core-injected bridge, decode the injected name
+
+$ git diff --check 741754becb79a131c699f2468fe096fdacd00c19..HEAD
+(empty above = clean)
+
+$ git ls-remote origin refs/heads/agent/qwb/phase-4-runtime-fix refs/heads/main refs/heads/agent/qwb/phase-3
+911b44f3e57c39c46048c950274c89bdd04596f5	refs/heads/agent/qwb/phase-3
+7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a	refs/heads/agent/qwb/phase-4-runtime-fix
+18d760d011e956829714e7489432949829fa1840	refs/heads/main

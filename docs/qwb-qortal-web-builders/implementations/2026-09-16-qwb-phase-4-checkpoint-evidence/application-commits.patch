@@ -1,0 +1,433 @@
+From e7bf3578d8772330f313b468bc808d5c57c8bf22 Mon Sep 17 00:00:00 2001
+From: iffinland <iffi@tuta.io>
+Date: Wed, 16 Sep 2026 07:34:51 +0300
+Subject: [PATCH 1/2] Phase 4 checkpoint: keep the shipped seed baseline while
+ the owner replaces it
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Production-bootstrap edge case found while closing the Phase 4 checkpoint.
+
+Before this change, zero QDN content rendered the full shipped seed bundle, but
+the first published entity switched every kind to its QDN read result, so a kind
+rendered only the entities discovery returned. The approved flow (§6.4) is that
+the owner replaces the shipped content one entity at a time through the inline
+editor, so after the first write every untouched shipped item — and with it the
+only control that could ever publish that item — disappeared from the page.
+Progressive editing could therefore not bootstrap the site at all.
+
+The seed is now a per-entity, self-terminating baseline instead of a whole-kind
+fallback (src/content/qdn-source.ts):
+
+  - a shipped item is added only when discovery did not report its identifier at
+    all, so a reported identifier (active, tombstoned, invalid or unreadable) is
+    never replaced by its shipped default — "exists but failed to load" stays a
+    reported failure, not a silent fallback, and a tombstone cannot resurrect;
+  - a kind whose discovery failed or hit the page budget contributes no default,
+    because a partial scan proves nothing about what exists (workspace guide
+    qortal-architecture-and-data-integrity.md: "partial discovery MUST NOT grant
+    authority");
+  - the baseline ends by itself once every shipped identifier has been published
+    or tombstoned; it is not a mode or a flag;
+  - a new diagnostic reports how many shipped items still render this way.
+
+Validated: tests/qdn-source.test.ts walks zero content -> first write -> reload ->
+second write against the scripted node (tests/support/qdn.ts, the real bridge,
+read and publish modules), proves untouched shipped items survive across both
+reloads, proves a tombstoned shipped item is not resurrected, and proves the
+baseline contributes nothing once every identifier is reported. Two of those
+cases failed before this change. Full gate: tsc --noEmit, eslint ., prettier
+--check . and 294 tests in 25 files pass; npm run build succeeds.
+
+Not re-run: the Phase 4 owner-runtime run (Hub 3.0.3, staging
+WEBSITE / Q-Website / default). This is a read-path merge rule only; the write,
+owner-mode and inline-editing contracts and their runtime evidence are unchanged.
+
+Executing agent: DeepSeek (Qortal platform implementation role)
+---
+ src/content/qdn-source.ts | 83 ++++++++++++++++++++++++++++++-----
+ tests/qdn-source.test.ts  | 91 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 164 insertions(+), 10 deletions(-)
+
+diff --git a/src/content/qdn-source.ts b/src/content/qdn-source.ts
+index 12a0ff5..e88769d 100644
+--- a/src/content/qdn-source.ts
++++ b/src/content/qdn-source.ts
+@@ -26,7 +26,14 @@
+  *     all, so the seed content is the site's designed pre-publication state;
+  *  3. **the site singleton alone is unreadable** — the shell (brand, nav, hero,
+  *     contact, footer copy) has to come from somewhere to render at all, so the
+- *     seed shell is used with a diagnostic.
++ *     seed shell is used with a diagnostic;
++ *  4. **the pre-publication bootstrap baseline** (per entity, self-terminating) —
++ *     once the owner has published *something*, the approved flow (§6.4) is still
++ *     to replace the shipped seed one entity at a time, so each kind keeps the
++ *     shipped items that discovery did not report at all. A reported identifier
++ *     (active, tombstoned, invalid or unreadable) is never replaced by its shipped
++ *     default, and a kind whose discovery failed or hit the page budget
++ *     contributes no default because it proves nothing about what exists.
+  *
+  * It never substitutes seed entities for entities that exist but failed to load:
+  * that would be a silent lie about published content. A total read failure is
+@@ -87,6 +94,11 @@ export interface QdnSourceOptions {
+ interface KindRead {
+   readonly kind: DiscoveredKind;
+   readonly entities: readonly AnyEntity[];
++  /**
++   * Every identifier discovery returned for this kind (after the exact
++   * name/service/prefix re-filter), whatever the payload read then did with it.
++   */
++  readonly identifiers: ReadonlySet<string>;
+   readonly tombstones: number;
+   readonly invalid: number;
+   readonly unavailable: number;
+@@ -99,23 +111,64 @@ function emptyBundle(site: SiteEntity): ContentBundle {
+   return { site, highlights: [], services: [], steps: [], works: [], prices: [], articles: [] };
+ }
+ 
+-function withKind(bundle: ContentBundle, read: KindRead): ContentBundle {
+-  switch (read.kind) {
++function entitiesForKind(bundle: ContentBundle, kind: DiscoveredKind): readonly AnyEntity[] {
++  switch (kind) {
+     case 'highlight':
+-      return { ...bundle, highlights: read.entities as ContentBundle['highlights'] };
++      return bundle.highlights;
+     case 'service':
+-      return { ...bundle, services: read.entities as ContentBundle['services'] };
++      return bundle.services;
+     case 'step':
+-      return { ...bundle, steps: read.entities as ContentBundle['steps'] };
++      return bundle.steps;
+     case 'work':
+-      return { ...bundle, works: read.entities as ContentBundle['works'] };
++      return bundle.works;
+     case 'price':
+-      return { ...bundle, prices: read.entities as ContentBundle['prices'] };
++      return bundle.prices;
+     case 'article':
+-      return { ...bundle, articles: read.entities as ContentBundle['articles'] };
++      return bundle.articles;
+   }
+ }
+ 
++function withKind(
++  bundle: ContentBundle,
++  kind: DiscoveredKind,
++  entities: readonly AnyEntity[],
++): ContentBundle {
++  switch (kind) {
++    case 'highlight':
++      return { ...bundle, highlights: entities as ContentBundle['highlights'] };
++    case 'service':
++      return { ...bundle, services: entities as ContentBundle['services'] };
++    case 'step':
++      return { ...bundle, steps: entities as ContentBundle['steps'] };
++    case 'work':
++      return { ...bundle, works: entities as ContentBundle['works'] };
++    case 'price':
++      return { ...bundle, prices: entities as ContentBundle['prices'] };
++    case 'article':
++      return { ...bundle, articles: entities as ContentBundle['articles'] };
++  }
++}
++
++/**
++ * Merges the shipped seed baseline into one kind's discovered entities.
++ *
++ * The shipped default is added only for a shipped identifier that discovery did
++ * not see at all, and only when discovery actually answered without hitting the
++ * page budget — a failed or truncated search proves nothing, so it must not
++ * resurrect a shipped item over a tombstone it could not read. Because every
++ * shipped identifier is either published or tombstoned before the owner is done,
++ * the baseline stops contributing on its own; it is not a mode or a flag.
++ */
++function applySeedBaseline(
++  read: KindRead,
++  shipped: readonly AnyEntity[],
++): { readonly entities: readonly AnyEntity[]; readonly added: number } {
++  if (!read.answered || read.truncated) return { entities: read.entities, added: 0 };
++  const defaults = shipped.filter((entity) => !read.identifiers.has(entity.id));
++  if (defaults.length === 0) return { entities: read.entities, added: 0 };
++  return { entities: [...read.entities, ...defaults], added: defaults.length };
++}
++
+ export function createQdnSource(options: QdnSourceOptions): ContentSource {
+   const seed = options.seed ?? seedBundle;
+   const pageSize = options.pageSize ?? DISCOVERY_PAGE_SIZE;
+@@ -160,6 +213,7 @@ export function createQdnSource(options: QdnSourceOptions): ContentSource {
+     return {
+       kind,
+       entities: loaded.flatMap((entry) => (entry.status === 'active' ? [entry.entity] : [])),
++      identifiers: new Set(discovery.summaries.map((summary) => summary.identifier)),
+       tombstones: loaded.filter((entry) => entry.status === 'deleted').length,
+       invalid: loaded.filter((entry) => entry.status === 'invalid').length,
+       unavailable: loaded.filter((entry) => entry.status === 'unavailable').length,
+@@ -241,9 +295,12 @@ export function createQdnSource(options: QdnSourceOptions): ContentSource {
+     let tombstones = 0;
+     let damaged = 0;
+     let searchErrors = 0;
++    let bootstrapDefaults = 0;
+ 
+     for (const read of kinds) {
+-      bundle = withKind(bundle, read);
++      const merged = applySeedBaseline(read, entitiesForKind(seed, read.kind));
++      bootstrapDefaults += merged.added;
++      bundle = withKind(bundle, read.kind, merged.entities);
+       entityCount += read.entities.length;
+       tombstones += read.tombstones;
+       damaged += read.invalid + read.unavailable;
+@@ -279,6 +336,12 @@ export function createQdnSource(options: QdnSourceOptions): ContentSource {
+       };
+     }
+ 
++    if (bootstrapDefaults > 0) {
++      diagnostics.push(
++        `bootstrap-defaults: ${String(bootstrapDefaults)} shipped item(s) render from the seed because their identifier is not published yet; editing or deleting one in place publishes its own record`,
++      );
++    }
++
+     if (tombstones > 0) {
+       diagnostics.push(
+         `tombstones: ${String(tombstones)} deleted item(s) were filtered out of every read path`,
+diff --git a/tests/qdn-source.test.ts b/tests/qdn-source.test.ts
+index 970ee64..cbe2390 100644
+--- a/tests/qdn-source.test.ts
++++ b/tests/qdn-source.test.ts
+@@ -349,3 +349,94 @@ describe('QDN content source', () => {
+     expect(result.bundle.site.id).toBe(seed.site.id);
+   });
+ });
++
++/**
++ * Pre-publication bootstrap: the owner replaces the shipped seed **one entity at
++ * a time** through the inline editor (§6.4 of the approved architecture), so the
++ * first published write must not hide every shipped item the owner has not
++ * touched yet — those items carry the only controls that could ever publish them.
++ */
++describe('QDN content source — pre-publication bootstrap baseline', () => {
++  const publishContext = (node: ReturnType<typeof createFakeNode>) => ({
++    bridge: node.bridge,
++    name: OWNER_NAME,
++    sleep: () => Promise.resolve(),
++  });
++
++  it('keeps untouched shipped items rendered across the zero → first write → reload → second write transition', async () => {
++    const seed = await seedBundle();
++    const node = createFakeNode({ name: OWNER_NAME });
++    const source = createQdnSource({ app: APP, bridge: node.bridge });
++
++    // Zero content: the designed pre-publication state.
++    const zero = await source.load();
++    expect(zero.diagnostics.join(' ')).toContain('nothing-published');
++    expect(zero.bundle.highlights).toHaveLength(seed.highlights.length);
++
++    // First write: one shipped highlight is edited and published.
++    const first = seed.highlights[0];
++    const second = seed.highlights[1];
++    if (first === undefined || second === undefined) throw new Error('need two seed highlights');
++    const firstEdit: AnyEntity = { ...first, title: 'First bootstrap edit', rev: first.rev + 1 };
++    expect((await publishEntity(publishContext(node), firstEdit)).verified).toBe(true);
++
++    // Reload: the edit is served, and every untouched shipped item still renders.
++    const afterFirst = await source.load();
++    expect(afterFirst.status).toBe('ready');
++    expect(afterFirst.bundle.highlights).toHaveLength(seed.highlights.length);
++    expect(afterFirst.bundle.highlights.find((item) => item.id === first.id)?.title).toBe(
++      'First bootstrap edit',
++    );
++    expect(afterFirst.bundle.highlights.find((item) => item.id === second.id)?.title).toBe(
++      second.title,
++    );
++    for (const kind of DISCOVERED_KINDS) {
++      if (kind === 'highlight') continue;
++      expect(entitiesOf(afterFirst.bundle, kind)).toHaveLength(entitiesOf(seed, kind).length);
++    }
++    expect(afterFirst.diagnostics.join(' ')).toContain('bootstrap-defaults');
++
++    // Second write: a different untouched shipped item is edited and published.
++    const secondEdit: AnyEntity = {
++      ...second,
++      title: 'Second bootstrap edit',
++      rev: second.rev + 1,
++    };
++    expect((await publishEntity(publishContext(node), secondEdit)).verified).toBe(true);
++
++    const afterSecond = await source.load();
++    expect(afterSecond.bundle.highlights).toHaveLength(seed.highlights.length);
++    expect(afterSecond.bundle.highlights.find((item) => item.id === first.id)?.title).toBe(
++      'First bootstrap edit',
++    );
++    expect(afterSecond.bundle.highlights.find((item) => item.id === second.id)?.title).toBe(
++      'Second bootstrap edit',
++    );
++  });
++
++  it('never resurrects a shipped item the owner tombstoned', async () => {
++    const seed = await seedBundle();
++    const deleted = seed.highlights[0];
++    if (deleted === undefined) throw new Error('no seed highlight');
++
++    const node = createFakeNode({ name: OWNER_NAME });
++    const source = createQdnSource({ app: APP, bridge: node.bridge });
++    const deletedEntity = buildTombstone(deleted, 1_700_001_000_000);
++    expect((await publishEntity(publishContext(node), deletedEntity)).verified).toBe(true);
++
++    const result = await source.load();
++    expect(result.bundle.highlights.map((item) => item.id)).not.toContain(deleted.id);
++    expect(result.bundle.highlights).toHaveLength(seed.highlights.length - 1);
++    expect(result.diagnostics.join(' ')).toContain('tombstones: 1');
++  });
++
++  it('stops contributing shipped defaults once discovery sees every identifier', async () => {
++    const seed = await seedBundle();
++    const node = createFakeNode({ name: OWNER_NAME, entities: await seedStoredEntities() });
++    const source = createQdnSource({ app: APP, bridge: node.bridge });
++    const result = await source.load();
++
++    expect(result.bundle.highlights).toHaveLength(seed.highlights.length);
++    expect(result.diagnostics.join(' ')).not.toContain('bootstrap-defaults');
++  });
++});
+-- 
+2.47.3
+
+
+From 7fd03fc5b2d39d80b20ccaa9c7a07355d85dc94a Mon Sep 17 00:00:00 2001
+From: iffinland <iffi@tuta.io>
+Date: Wed, 16 Sep 2026 07:34:51 +0300
+Subject: [PATCH 2/2] Phase 4 checkpoint: record the accepted state in the
+ project docs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The durable project docs still described Phase 3 as awaiting staging validation
+and Phase 4 as not started, and the read contract as three seed fallbacks.
+
+- README: Phase 3 owner-runtime validated, Phase 4 PASS and checkpoint closed;
+  the write contract's owner-mode paragraph now records the real Phase 4 staging
+  run instead of "no write has been exercised against a live node"; the read
+  contract documents the pre-publication bootstrap baseline; explicitly states
+  that the app never republishes the WEBSITE bundle and that the production
+  resource WEBSITE / Qortal Web Builders / default has never been written.
+- docs/architecture.md §3.4/§5: the same baseline rule, framed as the per-entity,
+  self-terminating fallback that makes "replace the shipped site one entity at a
+  time" safe, and the reason a partial discovery contributes no default.
+
+No source or behaviour change in this commit.
+
+Executing agent: DeepSeek (Qortal platform implementation role)
+---
+ README.md            | 45 +++++++++++++++++++++++++++++---------------
+ docs/architecture.md | 18 +++++++++++++++---
+ 2 files changed, 45 insertions(+), 18 deletions(-)
+
+diff --git a/README.md b/README.md
+index 2d4358c..1afa2e2 100644
+--- a/README.md
++++ b/README.md
+@@ -136,9 +136,18 @@ and `article` (`qwb_post_`, service `DOCUMENT`; every other kind is `JSON`).
+ 
+ The seed renders only when the app cannot address QDN at all (no `_qdnName`/no
+ bridge), when nothing is published under the name at all, or when the site
+-singleton alone is unreadable. It is never substituted for entities that exist but
+-failed to load — that is reported as `partial` with diagnostics, and a total read
+-failure shows the content-error state.
++singleton alone is unreadable. It is never substituted for an entity that exists
++but failed to load — that is reported as `partial` with diagnostics, and a total
++read failure shows the content-error state.
++
++It is also the **pre-publication bootstrap baseline**, and that rule is per
++entity, not per kind: once the owner has published something, each kind still
++renders the shipped items that discovery did not report at all, so replacing the
++shipped site one entity at a time never hides the untouched items — or their edit
++controls. A reported identifier (active, tombstoned, invalid or unreadable) never
++falls back to its shipped default, and a discovery that failed or hit the page
++budget contributes no default. The baseline ends on its own once every shipped
++identifier has been published or tombstoned.
+ 
+ ### Write contract (Phase 3)
+ 
+@@ -158,24 +167,30 @@ Verify          re-read the resource and compare the served rev (4 attempts × 5
+   submission is never presented as a result, and a failed or ambiguous write keeps
+   the draft in the open form.
+ 
+-Owner-mode acceptance still requires an owner run in a real Qortal host: no write
+-has been exercised against a live node from this repository.
++Phase 4 owner-runtime validation (2026-09-16) exercised the real write path in
++Qortal Hub 3.0.3 against the owner-approved staging resource
++`WEBSITE / Q-Website / default`: create, edit, reorder, delete (tombstone) and
++media replacement all returned node read-back and survived hard reloads, with the
++owner signing every write. Any future write or owner-mode claim still needs a
++fresh real-host run.
+ 
+ ## Status
+ 
+-| Phase | Scope                                                             | State                                                 |
+-| ----- | ----------------------------------------------------------------- | ----------------------------------------------------- |
+-| 0     | repository, tooling, structure, reference pins, asset attribution | done                                                  |
+-| 1     | public visual baseline from typed seed content                    | done                                                  |
+-| 2     | owner recognition + owner UI shell (no QDN writes)                | done                                                  |
+-| 3     | QDN-backed CRUD, media, truthful outcomes                         | done (code); staging owner-runtime validation pending |
+-| 4     | owner-runtime validation, visual regression, documentation        | not started                                           |
++| Phase | Scope                                                             | State                                                       |
++| ----- | ----------------------------------------------------------------- | ----------------------------------------------------------- |
++| 0     | repository, tooling, structure, reference pins, asset attribution | done                                                        |
++| 1     | public visual baseline from typed seed content                    | done                                                        |
++| 2     | owner recognition + owner UI shell (no QDN writes)                | done                                                        |
++| 3     | QDN-backed CRUD, media, truthful outcomes                         | done; owner-runtime validated (staging)                     |
++| 4     | owner-runtime validation, visual regression, documentation        | owner-runtime validation PASS 2026-09-16; checkpoint closed |
+ 
+ Explicitly **not** in this repository: a derived index, migration/import tooling,
+ deployment or publication, and any physical QDN delete (Qortal has no
+-app-accessible one, so a delete is a tombstone). No QDN write has been exercised
+-against a live node from this repository, and the `WEBSITE` resource itself is
+-never republished by the app.
++app-accessible one, so a delete is a tombstone). The app never republishes the
++`WEBSITE` bundle itself — publishing the build is a separate, explicitly
++authorized release step. The production resource
++`WEBSITE / Qortal Web Builders / default` has never been written by this project;
++the Phase 4 writes were synthetic staging content under `WEBSITE / Q-Website / default`.
+ 
+ ## Documentation
+ 
+diff --git a/docs/architecture.md b/docs/architecture.md
+index fd80967..18c636e 100644
+--- a/docs/architecture.md
++++ b/docs/architecture.md
+@@ -155,7 +155,15 @@ validator the seed path uses.
+ `status: 'ready' | 'partial' | 'error'` is the read result; diagnostics name every
+ item that was found but could not be used. Seed fallback is narrow by design: (1)
+ no publishing identity or no bridge, (2) nothing published under the name at all,
+-(3) the site singleton alone unreadable (seed shell + diagnostic). The seed is
++(3) the site singleton alone unreadable (seed shell + diagnostic), and (4) the
++**pre-publication bootstrap baseline** — per entity, and only for a kind whose
++discovery answered without hitting the page budget, a kind keeps the shipped items
++that discovery did not report at all. That is what makes the approved "replace the
++shipped site one entity at a time" flow safe: an untouched shipped item — and with
++it the only control that could ever publish it — never disappears because of
++someone else's first write. A reported identifier (active, tombstoned, invalid or
++unreadable) is never replaced by its shipped default, and the baseline ends by
++itself once every shipped identifier has been published or tombstoned. The seed is
+ never substituted for entities that exist and failed to load.
+ 
+ **Write.** Publishing identity is the injected `_qdnName`; the coordinate is
+@@ -269,8 +277,12 @@ image. Publishing order is always media → entity.
+ **Seed content** (`src/content/seed.ts`) is typed content: the published structure
+ with the repositioned message, the owner's real published portfolio list and price
+ points, and `placeholder` covers. From Phase 3 it is the read fallback (see §3.4)
+-and the design reference the QDN read path is compared against. There is no import
+-or migration of the old markup, and no migration script exists by design.
++and the design reference the QDN read path is compared against. From the Phase 4
++checkpoint it is also the per-entity bootstrap baseline (§3.4), because the
++approved flow is that the owner replaces the shipped content _one entity at a
++time_: an item discovery did not report keeps rendering from the seed until the
++owner publishes or deletes it. There is no import of the old markup, and no
++migration script exists by design.
+ 
+ **Article bodies are structured blocks**, not HTML: headings, paragraphs, lists,
+ quotes, images and links are modelled as data and rendered through the same
+-- 
+2.47.3
+

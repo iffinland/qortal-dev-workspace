@@ -1,0 +1,67 @@
+# QWB golden-master SHA-256 manifest
+# Executing agent: DeepSeek (model executed inside the Codex CLI profile; report writer: DeepSeek)
+# Source root (READ-ONLY golden master): /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders/-PUBLISHED-versioon
+# Generated (UTC): 2026-09-15T12:56:00Z
+# Regeneration command:
+#   cd /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders
+#   find ./-PUBLISHED-versioon -type f | LC_ALL=C sort | xargs sha256sum
+# Verification command (expects no output):
+#   cd /home/iffi/VsCodec-Projects/QWB-Qortal-Web-Builders && \
+#     find ./-PUBLISHED-versioon -type f | LC_ALL=C sort | xargs sha256sum \
+#     | sed "s#\\./-PUBLISHED-versioon/#./#" > /tmp/now.txt
+#   and compare against the hash list below.
+#
+# file_count: 50
+# total_bytes: 8897400
+# fields: <sha256>  <path relative to -PUBLISHED-versioon>
+#
+c8291a6fc123e66c3d783423d4fd7395fab2271b310516ea0384fc98c28ab95e  ./completed-works.html
+4fa72a297d7c91658cf15d00ef0a9e4e83d9a62bf29d34e5f6092e531256567c  ./css/bootstrap-icons.css
+2143941c03dacda8b4f1016ced6e0c6f34e5c04585a3bcffe33c3c626c448a4a  ./css/bootstrap.min.css
+aa2647334789e2a43e06a4e17c1feaa76d083a034d68c17031368100c2993059  ./css/templatemo-topic-listing.css
+13977b4a8d61d533db87feb04007efb034c3bd29e34a6f3dba26a34eedec3b13  ./fonts/bootstrap-icons.woff
+c69bf1ccae5f13b5aa4345dcfeb209a8148ad0bfa1e0678b93792aae0429c764  ./fonts/bootstrap-icons.woff2
+e6b4f6d27a4b4a6844d0eb57ac95341baeae0662f21607542e841fe0d8252ffb  ./images/apple-touch-icon.png
+4ca7539a3c4610f66de5dce21fd286aa1a7423d2dad59b4b931d44a8530dd6ee  ./images/businesswoman-using-tablet-analysis.jpg
+80d10d2e9c4c6e61d4499089c47dac11505bf22bc486275b20c3e13ee1eeb762  ./images/colleagues-working-cozy-office-medium-shot.jpg
+f6e22e09aaa55b5aa8618cb6a2d73815ce81164d5751d5c6053b0cc913b33c41  ./images/faq_graphic.jpg
+9fd29b13c4e2ef724f49ddd46d16f48f0b566e7c810e38a6a49518556929fb67  ./images/favicon-96x96.png
+af398f3eafe912d8dfc9ccfe8c8ff2b628580d3976e078958acde3307243e19c  ./images/favicon.ico
+de429e12c271758d914628d223f22ccf11988d7d56f8d158d083f351f7a5d267  ./images/favicon.svg
+ab6f2f5c30677ee0531082026e5b062108c8782a5fb612fd378d2a79a95c1cd8  ./images/icons/q-mail-centered-350x250.png
+ed0da1af116dfa865da153bdc6fd7a4e2e41abe1f1b9f38bfdb934a0dd0991ff  ./images/qwb-icon-trans-192x192.png
+6a4e0416de872afdf640f59de078e9d34de13be5f95aeeed52de751ccb31d9ea  ./images/rear-view-young-college-student.jpg
+015a5e02a0cbbfdcb71868a11c57943dcf512b83ddff8e8b5f5b37192a33e136  ./images/site.webmanifest
+b73d7546daa6dcaaf0cd21272e25a6e7c23f52448d32ee8db37dfeca1b82cf93  ./images/topics/colleagues-working-cozy-office-medium-shot.png
+4d34dfa6e92ac967006e901b2648d474431cef99d399732c8931ed054e7761f3  ./images/topics/undraw_Compose_music_re_wpiw.png
+bfe58fd62809dbe62f50a23e20826842b37886770eec88c05415828fa8da32ac  ./images/topics/undraw_Educator_re_ju47.png
+8177af90fe2c94c864db887e0977bf95ab98a4335ce06bf85317a18950cd9e15  ./images/topics/undraw_Finance_re_gnv2.png
+78834ab8a8c0f686bd3cd9bf7b858e04dc2971603d59e2b2c134bb1dfaa94a20  ./images/topics/undraw_Graduation_re_gthn.png
+c9e606170fa3a5818bd9e1ada2f58a3e4a3937312bfd4ae499a690703483fd9b  ./images/topics/undraw_Group_video_re_btu7.png
+375435a3368fc43a2c23f432cfbadb4cb2ebac138d51318a08f649e33daa5f75  ./images/topics/undraw_Podcast_audience_re_4i5q.png
+34e513508665afb45ec1c3dda44f2f6099b23d608a99b6868c48d8e2da088986  ./images/topics/undraw_Redesign_feedback_re_jvm0.png
+b8071614161a05a09b4185406d9ed56fc2e3969d436084cb46601a989f656fb9  ./images/topics/undraw_Remote_design_team_re_urdx.png
+e89599fb15ac84c3ca30c8e6a26fe54bc52c9c0e218d3ab66b8690b55b7d1b80  ./images/topics/undraw_happy_music_g6wc.png
+bfabb30a74b7fa040c3316f8b2a495978c5aa65900728fcb99147ebaf06ad700  ./images/topics/undraw_online_ad_re_ol62.png
+0b1da43490d575abd78938ba703f268eb114207d21afd2185060aa669aea37db  ./images/topics/undraw_viral_tweet_gndb.png
+7e0ecc12cb6134162f9001173c0c307ec2729dc3b8eca6069081f63504fc5577  ./images/web-app-manifest-192x192.png
+112dd84dc088f9158fe26b2385fefe88c9b267a0d46c9d7ed28cbfa114f8fc01  ./images/web-app-manifest-512x512.png
+24b04662518a304f5a6233db0c980d46ba51f56641f53226670b224dcdcc4e29  ./images/web-preview/asot-web-preview.png
+92774a930e358e125395cf18ce8e9f9232d9237f0f0e9f6d89b6aa7cedbf37d4  ./images/web-preview/eestlased-qortalis-web-preview.png
+6f22b8471f59e75d868d9b888400040ebd3847af60a4908bd7ede1d22be1f243  ./images/web-preview/iffi-forest-life-web-preview.png
+eee32747a5abb6d58c3c5d5fe299ca7ecbb27446ced5b1aeb2ee00df54891388  ./images/web-preview/iffi-vaba-mees-web-preview.png
+a8dd8a45ce5c190b3eb684b87b95d534cee8ea9ffb31245a41a6881308e898cb  ./images/web-preview/publii-template-gallery-preview.png
+c179b7db8caf6859f6507fbdc4886c3e5112bef502e6003b9413d02f088acf03  ./images/web-preview/qortal-web-builders-web-preview.png
+9bc64ddb49260852e4864fbfc1d5f8e9002a9dd04764db926d5e41932d405fd6  ./images/web-preview/qwb-html-template-gallery-web-preview.png
+dd2a9106789a85bbef56b667b6a292ef5d099f969898b552f768364fb3024c63  ./images/web-preview/suomen-tietosivu-web-preview.png
+b18ebee05ff375af2a9b11e9af6516a00776aa550ffa571d58275a419748ae7c  ./images/web-preview/svik-web-preview.png
+50aa8934fb60c71ac226776122db70141b82a74a3c6190342726185b5e354ea1  ./index.html
+c4b2394a30fa0e4a23c6b308541353e20872a6fd765ed8fb70e6b402029deb00  ./js/bootstrap.bundle.min.js
+e27cae83ad9afdbd5396a4f9a39cff6c7894118c451fed85175f8c335e5682d5  ./js/click-scroll.js
+07c99e90d2e16f00c19562497e152e5e577570b375511a5b6967b39a61ac2405  ./js/custom.js
+04685bdefed2099cae5f544505b8319ee7ae4d0a7f90a93b2e764bde5cad1de6  ./js/jquery.min.js
+40223bede5475b91b43535458932df276f2750c236732faa669ba9faefd1d1f5  ./js/jquery.sticky.js
+c1714abcc0acd76f200ed2a03da2281c4e04a8e3658d749601028cdee4974e5a  ./order-reception-and-planning.html
+62ef9dd27447ecd25b9aa9fd96654683d008e697f61fe7983a33636bb8ed8ebd  ./valuing-your-time.html
+d776cb53744cb67c2439210e989f87fe0daccc03c0afde6da0b91239194bf42d  ./what-information-do-we-want-first.html
+30bca21dc506a6723de4640ba95f0263844e3328df1acae7aade050a9cd31ba7  ./why-do-you-need-a-own-website.html

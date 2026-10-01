@@ -1,0 +1,71 @@
+{
+  "addButtons": [
+    "+ Add featured card",
+    "+ Add step",
+    "+ Add project",
+    "+ Add build service",
+    "+ Add pricing tier"
+  ],
+  "addRowHeights": [
+    68,
+    68,
+    0,
+    0,
+    68
+  ],
+  "addRows": 5,
+  "barTop": 2900,
+  "bridgeCalls": [
+    "GET_USER_ACCOUNT",
+    "GET_ACCOUNT_NAMES"
+  ],
+  "controls": 17,
+  "deleteButtons": 14,
+  "documentTextHasClaim": false,
+  "editButtons": 17,
+  "modalHost": false,
+  "modalOpen": 0,
+  "modalTitle": null,
+  "moveButtons": 28,
+  "noticeText": null,
+  "ownerBar": true,
+  "ownerBarButtons": [
+    "Hide owner tools",
+    "Publishing status",
+    "Re-check owner mode"
+  ],
+  "ownerBarExpanded": true,
+  "ownerBarMeta": "WEBSITE \u00b7 verified by name ownership",
+  "ownerBarName": "Qortal Web Builders",
+  "ownerBarToggle": "Hide owner tools",
+  "pricingAddRow": {
+    "alignSelf": "flex-start",
+    "flexBasis": "100%",
+    "height": 68,
+    "parentHeight": 722,
+    "width": 1200
+  },
+  "pricingBoxHeight": 634,
+  "reverifyClicked": true,
+  "saveDisabled": null,
+  "saveLabel": null,
+  "tabPanes": [
+    {
+      "id": "panel-1",
+      "renderedHeight": 608
+    },
+    {
+      "id": "panel-2",
+      "renderedHeight": 0
+    },
+    {
+      "id": "panel-3",
+      "renderedHeight": 0
+    }
+  ],
+  "toastBottom": 2888,
+  "toastClearsBar": true,
+  "toastHost": false,
+  "toastText": "Owner mode confirmed: the current account owns \"Qortal Web Builders\".\u00d7",
+  "writeActions": []
+}

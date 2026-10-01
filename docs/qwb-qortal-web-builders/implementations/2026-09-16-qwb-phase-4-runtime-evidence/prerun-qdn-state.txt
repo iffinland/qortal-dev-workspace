@@ -1,0 +1,95 @@
+# Phase 4 precondition 2 — pre-run QDN state (read-only), 2026-09-16T02:32:07Z
+
+## qwb_ prefix search, service=JSON, mode=ALL (all publishers) — shows foreign publishers, no QWB app resources
+hits: 50
+  Simon James qwb_ix_c_x2o8k20jimod2tvgm
+  Magdalena qwb_ix_c_xy62vml3imod2v34w
+  Magdalena qwb_ix_v_xl6jzt0w2mod2vck3
+  Simon James qwb_ix_c_xkmx9yni9moddkqb9
+  Simon James qwb_ix_ft_xvsawn0jfmoddlus4
+  Magdalena qwb_ix_ft_x4rt96qalmoeyc0dg
+  developer iffi qwb_ix_c_x731713wfmofulimd
+  Biohackers Corner qwb_ix_ft_xts2w9x26moj5vmve
+  Biohackers Corner qwb_ix_fv_xtj3d1tuhmoj7787z
+  Simon James qwb_ix_c_x8hibgatcmolrji0y
+  Simon James qwb_ix_ft_xxskgtaj4molv4oz1
+  Simon James qwb_ix_v_xkzpjw2wlmolz9993
+  Green say Bear qwb_ix_v_xs2d5orf5molzewal
+  Green say Bear qwb_ix_v_x2fmu91a8molzfhih
+  Green say Bear qwb_ix_v_xgc9773gxmolzg2zm
+  Simon James qwb_ix_v_x8yqp5mkpmom23ser
+  Simon James qwb_ix_v_xpzcnx5cdmom23xqt
+  Simon James qwb_ix_v_x7z6jwzl4mom5i0hk
+  Simon James qwb_ix_ft_xoykmucl7mom5j69v
+  Simon James qwb_ix_ft_xma34j3jlmom7ehc2
+  Simon James qwb_ix_ft_xh9oq3ftomomtnh6b
+  Simon James qwb_ix_v_xn75wgclomonbqmh2
+  Simon James qwb_ix_v_xh0epoyk3monbrlxm
+  Simon James qwb_ix_v_xijlo1x4jmoncfhu0
+  Magdalena qwb_ix_v_xlpk3hlutmoncq5iy
+  Magdalena qwb_ix_ft_x2by0f4gtmoncs2nj
+  Magdalena qwb_ix_v_xsx9hloldmoncvai1
+  Szymon qwb_ix_v_x2kmsc252moncw7z2
+  Szymon qwb_ix_v_xyaioz5n3moncwchc
+  Simon James qwb_ix_phv_x4pl3robnmoneqw4d
+  Simon James qwb_ix_pbb_x9251mbxqmoner7q5
+  Simon James qwb_ix_fhr_xhtxdcjjvmonf1eou
+  Simon James qwb_ix_fhr_x1fv32lttmonf290g
+  Simon James qwb_ix_phv_x30vxn0ptmonf5m91
+  Simon James qwb_ix_v_xj0774rbtmonf6qeu
+  Simon James qwb_ix_v_xpov7n9jhmonf76ik
+  Simon James qwb_ix_ft_xksxr486zmooj099r
+  Simon James qwb_ix_v_x1poxseyymooj0olj
+  Simon James qwb_ix_v_x0afzxsiamooqjrv1
+  Simon James qwb_ix_ft_x0hgyrc5umooqnidc
+  Simon James qwb_ix_fr_x5e40khezmooqnzvp
+  Magdalena qwb_ix_v_xwhj8rsghmoorcct0
+  Simon James qwb_ix_ft_xjz5hivhsmoorduij
+  Magdalena qwb_ix_ft_xs0ay5tjfmoormz3e
+  Magdalena qwb_ix_v_xmwjotgm3moorndfd
+  Magdalena qwb_ix_v_x6lhfzvm4moornjeg
+  Simon James qwb_ix_v_xdhv8akocmoorogin
+  Simon James qwb_ix_v_x3r0jyx4tmoosliil
+  Magdalena qwb_ix_v_x350klsm9moosmlkd
+  Simon James qwb_ix_ft_xdsx9bqqwmoospyx4
+
+## per-name qwb_ JSON search (names the local Hub owns)
+Qortal Web Builders   : 50 hit(s)
+iffi vaba mees        : 50 hit(s)
+iffi olen             : 50 hit(s)
+vaba mees             : 50 hit(s)
+free man              : 50 hit(s)
+russian               : 50 hit(s)
+AstuAeda              : 50 hit(s)
+Shadow Archives       : 50 hit(s)
+iffi forest life      : 50 hit(s)
+
+## per-name qwb_ DOCUMENT search
+Qortal Web Builders   : 0 hit(s)
+iffi vaba mees        : 0 hit(s)
+iffi forest life      : 0 hit(s)
+
+## site singleton FETCH_QDN_RESOURCE equivalent (JSON, qwb_site_v1)
+Qortal Web Builders   : {"error":1401,"message":"Couldn't find PUT transaction for name qortal web builders, service JSON and identifier qwb_sit
+iffi vaba mees        : {"error":1401,"message":"Couldn't find PUT transaction for name iffi vaba mees, service JSON and identifier qwb_site_v1"
+iffi forest life      : {"error":1401,"message":"Couldn't find PUT transaction for name iffi forest life, service JSON and identifier qwb_site_v
+
+## Caveat on the per-name sections above
+The `names=<...>&exactMatchNames=true` query parameters were NOT honoured by this node for
+`/arbitrary/resources/search` (each name returned the same 50 foreign `qwb_ix_*` rows). The earlier
+Phase 3 finding stands: server-side name filtering cannot be relied on and the app's client-side
+re-filter on the exact `(name, service, identifier)` is load-bearing. The single-`name` form used in
+`live-qwb-website-search.json` does filter correctly.
+
+The unambiguous pre-run signal is therefore the site-singleton FETCH above (HTTP error 1401,
+"Couldn't find PUT transaction") plus the DOCUMENT searches: **no QWB app resource exists under any
+candidate publishing name**, so the first add would be unambiguous.
+
+## Re-check with the server-side filter that DOES work (singular `name=`)
+service=JSON, identifier=qwb_, prefix=true, mode=ALL:
+  Qortal Web Builders  -> 0
+  iffi vaba mees       -> 0
+  iffi forest life     -> 0
+  russian              -> 0
+  AstuAeda             -> 0
+=> every candidate publishing name has zero QWB app resources; nothing is published.
