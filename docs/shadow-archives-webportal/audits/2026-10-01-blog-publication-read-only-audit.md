@@ -5,7 +5,7 @@ Report/handoff writer (if different from the executing agent): **Codex**
 Executing-agent evidence (how the real executor was established): This audit was performed directly in the current Codex session.
 Report type: Read-only platform-integration and runtime audit
 Exact application repository / branch / SHA: `/home/iffi/VsCodec-Projects/shadow-archives/shadow-archives-webportal/QORTAL`; initial baseline `agent/shadow-archives-webportal/owner-runtime-checkpoint-20260913` at `d8967d735f5621a13aa302e4ce977464258fac03`; remediation branch `agent/shadow-archives/blog-publish-partial-outcome-20261001` at `adfb91f841f10c796b462e045fc6520f6682b126`.
-Canonical report path / SHA-256 / authorized remote evidence: This local, uncommitted report is at the path below. No commit, push, or other external mutation is authorized or performed.
+Canonical report path / SHA-256 / authorized remote evidence: Pushed on branch `agent/shadow-archives/blog-publish-runtime-handoff-20261001`; initial report commit `067ee329cb5fa3dd44b11140857458e99684ca6d`. No QDN write, deployment, or server mutation was performed by this audit session.
 
 ## Objective and exit criterion
 
